@@ -1,0 +1,88 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<modelVersion>4.0.0</modelVersion>
+
+	<groupId>FS_TopicSearch_3._Maven</groupId>
+	<artifactId>FS_TopicSearch_3._Maven</artifactId>
+	<version>0.0.1SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<phase>REG</phase>
+	</properties>
+	
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+			<dependency>
+          <groupId>org.jvnet.com4j</groupId>
+          <artifactId>com4j</artifactId>
+          <version>20080107</version>
+        </dependency>
+		<dependency>
+			<groupId>net.sourceforge.saxon</groupId>
+			<artifactId>saxon</artifactId>
+			<version>8-dom</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/src/test/java/resources/libFiles/saxon8-dom.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>6.3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>2.41.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.uncommons</groupId>
+			<artifactId>reportng</artifactId>
+			<version>1.1.2</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.testng</groupId>
+					<artifactId>testng</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc6</artifactId>
+			<version>11.2.0</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/src/test/java/resources/libFiles/ojdbc6_g.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>otaclient</groupId>
+			<artifactId>otaclient</artifactId>
+			<version>9.2</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/src/test/java/resources/libFiles/com.mercury.qualitycenter.otaclient-9.2.jar</systemPath>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.17</version>
+				<configuration>
+					<suiteXmlFiles>
+						<suiteXmlFile>src\\test\\java\\resources\\configFiles\\testng.xml</suiteXmlFile>
+						 
+					</suiteXmlFiles>
+				</configuration>
+			</plugin>
+			
+		</plugins>
+	</build>
+  
+</project>

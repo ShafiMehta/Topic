@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Automation>
+	<EnvVariables>
+
+	<Browser>Firefox</Browser>	
+	
+	<PassConsoleReportingRequired>YES</PassConsoleReportingRequired>
+	<FailConsoleReportingRequired>YES</FailConsoleReportingRequired>
+	<ScreenShotPath>TestExecutionResults\</ScreenShotPath>
+	<FailedTestXmlLocation>src//test//java//resources//configFiles//FailedTest.xml</FailedTestXmlLocation>
+	<TestDefectXmlLocation>src//test//java//resources//configFiles//TestDefects.xml</TestDefectXmlLocation>
+	<DefectDetailsHubXmlLocation>src//test//java//resources//configFiles//DefectsDetailsHub.xml</DefectDetailsHubXmlLocation>
+	<QCDetailsXMLLocation>src//test//java//resources//configFiles//DefectsDetailsHub.xml</QCDetailsXMLLocation>
+	<PrimaryExecutionResultPath>src//test//java//BatchExecution//PrimaryExecution</PrimaryExecutionResultPath>
+	<SecondaryExecutionResultPath>src//test//java//BatchExecution//SecondaryExecution</SecondaryExecutionResultPath>
+	<PrimaryExecutionXMLPath>src//test//java//resources//configFiles//PrimaryTestng.xml</PrimaryExecutionXMLPath>
+	<SecondaryExecutionXMLPath>src//test//java//resources//configFiles//FailedTest.xml</SecondaryExecutionXMLPath> 
+	
+	
+
+	</EnvVariables>
+
+</Automation>
