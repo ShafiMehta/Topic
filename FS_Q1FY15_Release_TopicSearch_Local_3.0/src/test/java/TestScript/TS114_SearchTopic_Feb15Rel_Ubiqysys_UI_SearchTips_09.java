@@ -21,9 +21,9 @@ import resources.utilFiles.POM_Lib;
 import resources.utilFiles.TopicSearchTestData;
 import resources.utilFiles.UtilLib;
 
-public class TS075_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3_Result_pageFiltering_options_defaultSearchFilters_FILTERS_Edit_Filter_for_dataSourceName_SelectAll_39 {
+public class TS114_SearchTopic_Feb15Rel_Ubiqysys_UI_SearchTips_09 {
 
-	public static String TestCase_Name = "TS075_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3_Result_pageFiltering_options_defaultSearchFilters_FILTERS_Edit_Filter_for_dataSourceName_SelectAll_39";
+	public static String TestCase_Name = "TS114_SearchTopic_Feb15Rel_Ubiqysys_UI_SearchTips_09";
 	private DBAutomationFunction arr_data = new DBAutomationFunction();
 	private DBAutomationConnection db = new DBAutomationConnection();
 	Connection con = null;
@@ -49,7 +49,7 @@ public class TS075_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3_Result_pageFil
 
 
 	@Test	
-	public void ts075_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3_Result_pageFiltering_options_defaultSearchFilters_FILTERS_Edit_Filter_for_dataSourceName_SelectAll_39() throws Exception {
+	public void ts114_SearchTopic_Feb15Rel_Ubiqysys_UI_SearchTips_09() throws Exception {
 		String TEST_SCENARIO = TestCase_Name;
 		String TEST_PHASE = "REG";
 		String EXECUTION = "Y";
@@ -57,7 +57,7 @@ public class TS075_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3_Result_pageFil
 		retObjArr = new ArrayList<TopicSearchTestData>();
 		retObjArr= arr_data.getDbData(TEST_SCENARIO,TEST_PHASE, EXECUTION, con);
 		System.out.println(retObjArr.get(0).getI_URL());
-		ExecutionStatus=POM_Lib.SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3_Result_pageFiltering_options_defaultSearchFilters_FILTERS_Edit_Filter_for_dataSourceName_SelectAll_39(retObjArr,TestCase_Name);
+		ExecutionStatus=POM_Lib.SearchTopic_Feb15Rel_Ubiqysys_UI_SearchTips_09(retObjArr,TestCase_Name);
 		AssertJUnit.assertTrue(ExecutionStatus);
 
 	}
@@ -74,3 +74,5 @@ public class TS075_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3_Result_pageFil
 	}
 
 }
+
+

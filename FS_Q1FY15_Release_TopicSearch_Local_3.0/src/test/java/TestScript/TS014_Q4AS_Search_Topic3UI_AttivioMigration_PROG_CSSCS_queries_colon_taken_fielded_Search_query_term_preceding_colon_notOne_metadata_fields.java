@@ -23,8 +23,9 @@ import resources.utilFiles.UtilLib;
 public class TS014_Q4AS_Search_Topic3UI_AttivioMigration_PROG_CSSCS_queries_colon_taken_fielded_Search_query_term_preceding_colon_notOne_metadata_fields {
 
 	public static String TestCase_Name = "TS014_Q4AS_Search_Topic3UI_AttivioMigration_PROG_CSSCS_queries_colon_taken_fielded_Search_query_term_preceding_colon_notOne_metadata_fields";
-	private DBAutomationFunction arr_data = new DBAutomationFunction();
 	private DBAutomationConnection db = new DBAutomationConnection();
+	private DBAutomationFunction arr_data = new DBAutomationFunction();
+	
 	Connection con = null;
 	public List<TopicSearchTestData> retObjArr;
 	TopicSearchTestData data = new TopicSearchTestData();

@@ -1,4 +1,3 @@
-
 package TestScript;
 
 
@@ -21,9 +20,9 @@ import resources.utilFiles.POM_Lib;
 import resources.utilFiles.TopicSearchTestData;
 import resources.utilFiles.UtilLib;
 
-public class TS040_SearchTopic_3_1_4UI_AttivioMigration_PROG_Q4SCOPE_SRCH2_User_selects_onlyAttiviobased_datasourcesforSearch_Previewcapability_availablefor_newsgroup {
+public class TS099_SearchTopic_Sourcefire_UI_SortRelevancy_11 {
 
-	public static String TestCase_Name = "TS040_SearchTopic_3_1_4UI_AttivioMigration_PROG_Q4SCOPE_SRCH2_User_selects_onlyAttiviobased_datasourcesforSearch_Previewcapability_availablefor_newsgroup";
+	public static String TestCase_Name = "TS099_SearchTopic_Sourcefire_UI_SortRelevancy_11";
 	private DBAutomationFunction arr_data = new DBAutomationFunction();
 	private DBAutomationConnection db = new DBAutomationConnection();
 	Connection con = null;
@@ -49,7 +48,7 @@ public class TS040_SearchTopic_3_1_4UI_AttivioMigration_PROG_Q4SCOPE_SRCH2_User_
 
 
 	@Test	
-	public void ts040_SearchTopic_3_1_4UI_AttivioMigration_PROG_Q4SCOPE_SRCH2_User_selects_onlyAttiviobased_datasourcesforSearch_Previewcapability_availablefor_newsgroup() throws Exception {
+	public void ts099_SearchTopic_Sourcefire_UI_SortRelevancy_11() throws Exception {
 		String TEST_SCENARIO = TestCase_Name;
 		String TEST_PHASE = "REG";
 		String EXECUTION = "Y";
@@ -57,7 +56,7 @@ public class TS040_SearchTopic_3_1_4UI_AttivioMigration_PROG_Q4SCOPE_SRCH2_User_
 		retObjArr = new ArrayList<TopicSearchTestData>();
 		retObjArr= arr_data.getDbData(TEST_SCENARIO,TEST_PHASE, EXECUTION, con);
 		System.out.println(retObjArr.get(0).getI_URL());
-		ExecutionStatus=POM_Lib.SearchTopic_3_1_4UI_AttivioMigration_PROG_Q4SCOPE_SRCH2_User_selects_onlyAttiviobased_datasourcesforSearch_Previewcapability_availablefor_newsgroup(retObjArr,TestCase_Name);
+		ExecutionStatus=POM_Lib.TS099_SearchTopic_Sourcefire_UI_SortRelevancy_11(retObjArr,TestCase_Name);
 		AssertJUnit.assertTrue(ExecutionStatus);
 
 	}
@@ -74,6 +73,3 @@ public class TS040_SearchTopic_3_1_4UI_AttivioMigration_PROG_Q4SCOPE_SRCH2_User_
 	}
 
 }
-
-
-

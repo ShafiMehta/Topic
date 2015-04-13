@@ -1,5 +1,3 @@
-
-
 package TestScript;
 
 
@@ -22,9 +20,9 @@ import resources.utilFiles.POM_Lib;
 import resources.utilFiles.TopicSearchTestData;
 import resources.utilFiles.UtilLib;
 
-public class TS068_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT_3_ResultPagefilteringOptions_defaultSearch_filters_DATASOURCEFILTER_TechZoneNavigatorValues_17 {
+public class TS022_SearchTopic_3_UI_AttivioMigration_PROG_Q4SCOPE_CSSCSO_submission_relevance_feedback_acknowledged_91_Safari {
 
-	public static String TestCase_Name = "TS068_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT_3_ResultPagefilteringOptions_defaultSearch_filters_DATASOURCEFILTER_TechZoneNavigatorValues_17";
+	public static String TestCase_Name = "TS022_SearchTopic_3_UI_AttivioMigration_PROG_Q4SCOPE_CSSCSO_submission_relevance_feedback_acknowledged_91_Safari";
 	private DBAutomationFunction arr_data = new DBAutomationFunction();
 	private DBAutomationConnection db = new DBAutomationConnection();
 	Connection con = null;
@@ -50,7 +48,7 @@ public class TS068_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT_3_ResultPagefil
 
 
 	@Test	
-	public void ts068_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT_3_ResultPagefilteringOptions_defaultSearch_filters_DATASOURCEFILTER_TechZoneNavigatorValues_17() throws Exception {
+	public void ts022_SearchTopic_3_UI_AttivioMigration_PROG_Q4SCOPE_CSSCSO_submission_relevance_feedback_acknowledged_91_Safari() throws Exception {
 		String TEST_SCENARIO = TestCase_Name;
 		String TEST_PHASE = "REG";
 		String EXECUTION = "Y";
@@ -58,9 +56,12 @@ public class TS068_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT_3_ResultPagefil
 		retObjArr = new ArrayList<TopicSearchTestData>();
 		retObjArr= arr_data.getDbData(TEST_SCENARIO,TEST_PHASE, EXECUTION, con);
 		System.out.println(retObjArr.get(0).getI_URL());
-		ExecutionStatus=POM_Lib.SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT_3_ResultPagefilteringOptions_defaultSearch_filters_DATASOURCEFILTER_TechZoneNavigatorValues_17(retObjArr,TestCase_Name);
+	
+		
+		ExecutionStatus=POM_Lib.SearchTopic_3_UI_AttivioMigration_PROG_Q4SCOPE_CSSCSO_submission_relevance_feedback_acknowledged_91(retObjArr,TestCase_Name);
+		
 		AssertJUnit.assertTrue(ExecutionStatus);
-
+		
 	}
 
 	@AfterClass
@@ -75,3 +76,5 @@ public class TS068_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT_3_ResultPagefil
 	}
 
 }
+
+

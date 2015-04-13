@@ -56,9 +56,12 @@ public class TS022_SearchTopic_3_UI_AttivioMigration_PROG_Q4SCOPE_CSSCSO_submiss
 		retObjArr = new ArrayList<TopicSearchTestData>();
 		retObjArr= arr_data.getDbData(TEST_SCENARIO,TEST_PHASE, EXECUTION, con);
 		System.out.println(retObjArr.get(0).getI_URL());
+	
+		
 		ExecutionStatus=POM_Lib.SearchTopic_3_UI_AttivioMigration_PROG_Q4SCOPE_CSSCSO_submission_relevance_feedback_acknowledged_91(retObjArr,TestCase_Name);
+		
 		AssertJUnit.assertTrue(ExecutionStatus);
-
+		
 	}
 
 	@AfterClass

@@ -90,7 +90,85 @@ public class POM_Lib {
 		}*/
 		for (TopicSearchTestData data : dataList) {
 		try {
+			System.out.println("TopicSearch Url : "+URL);
             driver = UtilLib.getDriver(dataList);
+            driver.manage().deleteAllCookies();
+			driver.get(URL);
+			UtilLib.WaitTime(3000);
+			UtilLib.uf_C_HandleAlert_Dismiss("TopicSearchLoginPage", "This page is accessing information that is not under its control. This poses a security risk. Do you want to continue?", TestCase_Name);
+
+			System.out.println("TopicSearch Url : "+URL);
+			driver.manage().window().maximize(); 
+			driver.manage().deleteAllCookies();
+			UtilLib.WaitTime(3000);
+			System.out.println("Page Title: "+driver.getTitle());
+			if(driver.getTitle().equals("Cisco.com Login Page"))
+			{
+				status = true;
+				UtilLib.Report_PASS("Cisco.com Login Page", "landing page is displayed", "driverInitiation");
+			}else{
+				RerunFlag++;
+				UtilLib.Report_FAIL("Cisco.com Login Page", "landing page is not displayed", "driverInitiation");
+
+				driver.close();
+				return false;
+			}
+
+		}
+		catch(UnhandledAlertException alert){
+			UtilLib.CaptureScreenshot(TestCase_Name);
+
+			DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
+			UtilLib.Report_FAIL("Unexpected & Unhandled Alert", "Unhandled alert window found",TestCase_Name);
+			return false;
+		}
+
+		catch (NoSuchElementException e) {
+
+			UtilLib.CaptureScreenshot(TestCase_Name);
+			DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
+			UtilLib.Report_FAIL("Change in XPATH", "Kindly change the xpath value",TestCase_Name);
+			return false;
+		}
+
+		catch (NoSuchFrameException e) {
+			UtilLib.CaptureScreenshot(TestCase_Name);
+			DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
+			UtilLib.Report_FAIL("NoSuchFrameException", "Expected frame is not present in the UI. This is an intermittent issue. Kindly re-execute the testcase",TestCase_Name);
+			return false;
+		}
+
+		catch (Error e) {
+			UtilLib.CaptureScreenshot(TestCase_Name);
+			DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
+			UtilLib.Report_FAIL("Java Error", "Kindly re-execute the testcase",TestCase_Name);
+			return false;
+		}}
+		return status;
+
+
+	}
+	
+	/********************************************************************************************
+	 * @throws Exception 
+	 * @Function_Name :  uf_p2s_driverInitiation
+	 * @Description : Initiate the driver and navigate to the TopicSearch Landing Page
+	 * @param TestCase_Name - Name of the TestCase
+	 * @param URL - URL of TopicSearch Portal
+	 ********************************************************************************************/
+	public static boolean uf_p2s_driverInitiation_shafi(String URL, List<TopicSearchTestData>  dataList, String TestCase_Name, int i) throws Exception  {
+		int RerunFlag = 0;
+		Boolean status = false;
+		/*if(Browser.equalsIgnoreCase("InternetExplorer")){
+			long stoptime = System.currentTimeMillis()+5000;
+			while(System.currentTimeMillis()<stoptime){
+			}
+		}*/
+		for (TopicSearchTestData data : dataList) {
+		try {
+			System.out.println("inside driver initiation function");
+            
+			driver = UtilLib.getDriver_shafi(dataList, i);
             driver.manage().deleteAllCookies();
 			driver.get(URL);
 			UtilLib.WaitTime(3000);
@@ -717,6 +795,7 @@ public class POM_Lib {
 			}
 
 			if(RerunFlag>0){
+				DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 				UtilLib.Report_FAIL(Data, "is not searched and Search Button is not clicked",TestCase_Name);
 				return false;
 			}else {
@@ -2808,14 +2887,14 @@ public class POM_Lib {
 
 				}
 
-				if(totalCount.equalsIgnoreCase(ThirdCount)){
+				/*if(totalCount.equalsIgnoreCase(ThirdCount)){
 					UtilLib.Report_PASS(ElementName, "is matching", "uf_R_VerifyNumberofResultofForSingleDataSource");
 					status = true;
 				}
 				else{
 					UtilLib.Report_FAIL(ElementName, "is not matching", "uf_R_VerifyNumberofResultofForSingleDataSource");
 					status = false;
-				}
+				}*/
 				UtilLib.WaitTime(5000);
 			}
 
@@ -5965,7 +6044,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 				}
 
 
-				status = uf_R_VerifyNumberofResultofForSingleDataSource("CDETS/DDTS",data.getI_PORTLET_VALUE4(), dataList,element.uf_R_C3_ResultCount, TestCase_Name);
+				/*status = uf_R_VerifyNumberofResultofForSingleDataSource("CDETS/DDTS",data.getI_PORTLET_VALUE4(), dataList,element.uf_R_C3_ResultCount, TestCase_Name);
 				if(status==false){
 					RerunFlag++;
 					DefectDetailsDriver.AppendDefectDetailsXML("ERROR004",TestCase_Name,UtilLib.CaptureScreenshot(TestCase_Name));
@@ -5978,7 +6057,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					DefectDetailsDriver.AppendDefectDetailsXML("ERROR004",TestCase_Name,UtilLib.CaptureScreenshot(TestCase_Name));
 					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);	
 				}
-
+*/
 				Actions actions = new Actions(driver);
 				WebElement PMLInk_OnHover = driver.findElement(By.xpath(element.uf_R_C3ResultContent));
 				actions.moveToElement(PMLInk_OnHover).perform();
@@ -7238,6 +7317,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					//	int keyInput2[] = {KeyEvent.VK_UP};
 						
 						if(rerunflag>0){
+							DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 							status=false;
 							UtilLib.Report_FAIL("Search Topic 3 0 UI_Attivio Migration_PROG_Q4 SCOPE_CSSCSO 303_options to view C3 results_XMLKWERY_104", "is not verified", "SearchTopic_3_UI_AttivioMigration_PROG_Q4SCOPE_CSSCSO_options_viewC3Results_XMLKWERY_104()");
 						}
@@ -7423,10 +7503,12 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					}
 					else{
 						UtilLib.Report_FAIL("System is not navigated to", "XMLKwery Page", "uf_R_Login_Topic_Search");
+						rerunflag++;
 						status = false;
 					}
 					
 					if(rerunflag>0){
+						DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 						status=false;
 						UtilLib.Report_FAIL("Search Topic 3 0 UI_Attivio Migration_PROG_Q4 SCOPE_CSSCSO 303_options to view C3 results_XMLKWERY_104", "is not verified", "SearchTopic_3_UI_AttivioMigration_PROG_Q4SCOPE_CSSCSO_options_viewC3Results_XMLKWERY_104()");
 					}
@@ -7567,6 +7649,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 
 
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("Search Topic 3 0 UI_Attivio Migration_PROG_Q4 SCOPE_CSSCSO 316_Metadata display to be consistent_C3 data source_109", "is not verified", "SearchTopic_3_UI_AttivioMigration_PROG_Q4SCOPE_CSSCSO_MetadataDisplay_consistent_C3datasource_109()");
 				}
@@ -7694,6 +7777,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 				}
 
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("Search Topic 3 0 UI_Attivio Migration_PROG_Q4 SCOPE_CSSCSO 316_Metadata display to be consistent_C3 data source_109", "is not verified", "SearchTopic_3_UI_AttivioMigration_PROG_Q4SCOPE_CSSCSO_MetadataDisplay_consistent_C3datasource_109()");
 				}
@@ -7827,6 +7911,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 
 
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("Search Topic 3 0 UI_Attivio Migration_PROG_Q4 SCOPE_CSSCSO 316_Metadata display to be consistent_C3 data source_109", "is not verified", "SearchTopic_3_UI_AttivioMigration_PROG_Q4SCOPE_CSSCSO_MetadataDisplay_consistent_C3datasource_109()");
 				}
@@ -7944,6 +8029,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 			if(rerunflag>0){
 				status=false;
 				UtilLib.Report_FAIL("Search Topic 3 0 UI_Attivio Migration_PROG_CSSCSO281_queries with colon may be taken for fielded search_query term preceding colon  is not one of the metadata field", "is not verified", "SearchTopic_3_UI_AttivioMigration_PROG_SRCH_Performing_search_Search_query_using_exclude_hyphenSymbol()");
+				DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 			}
 			else
 			{
@@ -8053,6 +8139,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 
 
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("Search Topic 3 0 UI_Attivio Migration_PROG_CSSCSO 281_queries with colon may be taken for fielded search_query term preceding term matches one of the metadata field names_04", "is not verified", "Search_Topic_3_UI_AttivioMigration_PROG_queries_with_colon_may_taken_fielded_search_query_term_preceding_term_matches_one_metadata_field_names()");
 				}
@@ -8187,6 +8274,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 				}
 				else{
 					UtilLib.Report_FAIL("IOS Crash ", "is not present  in the More Links page",TestCase_Name);
+					rerunflag++;
 				}
 
 
@@ -8197,6 +8285,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 				}
 				else{
 					UtilLib.Report_FAIL("IOS AND Crash ", "is not present  in the More Links page",TestCase_Name);
+					rerunflag++;
 				}
 
 				String IOSCrashORexception=UtilLib.uf_C_GetUIData1("Ios Crash OR exception", element.uf_SH_IOScrashORexception, TestCase_Name);	
@@ -8253,6 +8342,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 
 
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("Search Topic 3 0 UI_Attivio Migration_PROG_CSSCSO 281_queries with colon may be taken for fielded search_query term preceding term matches one of the metadata field names_04", "is not verified", "Search_Topic_3_UI_AttivioMigration_PROG_queries_with_colon_may_taken_fielded_search_query_term_preceding_term_matches_one_metadata_field_names()");
 				}
@@ -8386,6 +8476,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 
 
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL(" Search Topic 3 0 UI_Attivio Migration_PROG_CSSCSO 287 _UI source selection cannot be changed without query text_09", "is not verified", "SearchTopic3_UI_AttivioMigration_PROG_CSSCSO287_UISource_selection_cannot_changed_without_queryText_09()");
 				}
@@ -8499,6 +8590,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 
 
 			if(rerunflag>0){
+				DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 				status=false;
 				UtilLib.Report_FAIL("Search Topic 3 0 UI_Attivio Migration_PROG_CSSCSO285 _Error _Error while calling web service_10", "is not verified", "SearchTopic_3_UI_AttivioMigration_PROG_CSSCSO285_Error_while_calling_webService_10()");
 			}
@@ -8598,6 +8690,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 
 
 			if(rerunflag>0){
+				DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 				status=false;
 				UtilLib.Report_FAIL("Search Topic 3 0 UI_Attivio Migration_PROG_CSSCSO262 _Error Message_12", "is not verified", "SearchTopic_3_UI_AttivioMigration_PROG_CSSCSO262_ErrorMessage_12()");
 			}
@@ -8714,6 +8807,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 
 
 			if(rerunflag>0){
+				DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 				status=false;
 				UtilLib.Report_FAIL("Search Topic 3 0 UI_Attivio Migration_PROG_CSSCSO292_fielded search Error is not displayed while we enter space between  colon and a value with wildcard_15", "is not verified", "SearchTopic_3_UI_AttivioMigration_PROG_CSSCS_fielded_search_handleSpace_colon_value_wildcard_15()");
 			}
@@ -8805,6 +8899,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 
 
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("Search Topic 3 0 UI_Attivio Migration_PROG_CSSCSO269_Fielded search_16", "is not verified", "SearchTopic_3_UI_AttivioMigration_PROG_CSSCSO_FieldedSearch_16()");
 				}
@@ -8868,8 +8963,10 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 		//int flag=0;
 		try {
 			for(TopicSearchTestData data :dataList ){
-
+				System.out.println("inside main function");
+				
 				uf_p2s_driverInitiation(data.getI_URL(), dataList,TestCase_Name);
+				
 				UtilLib.WaitTime(5000);
 				//String Url=data.getI_URL();
 				status = uf_R_Login_Topic_Search(dataList,"Topic Search", TestCase_Name);
@@ -8951,10 +9048,12 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 				else
 				{
 					UtilLib.Report_FAIL("User is unable to give the feedback 'Somewhat relevant ' ", "", "FeedbackVaerifiaction()");
+					rerunflag++;
 				}
 
 
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("Search Topic 3 0 UI_Attivio Migration_PROG_Q4 SCOPE_CSSCSO 280_submission of relevance feedback should be acknowledged_91", "is not verified", "SearchTopic_3_UI_AttivioMigration_PROG_Q4SCOPE_CSSCSO_submission_relevance_feedback_acknowledged_91()");
 				}
@@ -9138,6 +9237,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					rerunflag++;
 				}
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("C3/CSOne/CARE", "is not verified", "SearchTopic_3_UI_AttivioMigration_PROG_Q4SCOPE_CSSCSO_options_viewC3results_CS_ONE_105()");
 				}
@@ -9279,6 +9379,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 
 
 						if(rerunflag>0){
+							DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 							status=false;
 							UtilLib.Report_FAIL("Support Link", "is not verified", "Verify_SupportLink");
 						}
@@ -9361,6 +9462,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 
 
 					if(rerunflag>0){
+						DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 						status=false;
 						UtilLib.Report_FAIL("Support Link", "is not verified", "Verify_SupportLink");
 					}
@@ -9483,18 +9585,19 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 				if(helpUserGuide.equals("Topic search 3.0 user guide "))
 				{
 					UtilLib.Report_PASS("New Page is opened  ", "after click on User Guide Link", "Verify_Newpage");
-					rerunflag++;
+					
 				}
 				else
 				{
-					UtilLib.Report_PASS("New Page is opened  ", "after click on User Guide Link", "Verify_Newpage");
-					status=true;
+					UtilLib.Report_FAIL("New Page is opened  ", "after click on User Guide Link", "Verify_Newpage");
+					rerunflag++;
 				}
 
 
 
 
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("User Guide Link", "is not verified", "Verify_HelpLink");
 				}
@@ -9593,6 +9696,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					}
 				
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("Topic3_0_UI_Aug14Rel_PROG_AddFAQlink_Homepage_03", "is not verified", "TS027_Topic3_0_UI_Aug14Rel_PROG_AddFAQlink_Homepage_03");
 				}
@@ -9711,6 +9815,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					}
 				
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("Topic3_0_UI_Aug14Rel_PROG_AddFAQlink_Resultspage04", "is not verified", "TS028_Topic3_0_UI_Aug14Rel_PROG_AddFAQlink_Resultspage04");
 				}
@@ -9809,6 +9914,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					}
 				
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("Topic3_0_UI_Aug14Rel_PROG_beside_advanceSerach_Homepage_05", "is not verified", "TS029_Topic3_0_UI_Aug14Rel_PROG_beside_advanceSerach_Homepage_05");
 				}
@@ -9915,8 +10021,9 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					System.out.println(driver.getTitle());
 
 					System.out.println("Current URL in FAQ is : " +driver.getCurrentUrl());
-					if(driver.getCurrentUrl().equals("https://search-prd.cisco.com/help.html#_Toc390272879"))
-					{
+					String CurrentURL=driver.getCurrentUrl();
+					if((CurrentURL.equals("https://search-prd.cisco.com/help.html#_Toc390272879")) || (CurrentURL.equals("https://sso.cisco.com/autho/forms/CDClogin.html#_Toc390272879")))
+					{																									  
 						status = true;
 						UtilLib.Report_PASS("User is taken to", "required URL of on clicking of ? beside Question Mark Home page", "AdvanceSearchVerification()");
 					}else{
@@ -9927,6 +10034,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 						return false;
 					}
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("Topic3_0_UI_Aug14Rel_PROG_AddFAQlink_Resultspage04", "is not verified", "TS028_Topic3_0_UI_Aug14Rel_PROG_AddFAQlink_Resultspage04");
 				}
@@ -10001,6 +10109,88 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					}
 
 					
+					System.out.println("***************   Clicking on ClearAll and selecting one datasource   ***************");
+
+					status=UtilLib.uf_C_ClickOnElement1("Clear All", element.uf_SH_clearAll, TestCase_Name);
+					System.out.println("Clear All Status : "+status);
+					if(status==true)
+					{
+						UtilLib.Report_PASS("Clear All ", "is clicked", "ClearAllVerifiaction()");
+					}
+					else
+					{
+						rerunflag++;
+					}
+
+					System.out.println("***************   Selecting Default data Sources   ***************");
+				
+					status=UtilLib.uf_C_ClickOnElement1("CDETS", element.uf_SH_CDETS_DDTScheckbox, TestCase_Name);
+					System.out.println("CDETS Status : "+status);
+					if(status==true)
+					{
+						UtilLib.Report_PASS("CDETS data source ", "is selected", "selectingDataSource()");
+					}
+					else
+					{
+						rerunflag++;
+					}
+					
+					status=UtilLib.uf_C_ClickOnElement1("C3 ", element.uf_SH_C3_CSOne_CAREcheckbox, TestCase_Name);
+					System.out.println("C3 Status : "+status);
+					if(status==true)
+					{
+						UtilLib.Report_PASS("C3 data source ", "is selected", "selectingDataSource()");
+					}
+					else
+					{
+						rerunflag++;
+					}
+					status=UtilLib.uf_C_ClickOnElement1("Techzone", element.uf_SH_Techzonecheckbox, TestCase_Name);
+					System.out.println("Techzone Status : "+status);
+					if(status==true)
+					{
+						UtilLib.Report_PASS("Techzone data source ", "is selected", "selectingDataSource()");
+					}
+					else
+					{
+						rerunflag++;
+					}
+					status=UtilLib.uf_C_ClickOnElement1("TSTraining", element.uf_SH_TSTrainingHomecheckbox, TestCase_Name);
+					System.out.println("TSTraining Status : "+status);
+					if(status==true)
+					{
+						UtilLib.Report_PASS("TSTraining data source ", "is selected", "selectingDataSource()");
+					}
+					else
+					{
+						rerunflag++;
+					}
+					
+					
+					
+					status=UtilLib.uf_C_ClickOnElement1("Newsgroup", element.uf_SH_Newsgroupcheckbox, TestCase_Name);
+					System.out.println("Newsgroup Status : "+status);
+					if(status==true)
+					{
+						UtilLib.Report_PASS("Newsgroup data source ", "is selected", "selectingDataSource()");
+					}
+					else
+					{
+						rerunflag++;
+					}
+					
+					
+					
+					status=UtilLib.uf_C_ClickOnElement1("TACField", element.uf_SH_TACFieldcheckbox, TestCase_Name);
+					System.out.println("TACField Status : "+status);
+					if(status==true)
+					{
+						UtilLib.Report_PASS("TACField data source ", "is selected", "selectingDataSource()");
+					}
+					else
+					{
+						rerunflag++;
+					}
 					String searchQuery=UtilLib.uf_C_EnterDataInTextBox("Search TextBox", element.uf_N_queryText, data.getI_PORTLET_VALUE1(), TestCase_Name);
 					if(searchQuery.equals(null))
 					{
@@ -10029,7 +10219,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					UtilLib.ClickOnElement("PDF checkbox", element.uf_SH_PDFChechox, TestCase_Name);
 					UtilLib.WaitTime(4000);
 					String results1=UtilLib.uf_C_GetUIData1("No of Results", element.uf_N_correspondingTotalResults, TestCase_Name);
-					results1=results1.substring(2,3);
+					results1=results1.substring(8,12);
 					
 					//int noOfResults=Integer.parseInt(results);
 					int noOfResults=Integer.parseInt(results1);
@@ -10045,8 +10235,10 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					else
 					{
 						UtilLib.Report_FAIL(" Filtered results only for that value ", "are not shown", "ResultVerifiaction()");
+						rerunflag++;
 					}
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("SearchTopic3_0_UI_AttivioMigration_PROG_RSLT3Resultpagefiltering_options_defaultsearchfilters_FILE_FORMATS_PDFs_34", "is not verified", "SearchTopic3_0_UI_AttivioMigration_PROG_RSLT3Resultpagefiltering_options_defaultsearchfilters_FILE_FORMATS_PDFs_34");
 				}
@@ -10108,84 +10300,138 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 		int rerunflag=0;
 		//int flag=0;
 
-			try {
-				for(TopicSearchTestData data :dataList ){
+		try {
+			for(TopicSearchTestData data :dataList ){
 
-					uf_p2s_driverInitiation(data.getI_URL(), dataList,TestCase_Name);
-					UtilLib.WaitTime(5000);
-					status = uf_R_Login_Topic_Search(dataList,"Topic Search", TestCase_Name);
-					if(status==false){
-						rerunflag++;
-						DefectDetailsDriver.AppendDefectDetailsXML("ERROR004",TestCase_Name,UtilLib.CaptureScreenshot(TestCase_Name));
-						DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);	
-					}
+				uf_p2s_driverInitiation(data.getI_URL(), dataList,TestCase_Name);
+				UtilLib.WaitTime(5000);
+				status = uf_R_Login_Topic_Search(dataList,"Topic Search", TestCase_Name);
+				if(status==false){
+					rerunflag++;
+					DefectDetailsDriver.AppendDefectDetailsXML("ERROR004",TestCase_Name,UtilLib.CaptureScreenshot(TestCase_Name));
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);	
+				}
 
+				
+				System.out.println("***************   Clicking on ClearAll and selecting one datasource   ***************");
+
+				status=UtilLib.uf_C_ClickOnElement1("Clear All", element.uf_SH_clearAll, TestCase_Name);
+				System.out.println("Clear All Status : "+status);
+				if(status==true)
+				{
+					UtilLib.Report_PASS("Clear All ", "is clicked", "ClearAllVerifiaction()");
+				}
+				else
+				{
+					rerunflag++;
+				}
+
+				System.out.println("***************   Selecting Default data Sources   ***************");
+			
+				status=UtilLib.uf_C_ClickOnElement1("CDETS", element.uf_SH_CDETS_DDTScheckbox, TestCase_Name);
+				System.out.println("CDETS Status : "+status);
+				if(status==true)
+				{
+					UtilLib.Report_PASS("CDETS data source ", "is selected", "selectingDataSource()");
+				}
+				else
+				{
+					rerunflag++;
+				}
+				
+				status=UtilLib.uf_C_ClickOnElement1("C3 ", element.uf_SH_C3_CSOne_CAREcheckbox, TestCase_Name);
+				System.out.println("C3 Status : "+status);
+				if(status==true)
+				{
+					UtilLib.Report_PASS("C3 data source ", "is selected", "selectingDataSource()");
+				}
+				else
+				{
+					rerunflag++;
+				}
+				status=UtilLib.uf_C_ClickOnElement1("Techzone", element.uf_SH_Techzonecheckbox, TestCase_Name);
+				System.out.println("Techzone Status : "+status);
+				if(status==true)
+				{
+					UtilLib.Report_PASS("Techzone data source ", "is selected", "selectingDataSource()");
+				}
+				else
+				{
+					rerunflag++;
+				}
+				status=UtilLib.uf_C_ClickOnElement1("TSTraining", element.uf_SH_TSTrainingHomecheckbox, TestCase_Name);
+				System.out.println("TSTraining Status : "+status);
+				if(status==true)
+				{
+					UtilLib.Report_PASS("TSTraining data source ", "is selected", "selectingDataSource()");
+				}
+				else
+				{
+					rerunflag++;
+				}
+				
+				
+				
+				status=UtilLib.uf_C_ClickOnElement1("Newsgroup", element.uf_SH_Newsgroupcheckbox, TestCase_Name);
+				System.out.println("Newsgroup Status : "+status);
+				if(status==true)
+				{
+					UtilLib.Report_PASS("Newsgroup data source ", "is selected", "selectingDataSource()");
+				}
+				else
+				{
+					rerunflag++;
+				}
+				
+				
+				
+				status=UtilLib.uf_C_ClickOnElement1("TACField", element.uf_SH_TACFieldcheckbox, TestCase_Name);
+				System.out.println("TACField Status : "+status);
+				if(status==true)
+				{
+					UtilLib.Report_PASS("TACField data source ", "is selected", "selectingDataSource()");
+				}
+				else
+				{
+					rerunflag++;
+				}
+				String searchQuery=UtilLib.uf_C_EnterDataInTextBox("Search TextBox", element.uf_N_queryText, data.getI_PORTLET_VALUE1(), TestCase_Name);
+				if(searchQuery.equals(null))
+				{
+					rerunflag++;
+				}
+				
+				UtilLib.ClickOnElement("Search", element.uf_N_searchButton, TestCase_Name);
+				
+				UtilLib.WaitTime(3000);
 					
-					String searchQuery=UtilLib.uf_C_EnterDataInTextBox("Search TextBox", element.uf_N_queryText, data.getI_PORTLET_VALUE1(), TestCase_Name);
-					if(searchQuery.equals(null))
-					{
-						rerunflag++;
-					}
-					
-					UtilLib.ClickOnElement("Search", element.uf_N_searchButton, TestCase_Name);
-					
-					UtilLib.WaitTime(3000);
-						
-					String SearchResults=UtilLib.uf_C_GetUIData1("Search Results", element.uf_SH_searchResults, TestCase_Name);
-					System.out.println("Result is : "+SearchResults);
-					if(SearchResults.contains(data.getI_PORTLET_VALUE2()))
-					{
-						UtilLib.Report_PASS(" User is navigated to the results page and the results  ", "is displayed", "resultPageVerification()");
-					}
-					else{
-						rerunflag++;
-					}
-					
-					
-					status=UtilLib.uf_C_ClickOnElement1("All checkbox",element.uf_R_DataSourceFilterAll,TestCase_Name);
+				String SearchResults=UtilLib.uf_C_GetUIData1("Search Results", element.uf_SH_searchResults, TestCase_Name);
+				System.out.println("Result is : "+SearchResults);
+				if(SearchResults.contains(data.getI_PORTLET_VALUE2()))
+				{
+					UtilLib.Report_PASS(" User is navigated to the results page and the results  ", "is displayed", "resultPageVerification()");
+				}
+				else{
+					rerunflag++;
+				}
+
+					/*status=UtilLib.uf_C_ClickOnElement1("Show All",element.uf_SH_ShowAllLink,TestCase_Name);
 					if(status==false)
 					{
 						rerunflag++;
 						DefectDetailsDriver.AppendDefectDetailsXML("ERROR004",TestCase_Name,UtilLib.CaptureScreenshot(TestCase_Name));
 						DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);	
 					}
-
-
-					status=UtilLib.uf_C_ClickOnElement1("Techzone",element.uf_SH_C3_TechZoneCheckboxResultPage,TestCase_Name);
-					if(status==false)
-					{
-						rerunflag++;
-						DefectDetailsDriver.AppendDefectDetailsXML("ERROR004",TestCase_Name,UtilLib.CaptureScreenshot(TestCase_Name));
-						DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);	
-					}
-
-					status=UtilLib.uf_C_ClickOnElement1("TSTraining",element.uf_SH_TS_TrainingRepoCheckboxResultPage,TestCase_Name);
-					if(status==false)
-					{
-						rerunflag++;
-						DefectDetailsDriver.AppendDefectDetailsXML("ERROR004",TestCase_Name,UtilLib.CaptureScreenshot(TestCase_Name));
-						DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);	
-					}
-					UtilLib.WaitTime(3000);
-					
-
-					status=UtilLib.uf_C_ClickOnElement1("Show All",element.uf_SH_ShowAllLink,TestCase_Name);
-					if(status==false)
-					{
-						rerunflag++;
-						DefectDetailsDriver.AppendDefectDetailsXML("ERROR004",TestCase_Name,UtilLib.CaptureScreenshot(TestCase_Name));
-						DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);	
-					}
-					
+					*/
 					String NoOfResultsPDF=UtilLib.uf_C_GetUIData1("No of resuts of Powerpoint", element.uf_SH_application_vnd_NoofResults, TestCase_Name);
 					int resultsAfterFilter=uf_SN_split(NoOfResultsPDF, TestCase_Name);
 					System.out.println("No of Powerpoint results after filter :"+resultsAfterFilter);
 					
 					
-					UtilLib.ClickOnElement("Powerpoint checkbox", element.uf_SH_application_vndChechox, TestCase_Name);
+					UtilLib.ClickOnElement("Powerpoint checkbox", element.uf_SH_application_vndChechoxpowerpoint, TestCase_Name);
 					UtilLib.WaitTime(4000);
 					String results1=UtilLib.uf_C_GetUIData1("No of Results", element.uf_N_correspondingTotalResults, TestCase_Name);
-					results1=results1.substring(8,10);
+					results1=results1.substring(8,12);
 					
 					//int noOfResults=Integer.parseInt(results);
 					int noOfResults=Integer.parseInt(results1);
@@ -10204,6 +10450,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 						rerunflag++;
 					}
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("SearchTopic3_0_UI_AttivioMigration_PROG_RSLT_ResultpageFilteringoptions_defaultSearchfilters_FILEFORMATS_application_vnd_mspowerpoint_35", "is not verified", "TS032_SearchTopic3_0_UI_AttivioMigration_PROG_RSLT_ResultpageFilteringoptions_defaultSearchfilters_FILEFORMATS_application_vnd_mspowerpoint_35");
 				}
@@ -10265,68 +10512,132 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 		int rerunflag=0;
 		//int flag=0;
 
-			try {
-				for(TopicSearchTestData data :dataList ){
+		try {
+			for(TopicSearchTestData data :dataList ){
 
-					uf_p2s_driverInitiation(data.getI_URL(), dataList,TestCase_Name);
-					UtilLib.WaitTime(5000);
-					status = uf_R_Login_Topic_Search(dataList,"Topic Search", TestCase_Name);
-					if(status==false){
+				uf_p2s_driverInitiation(data.getI_URL(), dataList,TestCase_Name);
+				UtilLib.WaitTime(5000);
+				status = uf_R_Login_Topic_Search(dataList,"Topic Search", TestCase_Name);
+				if(status==false){
+					rerunflag++;
+					DefectDetailsDriver.AppendDefectDetailsXML("ERROR004",TestCase_Name,UtilLib.CaptureScreenshot(TestCase_Name));
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);	
+				}
+
+				
+				System.out.println("***************   Clicking on ClearAll and selecting one datasource   ***************");
+
+				status=UtilLib.uf_C_ClickOnElement1("Clear All", element.uf_SH_clearAll, TestCase_Name);
+				System.out.println("Clear All Status : "+status);
+				if(status==true)
+				{
+					UtilLib.Report_PASS("Clear All ", "is clicked", "ClearAllVerifiaction()");
+				}
+				else
+				{
+					rerunflag++;
+				}
+
+				System.out.println("***************   Selecting Default data Sources   ***************");
+			
+				status=UtilLib.uf_C_ClickOnElement1("CDETS", element.uf_SH_CDETS_DDTScheckbox, TestCase_Name);
+				System.out.println("CDETS Status : "+status);
+				if(status==true)
+				{
+					UtilLib.Report_PASS("CDETS data source ", "is selected", "selectingDataSource()");
+				}
+				else
+				{
+					rerunflag++;
+				}
+				
+				status=UtilLib.uf_C_ClickOnElement1("C3 ", element.uf_SH_C3_CSOne_CAREcheckbox, TestCase_Name);
+				System.out.println("C3 Status : "+status);
+				if(status==true)
+				{
+					UtilLib.Report_PASS("C3 data source ", "is selected", "selectingDataSource()");
+				}
+				else
+				{
+					rerunflag++;
+				}
+				status=UtilLib.uf_C_ClickOnElement1("Techzone", element.uf_SH_Techzonecheckbox, TestCase_Name);
+				System.out.println("Techzone Status : "+status);
+				if(status==true)
+				{
+					UtilLib.Report_PASS("Techzone data source ", "is selected", "selectingDataSource()");
+				}
+				else
+				{
+					rerunflag++;
+				}
+				status=UtilLib.uf_C_ClickOnElement1("TSTraining", element.uf_SH_TSTrainingHomecheckbox, TestCase_Name);
+				System.out.println("TSTraining Status : "+status);
+				if(status==true)
+				{
+					UtilLib.Report_PASS("TSTraining data source ", "is selected", "selectingDataSource()");
+				}
+				else
+				{
+					rerunflag++;
+				}
+				
+				
+				
+				status=UtilLib.uf_C_ClickOnElement1("Newsgroup", element.uf_SH_Newsgroupcheckbox, TestCase_Name);
+				System.out.println("Newsgroup Status : "+status);
+				if(status==true)
+				{
+					UtilLib.Report_PASS("Newsgroup data source ", "is selected", "selectingDataSource()");
+				}
+				else
+				{
+					rerunflag++;
+				}
+				
+				
+				
+				status=UtilLib.uf_C_ClickOnElement1("TACField", element.uf_SH_TACFieldcheckbox, TestCase_Name);
+				System.out.println("TACField Status : "+status);
+				if(status==true)
+				{
+					UtilLib.Report_PASS("TACField data source ", "is selected", "selectingDataSource()");
+				}
+				else
+				{
+					rerunflag++;
+				}
+				String searchQuery=UtilLib.uf_C_EnterDataInTextBox("Search TextBox", element.uf_N_queryText, data.getI_PORTLET_VALUE1(), TestCase_Name);
+				if(searchQuery.equals(null))
+				{
+					rerunflag++;
+				}
+				
+				UtilLib.ClickOnElement("Search", element.uf_N_searchButton, TestCase_Name);
+				
+				UtilLib.WaitTime(3000);
+					
+				String SearchResults=UtilLib.uf_C_GetUIData1("Search Results", element.uf_SH_searchResults, TestCase_Name);
+				System.out.println("Result is : "+SearchResults);
+				if(SearchResults.contains(data.getI_PORTLET_VALUE2()))
+				{
+					UtilLib.Report_PASS(" User is navigated to the results page and the results  ", "is displayed", "resultPageVerification()");
+				}
+				else{
+					rerunflag++;
+				}
+
+					status=UtilLib.uf_C_ClickOnElement1("Show All",element.uf_SH_ShowAllLink,TestCase_Name);
+					if(status==false)
+					{
 						rerunflag++;
 						DefectDetailsDriver.AppendDefectDetailsXML("ERROR004",TestCase_Name,UtilLib.CaptureScreenshot(TestCase_Name));
 						DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);	
 					}
-
-					
-					String searchQuery=UtilLib.uf_C_EnterDataInTextBox("Search TextBox", element.uf_N_queryText, data.getI_PORTLET_VALUE1(), TestCase_Name);
-					if(searchQuery.equals(null))
-					{
-						rerunflag++;
-					}
-					
-					UtilLib.ClickOnElement("Search", element.uf_N_searchButton, TestCase_Name);
-					
-					UtilLib.WaitTime(3000);
-						
-					String SearchResults=UtilLib.uf_C_GetUIData1("Search Results", element.uf_SH_searchResults, TestCase_Name);
-					System.out.println("Result is : "+SearchResults);
-					if(SearchResults.contains(data.getI_PORTLET_VALUE2()))
-					{
-						UtilLib.Report_PASS(" User is navigated to the results page and the results  ", "is displayed", "resultPageVerification()");
-					}
-					else{
-						rerunflag++;
-					}
-					
-					/*String NoOfResultsPDF=UtilLib.uf_C_GetUIData1("No of resuts of Spreadsheet", element.uf_SH_spreadsheet_NoofResults, TestCase_Name);
-					int resultsAfterFilter=uf_SN_split(NoOfResultsPDF, TestCase_Name);
-					System.out.println("No of Spreadsheet results after filter :"+resultsAfterFilter);
-					
-					UtilLib.ClickOnElement("Spreadsheet checkbox", element.uf_SH_OnlineTrainingChechox, TestCase_Name);
-					UtilLib.WaitTime(4000);
-					String results1=UtilLib.uf_C_GetUIData1("No of Results", element.uf_N_correspondingTotalResults, TestCase_Name);
-					results1=results1.substring(2,3);
-					
-					//int noOfResults=Integer.parseInt(results);
-					int noOfResults=Integer.parseInt(results1);
-					System.out.println("Total no of results on result page is : "+noOfResults);
-					UtilLib.WaitTime(1000);
-					System.out.println("corresponding result : "+noOfResults);
-					
-					if(noOfResults==resultsAfterFilter)
-					{
-						UtilLib.Report_PASS(" Filtered results only for that value ", "are shown", "ResultVerification()");
-						status=true;
-					}
-					else
-					{
-						UtilLib.Report_FAIL(" Filtered results only for that value ", "are not shown", "ResultVerifiaction()");
-						rerunflag++;
-					}*/
 					
 					
 					
-					String NoOfResultsPDF=UtilLib.uf_C_GetUIData1("No of resuts of Online Training", element.uf_SH_spreadsheet_NoofResults, TestCase_Name);
+					String NoOfResultsPDF=UtilLib.uf_C_GetUIData1("No of resuts of Online Training", element.uf_SH_Online_NoofResults, TestCase_Name);
 					int resultsAfterFilter=uf_SN_split(NoOfResultsPDF, TestCase_Name);
 					System.out.println("No of Online Training results after filter :"+resultsAfterFilter);
 					
@@ -10350,10 +10661,12 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					else
 					{
 						UtilLib.Report_FAIL(" Filtered results only for that value ", "are not shown", "ResultVerifiaction()");
+						rerunflag++;
 					}
 					
 					
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("SearchTopic3_UI_AttivioMigration_PROG_RSLT3Resultpagefilteringoptions_defaultsearchfilters_FILEFORMATS_OnlineTraining_33", "is not verified", "TS033_SearchTopic3_UI_AttivioMigration_PROG_RSLT3Resultpagefilteringoptions_defaultsearchfilters_FILEFORMATS_OnlineTraining_33");
 				}
@@ -10415,38 +10728,129 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 		int rerunflag=0;
 		//int flag=0;
 
-			try {
-				for(TopicSearchTestData data :dataList ){
+		try {
+			for(TopicSearchTestData data :dataList ){
 
-					uf_p2s_driverInitiation(data.getI_URL(), dataList,TestCase_Name);
-					UtilLib.WaitTime(5000);
-					status = uf_R_Login_Topic_Search(dataList,"Topic Search", TestCase_Name);
-					if(status==false){
+				uf_p2s_driverInitiation(data.getI_URL(), dataList,TestCase_Name);
+				UtilLib.WaitTime(5000);
+				status = uf_R_Login_Topic_Search(dataList,"Topic Search", TestCase_Name);
+				if(status==false){
+					rerunflag++;
+					DefectDetailsDriver.AppendDefectDetailsXML("ERROR004",TestCase_Name,UtilLib.CaptureScreenshot(TestCase_Name));
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);	
+				}
+
+				
+				System.out.println("***************   Clicking on ClearAll and selecting one datasource   ***************");
+
+				status=UtilLib.uf_C_ClickOnElement1("Clear All", element.uf_SH_clearAll, TestCase_Name);
+				System.out.println("Clear All Status : "+status);
+				if(status==true)
+				{
+					UtilLib.Report_PASS("Clear All ", "is clicked", "ClearAllVerifiaction()");
+				}
+				else
+				{
+					rerunflag++;
+				}
+
+				System.out.println("***************   Selecting Default data Sources   ***************");
+			
+				status=UtilLib.uf_C_ClickOnElement1("CDETS", element.uf_SH_CDETS_DDTScheckbox, TestCase_Name);
+				System.out.println("CDETS Status : "+status);
+				if(status==true)
+				{
+					UtilLib.Report_PASS("CDETS data source ", "is selected", "selectingDataSource()");
+				}
+				else
+				{
+					rerunflag++;
+				}
+				
+				status=UtilLib.uf_C_ClickOnElement1("C3 ", element.uf_SH_C3_CSOne_CAREcheckbox, TestCase_Name);
+				System.out.println("C3 Status : "+status);
+				if(status==true)
+				{
+					UtilLib.Report_PASS("C3 data source ", "is selected", "selectingDataSource()");
+				}
+				else
+				{
+					rerunflag++;
+				}
+				status=UtilLib.uf_C_ClickOnElement1("Techzone", element.uf_SH_Techzonecheckbox, TestCase_Name);
+				System.out.println("Techzone Status : "+status);
+				if(status==true)
+				{
+					UtilLib.Report_PASS("Techzone data source ", "is selected", "selectingDataSource()");
+				}
+				else
+				{
+					rerunflag++;
+				}
+				status=UtilLib.uf_C_ClickOnElement1("TSTraining", element.uf_SH_TSTrainingHomecheckbox, TestCase_Name);
+				System.out.println("TSTraining Status : "+status);
+				if(status==true)
+				{
+					UtilLib.Report_PASS("TSTraining data source ", "is selected", "selectingDataSource()");
+				}
+				else
+				{
+					rerunflag++;
+				}
+				
+				
+				
+				status=UtilLib.uf_C_ClickOnElement1("Newsgroup", element.uf_SH_Newsgroupcheckbox, TestCase_Name);
+				System.out.println("Newsgroup Status : "+status);
+				if(status==true)
+				{
+					UtilLib.Report_PASS("Newsgroup data source ", "is selected", "selectingDataSource()");
+				}
+				else
+				{
+					rerunflag++;
+				}
+				
+				
+				
+				status=UtilLib.uf_C_ClickOnElement1("TACField", element.uf_SH_TACFieldcheckbox, TestCase_Name);
+				System.out.println("TACField Status : "+status);
+				if(status==true)
+				{
+					UtilLib.Report_PASS("TACField data source ", "is selected", "selectingDataSource()");
+				}
+				else
+				{
+					rerunflag++;
+				}
+				String searchQuery=UtilLib.uf_C_EnterDataInTextBox("Search TextBox", element.uf_N_queryText, data.getI_PORTLET_VALUE1(), TestCase_Name);
+				if(searchQuery.equals(null))
+				{
+					rerunflag++;
+				}
+				
+				UtilLib.ClickOnElement("Search", element.uf_N_searchButton, TestCase_Name);
+				
+				UtilLib.WaitTime(3000);
+					
+				String SearchResults=UtilLib.uf_C_GetUIData1("Search Results", element.uf_SH_searchResults, TestCase_Name);
+				System.out.println("Result is : "+SearchResults);
+				if(SearchResults.contains(data.getI_PORTLET_VALUE2()))
+				{
+					UtilLib.Report_PASS(" User is navigated to the results page and the results  ", "is displayed", "resultPageVerification()");
+				}
+				else{
+					rerunflag++;
+				}
+
+					/*status=UtilLib.uf_C_ClickOnElement1("Show All",element.uf_SH_ShowAllLink,TestCase_Name);
+					if(status==false)
+					{
 						rerunflag++;
 						DefectDetailsDriver.AppendDefectDetailsXML("ERROR004",TestCase_Name,UtilLib.CaptureScreenshot(TestCase_Name));
 						DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);	
-					}
-
+					}*/
 					
-					String searchQuery=UtilLib.uf_C_EnterDataInTextBox("Search TextBox", element.uf_N_queryText, data.getI_PORTLET_VALUE1(), TestCase_Name);
-					if(searchQuery.equals(null))
-					{
-						rerunflag++;
-					}
-					
-					UtilLib.ClickOnElement("Search", element.uf_N_searchButton, TestCase_Name);
-					
-					UtilLib.WaitTime(3000);
-						
-					String SearchResults=UtilLib.uf_C_GetUIData1("Search Results", element.uf_SH_searchResults, TestCase_Name);
-					
-					if(SearchResults.contains(data.getI_PORTLET_VALUE2()))
-					{
-						UtilLib.Report_PASS(" User is navigated to the results page and the results  ", "is displayed", "resultPageVerification()");
-					}
-					else{
-						rerunflag++;
-					}
 					
 					String NoOfResultsWebpages=UtilLib.uf_C_GetUIData1("No of resuts of Webpages", element.uf_SH_webpages_NoofResults, TestCase_Name);
 					int resultsAfterFilter=uf_SN_split(NoOfResultsWebpages, TestCase_Name);
@@ -10455,7 +10859,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					UtilLib.ClickOnElement("Webpages checkbox", element.uf_SH_webpagesChechox, TestCase_Name);
 					UtilLib.WaitTime(4000);
 					String results1=UtilLib.uf_C_GetUIData1("No of Results", element.uf_N_correspondingTotalResults, TestCase_Name);
-					results1=results1.substring(8,13);
+					results1=results1.substring(8,16);
 					System.out.println("UI data : "+results1);
 					//int noOfResults=Integer.parseInt(results);
 					int noOfResults=Integer.parseInt(results1);
@@ -10474,6 +10878,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 						rerunflag++;
 					}
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("SearchTopic3_0_UI_AttivioMigration_PROG_RSLT_ResultpageFilteringoptions_defaultSearchfilters_FILEFORMATS_application_vnd_mspowerpoint_35", "is not verified", "TS032_SearchTopic3_0_UI_AttivioMigration_PROG_RSLT_ResultpageFilteringoptions_defaultSearchfilters_FILEFORMATS_application_vnd_mspowerpoint_35");
 				}
@@ -10598,6 +11003,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 						rerunflag++;
 					}
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("SearchTopic3_0_UI_AttivioMigration_PROG_RSLT3_Resultpage_filteringoptions_defaultSearchfilters_FILEFORMATS_ALL_32", "is not verified", "TS035_SearchTopic3_0_UI_AttivioMigration_PROG_RSLT3_Resultpage_filteringoptions_defaultSearchfilters_FILEFORMATS_ALL_32");
 				}
@@ -10688,6 +11094,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					
 					
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("TSSearchTopic_3_1_4UI_Oct14Rel_PROG_Mypreferences_option_available_TopicUI_header_BrowserHistory", "is not verified", "TS036_TSSearchTopic_3_1_4UI_Oct14Rel_PROG_Mypreferences_option_available_TopicUI_header_BrowserHistory");
 				}
@@ -10785,11 +11192,12 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 						UtilLib.Report_PASS(" Back Button ", "functionality is verified", "MyPreferencesBackButtonVerification()");
 					}
 					else{
-						UtilLib.Report_PASS(" Back Button ", "functionality is not verified", "MyPreferencesBackButtonVerification()");
+						UtilLib.Report_FAIL(" Back Button ", "functionality is not verified", "MyPreferencesBackButtonVerification()");
 						rerunflag++;
 					}
 					
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("TSSearchTopic_3_1_4UI_Oct14Rel_PROG_Mypreferences_option_available_TopicUI_header_BrowserHistory", "is not verified", "TS036_TSSearchTopic_3_1_4UI_Oct14Rel_PROG_Mypreferences_option_available_TopicUI_header_BrowserHistory");
 				}
@@ -10880,6 +11288,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					else
 					{
 						UtilLib.Report_FAIL("User is navigated to the My Prefernces page and the System data ", "is selected ", "MyPreferencesVerification()");
+						rerunflag++;
 						
 					}
 					
@@ -10929,7 +11338,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					*/
 					//UtilLib.WaitTime(3000);
 					
-					if(AutosuggestValue1.equals("Route Switch"))
+					if(AutosuggestValue1.equals("Route Processor"))
 					{
 						UtilLib.Report_PASS("Autosuggest Functionality", " is verified", "AutosuggestVerification()");
 					}
@@ -10939,6 +11348,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					}
 		        
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("Search Topic 3.1.3 UI_Oct'14 Rel_PROG_Verify_My preferences_option_Functionality_AutoSuggest_03", "is not verified", "TS038_SearchTopic_3_1_4UI_Oct14Rel_PROG_Verify_Mypreferences_option_Functionality_AutoSuggest");
 				}
@@ -11027,6 +11437,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 				}
 					
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("SearchTopic_3_1_4_UI_Oct14Rel_PROG_Alwayssearchwithinthese_checkeddatasources_savechanges", "is not verified", "TS039SearchTopic_3_1_4_UI_Oct14Rel_PROG_Alwayssearchwithinthese_checkeddatasources_savechanges");
 				}
@@ -11150,6 +11561,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					}
 					
 					if(rerunflag>0){
+						DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("SearchTopic_3_1_4_UI_Oct14Rel_PROG_Alwayssearchwithinthese_checkeddatasources_savechanges", "is not verified", "TS039SearchTopic_3_1_4_UI_Oct14Rel_PROG_Alwayssearchwithinthese_checkeddatasources_savechanges");
 				}
@@ -11274,6 +11686,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					}
 					
 					if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("SearchTopic_3_1_4UI_AttivioMigration_PROG_Q4SCOPE_SRCH2_User_selects_Attivio_baseddataSource_search_PreviewCapability_available_cdets_29", "is not verified", "TS041_SearchTopic_3_1_4UI_AttivioMigration_PROG_Q4SCOPE_SRCH2_User_selects_Attivio_baseddataSource_search_PreviewCapability_available_cdets_29");
 				}
@@ -11397,6 +11810,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					}
 					
 					if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("SearchTopic_3_1_4UI_AttivioMigration_PROG_Q4SCOPE_SRCH2_User_selects_Attivio_baseddataSource_search_PreviewCapability_available_cdets_29", "is not verified", "TS041_SearchTopic_3_1_4UI_AttivioMigration_PROG_Q4SCOPE_SRCH2_User_selects_Attivio_baseddataSource_search_PreviewCapability_available_c3_28");
 				}
@@ -11520,6 +11934,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					}
 					
 					if(rerunflag>0){
+						DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("SearchTopic_3_1_4UI_AttivioMigration_PROG_Q4SCOPE_SRCH2_Userselectsonly_Attivio_data_sources_search_Preview_capability_available_techzone_31", "is not verified", "TS043_SearchTopic_3_1_4UI_AttivioMigration_PROG_Q4SCOPE_SRCH2_Userselectsonly_Attivio_data_sources_search_Preview_capability_available_techzone_31");
 				}
@@ -11594,6 +12009,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 						status = UtilLib.uf_C_ClickOnElement1("Login", element.uf_R_LoginBtn, TestCase_Name);
 						if(status==false){
 							UtilLib.Report_FAIL("Login", "is failed", "uf_R_Login_Topic_Search");
+							rerunflag++;
 
 						}
 						UtilLib.WaitTime(5000);
@@ -11613,6 +12029,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 							status = UtilLib.uf_C_ClickOnElement1("Login", element.uf_R_LoginBtn, TestCase_Name);
 							if(status==false){
 								UtilLib.Report_FAIL("Login", "is failed", "uf_R_Login_Topic_Search");
+								rerunflag++;
 
 							}
 							UtilLib.WaitTime(5000);
@@ -11632,6 +12049,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 								status = UtilLib.uf_C_ClickOnElement1("Login", element.uf_R_LoginBtn, TestCase_Name);
 								if(status==false){
 									UtilLib.Report_FAIL("Login", "is failed", "uf_R_Login_Topic_Search");
+									rerunflag++;
 
 								}
 								UtilLib.WaitTime(5000);
@@ -11642,6 +12060,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 								}
 								else{
 									UtilLib.Report_FAIL("Title", "is not matching with topic search page", "uf_R_Login_Topic_Search");
+									rerunflag++;
 									status = false;
 								}
 							}else
@@ -11651,6 +12070,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 									status = UtilLib.uf_R_enterLoginCredetials("nisahni","Nish$2014");
 									if(status==false){
 										UtilLib.Report_FAIL("Login", "is failed", "uf_R_Login_Topic_Search");
+										rerunflag++;
 
 									}
 									UtilLib.WaitTime(5000);
@@ -11661,6 +12081,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 									}
 									else{
 										UtilLib.Report_FAIL("Title", "is not matching with topic search page", "uf_R_Login_Topic_Search");
+										rerunflag++;
 										status = false;
 									}
 
@@ -11681,6 +12102,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 				}
 					
 					if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("SearchTopic3_0_UI_AttivioMigration_PROG_LG1_HOMESCREEN_loginpage_Blankcredentials_loginfunctionality_37", "is not verified", "TS044_SearchTopic3_0_UI_AttivioMigration_PROG_LG1_HOMESCREEN_loginpage_Blankcredentials_loginfunctionality_37");
 				}
@@ -11781,6 +12203,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 						UtilLib.Report_FAIL("Topic Search Logo, FAQ Link, MyPreferences ", "are not verified for Home Page", "HomePageverification()");
 					}
 					if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("SearchTopic3_0_UI_AttivioMigration_PROG_LG1_HOMESCREEN_loginpage_Blankcredentials_loginfunctionality_37", "is not verified", "TS044_SearchTopic3_0_UI_AttivioMigration_PROG_LG1_HOMESCREEN_loginpage_Blankcredentials_loginfunctionality_37");
 				}
@@ -11878,6 +12301,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 						
 					}
 					if(rerunflag>0){
+						DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 						status=false;
 						UtilLib.Report_FAIL("SearchTopic3_0UI_AttivioMigration_PROG_SRCH2SearchPagedatasource_to_view_moredatasources_moredatasourcelink_43", "is not verified", "TS046_SearchTopic3_0UI_AttivioMigration_PROG_SRCH2SearchPagedatasource_to_view_moredatasources_moredatasourcelink_43");
 					}
@@ -11986,9 +12410,10 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					}
 					else{
 						rerunflag++;
-						UtilLib.Report_PASS("Less data source link is collapsed and More Data Sources Link and chevron  ", "is not present", "downChevronverification()");
+						UtilLib.Report_FAIL("Less data source link is collapsed and More Data Sources Link and chevron  ", "is not present", "downChevronverification()");
 					}
 					if(rerunflag>0){
+						DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 						status=false;
 						UtilLib.Report_FAIL("SearchTopic3_0UI_AttivioMigration_PROG_SRCH2SearchPagedatasource_to_view_moredatasources_moredatasourcelink_43", "is not verified", "TS046_SearchTopic3_0UI_AttivioMigration_PROG_SRCH2SearchPagedatasource_to_view_moredatasources_moredatasourcelink_43");
 					}
@@ -12088,10 +12513,11 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 						UtilLib.Report_PASS("titlt coontains", "search Term", "titleVerification()");
 					}
 					else{
-						UtilLib.Report_PASS("titlt coontains", "search Term", "titleVerification");
-						status = false;
+						UtilLib.Report_FAIL("title does not coontains", "search Term", "titleVerification");
+						rerunflag++;
 					}
 					if(rerunflag>0){
+						DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 						status=false;
 						UtilLib.Report_FAIL("SearchTopic3_0_UI_AttivioMigration_PROG_Q4SCOPE_CSSCSO305_UIPage_title_should_reflect_searchquery_search_fromHomepage_45", "is not verified", "TS048_SearchTopic3_0_UI_AttivioMigration_PROG_Q4SCOPE_CSSCSO305_UIPage_title_should_reflect_searchquery_search_fromHomepage_45");
 					}
@@ -12191,10 +12617,11 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 						UtilLib.Report_PASS("titlt coontains", "search Term", "titleVerification()");
 					}
 					else{
-						UtilLib.Report_PASS("titlt coontains", "search Term", "titleVerification");
-						status = false;
+						UtilLib.Report_FAIL("title does not contains", "search Term", "titleVerification");
+						rerunflag++;
 					}
 					if(rerunflag>0){
+						DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 						status=false;
 						UtilLib.Report_FAIL("SearchTopic3_0_UI_AttivioMigration_PROG_Q4SCOPE_CSSCSO305_UIPage_title_should_reflect_searchquery_search_fromHomepage_45", "is not verified", "TS048_SearchTopic3_0_UI_AttivioMigration_PROG_Q4SCOPE_CSSCSO305_UIPage_title_should_reflect_searchquery_search_fromHomepage_45");
 					}
@@ -12295,6 +12722,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					}
 					
 					if(rerunflag>0){
+						DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 						status=false;
 						UtilLib.Report_FAIL("SearchTopic3_0_UI_AttivioMigration_PROG_SRCH_2_SearchPagedatasource_selectAlllink_47", "is not verified", "TS050_SearchTopic3_0_UI_AttivioMigration_PROG_SRCH_2_SearchPagedatasource_selectAlllink_47");
 					}
@@ -12421,6 +12849,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 				}
 				
 				if(RerunFlag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("SearchTopic3_1_3UI_Oct14Rel_PROG_verifydate_rangefilter_MoreThanTwoYearsOld_renamed_BeforeLastYear06", "is not verified", "TS051_SearchTopic3_1_3UI_Oct14Rel_PROG_verifydate_rangefilter_MoreThanTwoYearsOld_renamed_BeforeLastYear06");
 				}
@@ -12522,6 +12951,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 				
 				
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("Search Topic 3 0 UI_Attivio Migration_PROG_SRCH 3  Performing search_Search query using AND and OR in between the strings", "is not verified", "SearchTopic3UI_AttivioMigration_PROG_SRCH_3PerformingSearch_SearchQuery_ANDandOR_between_strings()");
 				}
@@ -12620,6 +13050,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 				
 				
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("Search Topic 3 0 UI_Attivio Migration_PROG_SRCH 3  Performing search_Search query using AND_25", "is not verified", "SearchTopic3_UI_AttivioMigration_PROG_SRCH_PerformingSearch_Search_queryUsingAND()");
 				}
@@ -12716,6 +13147,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 				
 				
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("Search Topic 3 0 UI_Attivio Migration_PROG_SRCH 3  Performing search_Search query using Multiple ANDs in between the strings_29", "is not verified", "SearchTopic3_UI_AttivioMigration_PROG_SRCHPerformingSearch_SearchQueryUsingMultipleANDs_betweenStrings()");
 				}
@@ -12815,6 +13247,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 				
 				
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("Search Topic 3 0 UI_Attivio Migration_PROG_SRCH 3  Performing search_Search query using Multiple ORs in between the strings_30", "is not verified", "SearchTopic3_UI_AttivioMigration_PROG_SRCH_PerformingSearch_Searchquery_MultipleORs_between_strings()");
 				}
@@ -12915,6 +13348,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 				
 				
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("Search Topic 3 0 UI_Attivio Migration_PROG_SRCH 3  Performing search_Search query using non wild card symbols _34", "is not verified", "SearchTopic_3_UI_AttivioMigration_PROG_SRCH_PerformingSearch_Searchquery_non_wildCardSymbols()");
 				}
@@ -13013,6 +13447,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 				
 				
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("Search Topic 3 0 UI_Attivio Migration_PROG_SRCH 3  Performing search_Search query using OR and AND in between the strings_28", "is not verified", "SearchTopic_3UI_AttivioMigration_PROG_SRCH_PerformingSearch_SearchqueryUsingOR_AND_betweenStrings()");
 				}
@@ -13113,6 +13548,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 				
 				
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("Search Topic 3 0 UI_Attivio Migration_PROG_SRCH 3  Performing search_Search query using OR_26", "is not verified", "TS065_SearchTopic3_UI_AttivioMigration_PROG_SRCH_Performing_search_Search_queryUsingOR()");
 				}
@@ -13212,6 +13648,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 				
 				
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("verify that  the  user is able to perform search by using  &quot;?&quot; ", "is not verified", "SearchTopic_3_UI_AttivioMigration_PROG_SRCH_PerformingSearch_SearchQuery_questionMark_Symbol()");
 				}
@@ -13309,6 +13746,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 				
 				
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("Search Topic 3 0 UI_Attivio Migration_PROG_SRCH 3  Performing search_Search query using star symbol _32", "is not verified", "SearchTopic3UI_AttivioMigration_PROG_SRCHPerformingSearch_Searchquery_using_starSymbol()");
 				}
@@ -13407,6 +13845,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 				
 				
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("Search Topic 3 0 UI_Attivio Migration_PROG_SRCH 3  Performing search_Search query using To exclude _hyphen symbol_31", "is not verified", "SearchTopic_3_UI_AttivioMigration_PROG_SRCH_Performing_search_Search_query_using_exclude_hyphenSymbol()");
 				}
@@ -13507,6 +13946,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 				
 				
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("SearchTopic_3_0_UI_AttivioMigration_PROG_CSSCSO292_fielded_search_gracefullyhandle_spacebetween_colon_value_with_wildcard_02", "is not verified", "Search Topic 3 0 UI_Attivio Migration_PROG_CSSCSO292_fielded search should gracefully handle space between  colon and a value with wildcard_02");
 				}
@@ -13615,6 +14055,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 
 
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("Search Topic 3 0 UI_Attivio Migration_PROG_CSSCSO 281_queries with colon may be taken for fielded search_query term preceding term matches one of the metadata field names_04", "is not verified", "Search_Topic_3_UI_AttivioMigration_PROG_queries_with_colon_may_taken_fielded_search_query_term_preceding_term_matches_one_metadata_field_names()");
 				}
@@ -13741,6 +14182,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 						rerunflag++;
 					}
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT_3_Resultpage_filteringOptions_default_searchFilters_DATASOURCEFILTER_ALL_13", "is not verified", "TS064_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT_3_Resultpage_filteringOptions_default_searchFilters_DATASOURCEFILTER_ALL_13");
 				}
@@ -13864,6 +14306,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 						rerunflag++;
 					}
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("TS065_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3ResultpagefilteringOptions_defaultSearchfilters_DATASOURCEFILTER_C3_navigator_values_14", "is not verified", "TS065_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3ResultpagefilteringOptions_defaultSearchfilters_DATASOURCEFILTER_C3_navigator_values_14");
 				}
@@ -13988,6 +14431,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 						rerunflag++;
 					}
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3Result_pagefiltering_options_default_searchfilters_DATASOURCEFILTER_CDETSnavigatorvalues_15", "is not verified", "TS066_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3Result_pagefiltering_options_default_searchfilters_DATASOURCEFILTER_CDETSnavigatorvalues_15");
 				}
@@ -14062,6 +14506,36 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					}
 
 					
+					/*status=UtilLib.uf_C_ClickOnElement1("Clear All", element.uf_SH_clearAll, TestCase_Name);
+					if(status==true)
+					{
+						UtilLib.Report_PASS("Clear All ", "is clicked", "ClearAllVerifiaction()");
+					}
+					else
+					{
+						rerunflag++;
+					}
+
+					status=UtilLib.uf_C_ClickOnElement1("Techzone", element.uf_SH_Techzonecheckbox, TestCase_Name);
+					if(status==true)
+					{
+						UtilLib.Report_PASS("Techzone data source ", "is selected", "selectingDataSource()");
+					}
+					else
+					{
+						rerunflag++;
+					}
+					
+					status=UtilLib.uf_C_ClickOnElement1("Newsgroup", element.uf_SH_Newsgroupcheckbox, TestCase_Name);
+					if(status==true)
+					{
+						UtilLib.Report_PASS("Newsgroup data source ", "is selected", "selectingDataSource()");
+					}
+					else
+					{
+						rerunflag++;
+					}*/
+					
 					String searchQuery=UtilLib.uf_C_EnterDataInTextBox("Search TextBox", element.uf_N_queryText, data.getI_PORTLET_VALUE1(), TestCase_Name);
 					if(searchQuery.equals(null))
 					{
@@ -14069,7 +14543,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					}
 					
 					UtilLib.ClickOnElement("Search", element.uf_N_searchButton, TestCase_Name);
-					
+				
 					UtilLib.WaitTime(3000);
 						
 					String SearchResults=UtilLib.uf_C_GetUIData1("Search Results", element.uf_SH_searchResults, TestCase_Name);
@@ -14082,9 +14556,9 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 						rerunflag++;
 					}
 					
-					String NoOfResultsC3=UtilLib.uf_C_GetUIData1("No of resuts of Cdets", element.uf_SH_noOfNewgroupResults, TestCase_Name);
+					String NoOfResultsC3=UtilLib.uf_C_GetUIData1("No of resuts of Newsgroup", element.uf_SH_noOfNewgroupResults, TestCase_Name);
 					int resultsAfterFilter=uf_SN_split(NoOfResultsC3, TestCase_Name);
-					System.out.println("No of resuts of Cdets after filter :"+resultsAfterFilter);
+					System.out.println(" No of resuts of Cdets after filter :"+resultsAfterFilter);
 					
 					
 					UtilLib.ClickOnElement("All checkbox", element.uf_SH_allChkBox_AllDataSource, TestCase_Name);
@@ -14112,6 +14586,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 						rerunflag++;
 					}
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3_ResultpageFilteringoptions_default_searchfilters_DATASOURCE_FILTER_Newsgroup_navigatorValues_16", "is not verified", "Search Topic 3 0 UI_Attivio Migration_PROG_RSLT 3 Result page filtering options_default search filters_DATA SOURCE FILTER_Newsgroup navigator values_16");
 				}
@@ -14236,6 +14711,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 						rerunflag++;
 					}
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT_3_ResultPagefilteringOptions_defaultSearch_filters_DATASOURCEFILTER_TechZoneNavigatorValues_17", "is not verified", "Search Topic 3 0 UI_Attivio Migration_PROG_RSLT 3 Result page filtering options_default search filters_DATA SOURCE FILTER_Tech Zone navigator values_17");
 				}
@@ -14348,7 +14824,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 				 }
 				
 				 
-				 /////////////////////**************Verifiaction Of Date Range Filyers****************/////////////////////
+				 /////////////////////**************Verification Of Date Range Filyers****************/////////////////////
 				 
 				 	String allDateRangeFilters= UtilLib.uf_C_GetUIData1("All Date Range Filters", element.uf_SH_C3_allDateRangeFilters, TestCase_Name);
 					String LastYear_Filter= UtilLib.uf_C_GetUIData1("Before Last Year Filter", element.uf_SH_LastYear_Filter, TestCase_Name);
@@ -14417,7 +14893,8 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					rerunflag++;
 				}
 
-				if(RerunFlag>0){
+				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT_3Result_pagefilteringOptions_default_searchfilters_DATERANGE_FILTERS_SelectPast24hours_18", "is not verified", "Search Topic 3 0 UI_Attivio Migration_PROG_RSLT 3 Result page filtering options_default search filters_DATE RANGE FILTERS_Select Past Week_19");
 				}
@@ -14466,6 +14943,9 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 		return status;
 	}
 	
+	
+	
+	////////////////////////////////////////////////////////**************Unchecked*******************////////////////
 	/********************************************************************************************
 	 * @Function_Name :  SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3ResultpagefilteringOptions_defaultSearchfilters_DATERANGEFILTERS_SelectPastWeek_19
 	 * @Description :   This scenario is to verify the results when user selects the past 24 hours radio button under date range filter
@@ -14611,7 +15091,8 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 			rerunflag++;
 		}
 				
-				if(RerunFlag>0){
+				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("SearchTopic3_1_3UI_Oct14Rel_PROG_verifydate_rangefilter_MoreThanTwoYearsOld_renamed_BeforeLastYear06", "is not verified", "TS051_SearchTopic3_1_3UI_Oct14Rel_PROG_verifydate_rangefilter_MoreThanTwoYearsOld_renamed_BeforeLastYear06");
 				}
@@ -14717,8 +15198,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 				 else{
 					 rerunflag++;
 					 UtilLib.Report_FAIL("For the Date Range Filter Radio buttons ","are not present ","FilterVerification()"); 
-					 
-				 }
+					  }
 				 	///////////*******************Verifuying Data Range Filters *******************////////////////////////////
 				String allDateRangeFilters= UtilLib.uf_C_GetUIData1("All Date Range Filters", element.uf_SH_C3_allDateRangeFilters, TestCase_Name);
 				String LastYear_Filter= UtilLib.uf_C_GetUIData1("Before Last Year Filter", element.uf_SH_LastYear_Filter, TestCase_Name);
@@ -14761,7 +15241,8 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 				
 				
 				
-				if(RerunFlag>0){
+				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("SearchTopic3_1_3UI_Oct14Rel_PROG_verifydate_rangefilter_MoreThanTwoYearsOld_renamed_BeforeLastYear06", "is not verified", "TS051_SearchTopic3_1_3UI_Oct14Rel_PROG_verifydate_rangefilter_MoreThanTwoYearsOld_renamed_BeforeLastYear06");
 				}
@@ -14921,7 +15402,8 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 				
 				
 				
-				if(RerunFlag>0){
+				if(rerunflag>0){
+				DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("SearchTopic3_1_3UI_Oct14Rel_PROG_verifydate_rangefilter_MoreThanTwoYearsOld_renamed_BeforeLastYear06", "is not verified", "TS051_SearchTopic3_1_3UI_Oct14Rel_PROG_verifydate_rangefilter_MoreThanTwoYearsOld_renamed_BeforeLastYear06");
 				}
@@ -15242,6 +15724,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 				
 				
 				if(RerunFlag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					UtilLib.Report_FAIL("If 'To date' and 'From date' is entered , ", "corressponding results are not changing", "Verify_To_From_date_Functionality");
 					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
@@ -15671,7 +16154,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					
 					status=uf_SH_EditFilterVerification(element.uf_N_datasources, data, TestCase_Name);
 					if(status=false){
-						RerunFlag++;
+						rerunflag++;
 					}
 					status=UtilLib.uf_C_ClickOnElement1("Priority filter in Edit Filter Pop Up ", element.uf_SH_editPriorityFilterChechboxPopUp, TestCase_Name);
 					if(status==false)
@@ -15722,6 +16205,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					
 			
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL(" Search Topic 3 0 UI_Attivio Migration_PROG_CSSCSO 287 _UI source selection cannot be changed without query text_09", "is not verified", "SearchTopic3_UI_AttivioMigration_PROG_CSSCSO287_UISource_selection_cannot_changed_without_queryText_09()");
 				}
@@ -15875,6 +16359,18 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 	        		rerunflag++;
 					UtilLib.Report_FAIL("Results after clicking on 'Date-Latest' ", "are not sorted", "DateLatestLinkVerification()");
 	        	}
+				
+				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
+					status=false;
+					UtilLib.Report_FAIL(" Topic_3_0_UI_Aug14Rel_PROG_SortBy_changefrom_dropdown_toHyperlink_DateLatest_07", "is not verified", "TS078_Topic_3_0_UI_Aug14Rel_PROG_SortBy_changefrom_dropdown_toHyperlink_DateLatest_07()");
+				}
+				else
+				{
+					UtilLib.Report_PASS("Topic_3_0_UI_Aug14Rel_PROG_SortBy_changefrom_dropdown_toHyperlink_DateLatest_07", "is verified", "TS078_Topic_3_0_UI_Aug14Rel_PROG_SortBy_changefrom_dropdown_toHyperlink_DateLatest_07()");
+					status=true;
+				}
+
 				}}
 			catch(UnhandledAlertException alert){
 				UtilLib.CaptureScreenshot(TestCase_Name);
@@ -16039,8 +16535,9 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 				{
 					UtilLib.Report_PASS("Results after clicking on 'Date-Latest' ", "are  sorted", "DateLatestLinkVerification()");
 					
-				}
+				}*/
 				if(rerunflag>0){
+				DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("Search Topic 3 0 UI_Attivio Migration_PROG_RSLT 1_Result page_Sort by date Oldest_23", "is not verified", "TS079_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT1_ResultPage_SortbyDateOldest_23()");
 				}
@@ -16049,7 +16546,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					UtilLib.Report_PASS("Search Topic 3 0 UI_Attivio Migration_PROG_RSLT 1_Result page_Sort by date Oldest_23", "is verified", "TS079_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT1_ResultPage_SortbyDateOldest_23()");
 					status=true;
 				}
-*/
+
 				
 				}}
 			catch(UnhandledAlertException alert){
@@ -16228,17 +16725,18 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 				{
 					UtilLib.Report_PASS("Results after clicking on 'Date-Latest' ", "are  sorted", "DateLatestLinkVerification()");
 					
-				}
+				}*/
 				if(rerunflag>0){
+				DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
-					UtilLib.Report_FAIL("Search Topic 3 0 UI_Attivio Migration_PROG_RSLT 1_Result page_Sort by date Oldest_23", "is not verified", "TS079_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT1_ResultPage_SortbyDateOldest_23()");
+					UtilLib.Report_FAIL("Topic_3_0_UI_Aug14Rel_PROG_Sort_bychange_fromDropdowntohyperlink_Relevance_09", "is not verified", "TS080_Topic_3_0_UI_Aug14Rel_PROG_Sort_bychange_fromDropdowntohyperlink_Relevance_09");
 				}
 				else
 				{
-					UtilLib.Report_PASS("Search Topic 3 0 UI_Attivio Migration_PROG_RSLT 1_Result page_Sort by date Oldest_23", "is verified", "TS079_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT1_ResultPage_SortbyDateOldest_23()");
+					UtilLib.Report_PASS("Topic_3_0_UI_Aug14Rel_PROG_Sort_bychange_fromDropdowntohyperlink_Relevance_09", "is verified", "TS080_Topic_3_0_UI_Aug14Rel_PROG_Sort_bychange_fromDropdowntohyperlink_Relevance_09)");
 					status=true;
 				}
-*/
+
 				
 				}}
 			catch(UnhandledAlertException alert){
@@ -16327,6 +16825,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 
 
 			if(rerunflag>0){
+				DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 				status=false;
 				UtilLib.Report_FAIL("Search Topic 3 0 UI_Attivio Migration_PROG_CSSCSO262 _Error Message_12", "is not verified", "SearchTopic_3_UI_AttivioMigration_PROG_CSSCSO262_ErrorMessage_12()");
 			}
@@ -16455,6 +16954,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 
 
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("Help Link", "is not verified", "Verify_HelpLink");
 				}
@@ -16605,6 +17105,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 
 
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("Help Link", "is not verified", "Verify_HelpLink");
 				}
@@ -16728,9 +17229,11 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 			else{
 				status=false;
 				UtilLib.Report_FAIL("CDETS Integrated Releases and CDETS Version", "are not Displayed", "IntegretedReleasesandVersionVerification()");
+				rerunflag++;
 			}
 
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("SearchTopic_3_1_3_UI_Oct14Rel_PROG_verifyCDETSmetadatafields_version_and_integratedReleases_intoOneline_07", "is not verified", "Search Topic 3.1.3 UI_Oct'14 Rel_PROG_verify CDETS metadata fields_'version' and 'integrated-releases' into one line_07");
 				}
@@ -16854,6 +17357,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 			else{
 				status=false;
 				UtilLib.Report_FAIL("Date Range Filter For CDETS ", "is not Displayed", "dateRangeFilterforCDETSIsDisplayed()");
+				rerunflag++;
 			}
 			/*Actions action = new Actions(driver);
 			//String Xpath = "//*[@id='framework-column-center']/table/tbody/tr/td/div/form/table/tbody/tr/td/div/div/table/tbody/tr[2]/td/table/tbody/tr["+i+"]/td[3]/span/table/tbody/tr/td[1]/a/img";
@@ -16880,6 +17384,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 			{
 				status=false;
 				UtilLib.Report_FAIL("Date Range Filter For CDETS ", "is not closed", "dateRangeFilterforCDETSIsDisplayed()");
+				rerunflag++;
 			}
 			else{
 				UtilLib.Report_PASS("Date Range Filter For CDETS ", "is closed", "dateRangeFilterforCDETSIsDisplayed()");
@@ -16887,6 +17392,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 			
 			
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("SearchTopic_3_1_3_UI_Oct14Rel_PROG_verifyCDETSmetadatafields_version_and_integratedReleases_intoOneline_07", "is not verified", "Search Topic 3.1.3 UI_Oct'14 Rel_PROG_verify CDETS metadata fields_'version' and 'integrated-releases' into one line_07");
 				}
@@ -16998,21 +17504,27 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 			//	driver.findElement(By.xpath(//*[@id='savedSearchDiv']/table/tbody/tr[1])).ispresent()
 					//boolean dateLatestIsDisplayed=driver.findElement(//*[@id='savedSearchDiv']/table/tbody/tr[1])).isDisplayed();
 							boolean savedSearchFirstElement=driver.findElement(By.xpath("//*[@id='savedSearchDiv']/table/tbody/tr[1]")).isDisplayed();
-							JavascriptExecutor jse = (JavascriptExecutor)driver; jse.executeScript("window.scrollBy(0,375)", "");
+							/*JavascriptExecutor jse = (JavascriptExecutor)driver; jse.executeScript("window.scrollBy(0,375)", "");
 				 UtilLib.WaitTime(4000);		
-				WebElement propButton = driver.findElement(By.xpath(element.uf_SH_CiscoACSSavedSearch));
-				  Actions clicker = new Actions(driver);
-				  clicker.contextClick(propButton).perform(); 
-				  
-				  UtilLib.uf_C_ClickOnElement1("Rename Search ", element.uf_SH_RenamesavedSearch, TestCase_Name);
-				  driver.findElement(By.xpath(element.uf_SH_newNameForRenamesavedSearch)).clear();
-				  UtilLib.WaitTime(1000);				
-				  String newNameReanmedSearch=UtilLib.uf_C_EnterDataInTextBox("New Name For renamed Search", element.uf_SH_newNameForRenamesavedSearch, "Test_NewName", TestCase_Name);
-					if(searchQuery.equals(null))
-					{
-						rerunflag++;
-					}
-				  
+				
+				 
+				  clicker.contextClick(propButton).perform(); */
+							WebElement link = driver.findElement(By.xpath(element.uf_SH_CiscoACSSavedSearch));
+							WebElement propButton = driver.findElement(By.xpath(element.uf_SH_CiscoACSSavedSearch));
+							 Actions clicker = new Actions(driver);
+						 
+						 UtilLib.Report_PASS("CiscoACSSavedSearch", "is succesfully found", "mouseHover"); 
+						 clicker.contextClick(propButton).perform(); 
+						//myMouse.moveToElement(link).build().perform();
+						UtilLib.WaitTime(4000);
+						
+			
+					
+					UtilLib.uf_C_ClickOnElement1("Rename Search ", element.uf_SH_RenamesavedSearch, TestCase_Name);
+					  driver.findElement(By.xpath(element.uf_SH_newNameForRenamesavedSearch)).clear();
+					  UtilLib.WaitTime(1000);				
+					  String newNameReanmedSearch=UtilLib.uf_C_EnterDataInTextBox("New Name For renamed Search", element.uf_SH_newNameForRenamesavedSearch, "Test_NewName", TestCase_Name);
+						
 					UtilLib.uf_C_ClickOnElement1("Rename Button ", element.uf_SH_RenameButtonPopUp, TestCase_Name);
 					 UtilLib.WaitTime(4000);	
 					 driver.navigate().refresh(); 
@@ -17035,6 +17547,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 		
 				
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("Search Topic 3 0 UI_Attivio Migration_PROG_RSLT-4 Saving Search_Delete the search_104", "is not verified", "SearchTopic_3_UI_AttivioMigration_PROG_RSLT_SavingSearch_Delete_search()");
 				}
@@ -17043,9 +17556,9 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					UtilLib.Report_PASS("Search Topic 3 0 UI_Attivio Migration_PROG_RSLT-4 Saving Search_Delete the search_104", "is verified", "SearchTopic_3_UI_AttivioMigration_PROG_RSLT_SavingSearch_Delete_search()");
 					status=true;
 				}
-
-				
-				}}
+		}
+	
+				}
 			catch(UnhandledAlertException alert){
 				UtilLib.CaptureScreenshot(TestCase_Name);
 
@@ -17160,6 +17673,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					
 					
 					if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("SearchTopic_3_1_4_UI_Oct14Rel_PROG_Alwayssearchwithinthese_checkeddatasources_savechanges", "is not verified", "TS039SearchTopic_3_1_4_UI_Oct14Rel_PROG_Alwayssearchwithinthese_checkeddatasources_savechanges");
 				}
@@ -17291,22 +17805,34 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					UtilLib.WaitTime(2000);
 					Robot robot = new Robot(); 
 					robot.mouseMove(coordinates.getX() +850, coordinates.getY() +550); */
-					status = UtilLib.verifyElementPresent("Chevron",element.uf_R_ChevronTopicBuddy, TestCase_Name);
+					
+					boolean NewsgroupHeader_TopicChevron=UtilLib.uf_R_mouseHover("Chevron for Topic Buddy",element.uf_R_ChevronTopicBuddy_IMG,TestCase_Name);
+					if(NewsgroupHeader_TopicChevron==true){
+						UtilLib.Report_PASS("Carot is present","Topic Buddy Preview is present","Preview_FunctionalityVerification()");
+					}
+					else
+					{
+						UtilLib.Report_FAIL("Carot is not present","Topic Buddy Preview is not present","Preview_FunctionalityVerification()");
+						rerunflag++;
+					}
+					/*UtilLib.WaitTime(2000);
+					Actions actions = new Actions(driver);
+					//WebElement PMLInk_OnHover = driver.findElement(By.xpath(element.uf_R_C3ResultContent));
+					//actions.moveToElement(PMLInk_OnHover).perform();
+					WebElement PMLInk_OnHover1 = driver.findElement(By.xpath(element.uf_R_ChevronTopicBuddy_IMG));
+					actions.moveToElement(PMLInk_OnHover1).perform();
+					
+					  
+					status = UtilLib.verifyElementPresent("Chevron",element.uf_R_ChevronTopicBuddy_IMG, TestCase_Name);
 					if(status==false){
 						rerunflag=rerunflag + 1;
 						DefectDetailsDriver.AppendDefectDetailsXML("ERROR004",TestCase_Name,UtilLib.CaptureScreenshot(TestCase_Name));
 						DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);	
-					}
+					}*/
 
+					/*UtilLib.uf_C_ClickOnElement1("Newsgroup Topic Buddy Preview", element.uf_R_ChevronTopicBuddy, TestCase_Name);
 					UtilLib.WaitTime(2000);
-					Actions actions = new Actions(driver);
-					//WebElement PMLInk_OnHover = driver.findElement(By.xpath(element.uf_R_C3ResultContent));
-					//actions.moveToElement(PMLInk_OnHover).perform();
-					WebElement PMLInk_OnHover1 = driver.findElement(By.xpath(element.uf_R_ChevronTopicBuddy));
-					actions.moveToElement(PMLInk_OnHover1).perform();
-
-					UtilLib.uf_C_ClickOnElement1("Newsgroup Topic Buddy Preview", element.uf_R_ChevronTopicBuddy, TestCase_Name);
-					UtilLib.WaitTime(2000);
+					
 					
 					String NewsgroupHeader_TopicPreview1=UtilLib.uf_C_GetUIData1("Newsgroup Header in Topic Buddy Preview", element.uf_SH_NewsgroupHeader_TopicPreview, TestCase_Name);
 				    System.out.println("Newsgroup Header in Topic buddy Preview is : "+NewsgroupHeader_TopicPreview);
@@ -17318,8 +17844,9 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					{
 						UtilLib.Report_FAIL("Carot is not present","Topic Buddy Preview is not present","Preview_FunctionalityVerification()");
 						rerunflag++;
-					}
+					}*/
 					if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("Search Topic_3.1.4_UI_Dec 14 Rel_PROGResultPreview Enhancements_PreviewLinkandCarot_02", "is not verified", "TS088_SearchTopic_3_1_4_UI_Dec14Rel_PROGResultPreviewEnhancements_PreviewLinkandCarot_02");
 				}
@@ -17432,6 +17959,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					
 		        
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("SearchTopic_3_1_4_UI_Dec14Rel_PROG_MypreferencesPage_Messageappears_05", "is not verified", "TS089_SearchTopic_3_1_4_UI_Dec14Rel_PROG_MypreferencesPage_Messageappears_05");
 				}
@@ -17577,6 +18105,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					}
 					
 					if(rerunflag>0){
+						DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("Search Topic_3.1.4_UI_Dec 14 Rel_PROG_Opening new Tab_clicking on Icon_07", "is not verified", "TS10_SearchTopic_3_UI_AttivioMigration_PROG_Q4SCOPE_CSSCSO_options_viewC3Results_XMLKWERY_104");
 				}
@@ -17676,6 +18205,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 				if(label3.equals(null)&&label4.equals(null))
 				{
 					UtilLib.Report_FAIL("  Results in the results page  ", "are not displayed", "NoofResultsVerification()");
+					rerunflag++;
 				}
 				else{
 					UtilLib.Report_PASS("  Results in the results page  ", "are  displayed", "NoofResultsVerification()");
@@ -17713,7 +18243,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 				status=UtilLib.ClickOnElement("Cancel", element.uf_SH_editCancelButtonPopUp, TestCase_Name);
 				if(status=false)
 				{
-					rerunflag++;
+						rerunflag++;
 				}
 				UtilLib.WaitTime(2000);
 				boolean status1=driver.findElement(By.xpath(element.uf_N_c3ChkBox)).isSelected();
@@ -17781,30 +18311,24 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 				
 				int noOfResults=Integer.parseInt(results);
 				int flag = 0;
-				for(int i=3;i<=noOfResults;i++){
-				String statusValue=driver.findElement(By.xpath("//*[@id='resultsForm']/table/tbody/tr[9]/td[2]/table/tbody/tr["+i+"]/td/div/label")).getText().trim();	
+				for(int i=3;i<=5;i++){
+				String statusValue=driver.findElement(By.xpath("//*[@id='resultsForm']/table/tbody/tr[9]/td[2]/table/tbody/tr["+i+"]/td[1]/div[1]/label[1]")).getText().trim();	
 				//String statusValue=UtilLib.uf_C_GetUIData1("status", "//*[@id='resultsForm']/table/tbody/tr[9]/td[2]/table/tbody/tr["+i+"]/td/div/label", TestCase_Name);
 				parts = statusValue.split(" -");
 				String statusValue1 = parts[0]; 
 				
 				if(statusValue1.equals("C3/CSOne/CARE")|| statusValue1.equals("Newsgroup")||statusValue1.equals("Tech Zone")||statusValue1.equals("CDETS/DDTS")||statusValue1.equals("Dynamicsoft")){
-
+					UtilLib.Report_PASS("Results are filtered", "according to selected status", "verifyFilteredList");
 				}else{
-				flag++;
+					rerunflag++;
+					UtilLib.Report_FAIL("Results are not filtered", "according to selected status", "verifyFilteredList");
 				}
 				}
 
-				if(flag>0){
-				UtilLib.Report_FAIL("Results are not filtered", "according to selected status", "verifyFilteredList");
-				rerunflag++;
 				
-				}else{
-				UtilLib.Report_PASS("Results are filtered", "according to selected status", "verifyFilteredList");
-			
-
-				}
 				
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("Search Topic 3 0 UI_Attivio Migration_PROG_RSLT-4 _Editing data source  filter_Reset to default button", "is not verified", "SearchTopic3UI_AttivioMigration_PROG_Editing_datasourceilter_Reset_defaultButton()");
 				}
@@ -17963,6 +18487,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 				}
 				else{
 					UtilLib.Report_FAIL("IOS Crash ", "is not present  in the More Links page",TestCase_Name);
+					rerunflag++;
 				}
 
 
@@ -17974,6 +18499,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 				}
 				else{
 					UtilLib.Report_FAIL("IOS AND Crash ", "is not present  in the More Links page",TestCase_Name);
+					rerunflag++;
 				}
 
 				String IOSCrashORexception=UtilLib.uf_C_GetUIData1("Ios Crash OR exception", element.uf_SH_IOScrashORexception_Sourcefire, TestCase_Name);	
@@ -18035,6 +18561,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 
 
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("SearchTopic_Sourcefire_UI_SearchTips_09", "is not verified", "TS092_SearchTopic_Sourcefire_UI_SearchTips_09()");
 				}
@@ -18222,6 +18749,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					
 				}
 				if(rerunflag>0){
+				DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("Search Topic 3 0 UI_Attivio Migration_PROG_RSLT 1_Result page_Sort by date Oldest_23", "is not verified", "TS079_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT1_ResultPage_SortbyDateOldest_23()");
 				}
@@ -18389,10 +18917,12 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 				else
 				{
 					UtilLib.Report_FAIL("User is unable to give the feedback 'Somewhat relevant ' ", "", "FeedbackVaerifiaction()");
+					rerunflag++;
 				}
 
 
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("Search Topic 3 0 UI_Attivio Migration_PROG_Q4 SCOPE_CSSCSO 280_submission of relevance feedback should be acknowledged_91", "is not verified", "SearchTopic_3_UI_AttivioMigration_PROG_Q4SCOPE_CSSCSO_submission_relevance_feedback_acknowledged_91()");
 				}
@@ -18439,15 +18969,15 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 	}
 	
 	/********************************************************************************************
-	 * @Function_Name :  SearchTopic_Sourcefire_UI_Error_ErrorMessage_03
-	 * @Description : This scenario is to verifythe results page when there  are  zero results for a query string
+	 * @Function_Name :  SearchTopic_Feb15Rel_Ubiqysys_UI_Error_ErrorMessage_03
+	 * @Description : This scenario is to verify that whenever some error occurs error message should be shown on the results page itself 
 	 * @author SHAFMEHT
 	 * @return boolean
 	 * @param TestCase_Name -Search Topic_Sourcefire_UI _Error _Error Message_03
 	 * @throws Exception 
 	 ********************************************************************************************/
 
-	public static boolean SearchTopic_Sourcefire_UI_Error_ErrorMessage_03(
+	public static boolean SearchTopic_Feb15Rel_Ubiqysys_UI_Error_ErrorMessage_03(
 			List<TopicSearchTestData> dataList, String TestCase_Name) throws Exception {
 
 		boolean status=false;
@@ -18478,7 +19008,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 				}
 				
 				
-				status=UtilLib.uf_C_ClickOnElement1("More Data Sources Link", element.uf_SH_editSourceFirePopUp, TestCase_Name);
+				status=UtilLib.uf_C_ClickOnElement1("Ubiquisys DataSource", element.uf_SH_editUbiquisysPopUp1, TestCase_Name);
 				if(status==false)
 				{
 					rerunflag++;
@@ -18519,12 +19049,13 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 
 
 			if(rerunflag>0){
+				DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 				status=false;
-				UtilLib.Report_FAIL("Search Topic 3 0 UI_Attivio Migration_PROG_CSSCSO262 _Error Message_12", "is not verified", "SearchTopic_3_UI_AttivioMigration_PROG_CSSCSO262_ErrorMessage_12()");
+				UtilLib.Report_FAIL("Search Topic_Feb15Rel_Ubiqysys_UI _Error _Error Message_03", "is not verified", "SearchTopic_Feb15Rel_Ubiqysys_UI_Error_ErrorMessage_03()");
 			}
 			else
 			{
-				UtilLib.Report_PASS("Search Topic 3 0 UI_Attivio Migration_PROG_CSSCSO262 _Error Message_12", "is verified", "SearchTopic_3_UI_AttivioMigration_PROG_CSSCSO262_ErrorMessage_12()");
+				UtilLib.Report_PASS("Search Topic_Feb15Rel_Ubiqysys_UI _Error _Error Message_03", "is verified", "SearchTopic_Feb15Rel_Ubiqysys_UI_Error_ErrorMessage_03()");
 				status=true;
 			}
 
@@ -18635,8 +19166,9 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 
 
 			if(rerunflag>0){
+				DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 				status=false;
-				UtilLib.Report_FAIL("SearchTopic_Sourcefire_UI_Select_extra_dataSource_from_more_dataSource_link_02", "is not verified", "Search Topic_Sourcefire_UI_Select extra data source_from more data source link_02");
+				UtilLib.Report_FAIL("SearchTopic_Sourcefire_UI_Select_extra_dataSource_from_more_dataSource_link_02", "is not verified", "SearchTopic_Sourcefire_UI_Select_extra_dataSource_from_more_dataSource_link_02");
 			}
 			else
 			{
@@ -18734,6 +19266,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 				if(label3.equals(null)&&label4.equals(null))
 				{
 					UtilLib.Report_FAIL("  Results in the results page  ", "are not displayed", "NoofResultsVerification()");
+					rerunflag++;
 				}
 				else{
 					UtilLib.Report_PASS("  Results in the results page  ", "are  displayed", "NoofResultsVerification()");
@@ -18796,7 +19329,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					rerunflag++;
 				}
 				UtilLib.WaitTime(1000);
-				
+		
 				
 				status=UtilLib.ClickOnElement("OK", element.OK_SH_editDatasourcePopUp, TestCase_Name);
 				if(status=false)
@@ -18829,8 +19362,10 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 				int noOfResults=Integer.parseInt(results);
 				int flag = 0;
 				for(int i=3;i<=noOfResults;i++){
-				String statusValue=driver.findElement(By.xpath("//*[@id='resultsForm']/table/tbody/tr[9]/td[2]/table/tbody/tr["+i+"]/td/div/label")).getText().trim();	
-				//String statusValue=UtilLib.uf_C_GetUIData1("status", "//*[@id='resultsForm']/table/tbody/tr[9]/td[2]/table/tbody/tr["+i+"]/td/div/label", TestCase_Name);
+				String statusValue=driver.findElement(By.xpath("//*[@id='resultsForm']/table/tbody/tr[9]/td[2]/table/tbody/tr["+i+"]/td[1]/div[1]/label[1]")).getText().trim();	
+				
+				
+				//*[@id='resultsForm']/table/tbody/tr[9]/td[2]/table/tbody/tr[3]/td[1]/div[1]/label[1]//String statusValue=UtilLib.uf_C_GetUIData1("status", "//*[@id='resultsForm']/table/tbody/tr[9]/td[2]/table/tbody/tr["+i+"]/td/div/label", TestCase_Name);
 				parts = statusValue.split(" -");
 				String statusValue1 = parts[0]; 
 				
@@ -18852,6 +19387,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 				}
 				
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("Search Topic 3 0 UI_Attivio Migration_PROG_RSLT-4 _Editing data source  filter_Reset to default button", "is not verified", "SearchTopic3UI_AttivioMigration_PROG_Editing_datasourceilter_Reset_defaultButton()");
 				}
@@ -18911,6 +19447,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 
 		boolean status=false;
 		int rerunflag=0;
+		int Flag=0;
 		try {
 			for(TopicSearchTestData data :dataList ){
 
@@ -18954,33 +19491,25 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 				
 				UtilLib.WaitTime(3000);
 					
-				/*String SearchResults=UtilLib.uf_C_GetUIData1("Search Results", element.uf_SH_searchResults, TestCase_Name);
-				if(SearchResults.equals(data.getI_PORTLET_VALUE2()))
-				{
-					UtilLib.Report_PASS(" Application is  navigated to the results page ", "is not verified", "resultPageVerification()");
-				}
-				else{
-					rerunflag++;
-				}*/
+				////////////////******************Verification Of Metafields of Sourcefire**************/////////////////
 				
-			}
-
-			
-			int Flag=0;
 			boolean Sourcefire_assetSerialNumberIsDisplayed=driver.findElement(By.xpath(element.uf_SH_Sourcefire_AssetSerialNumber)).isDisplayed();
+			
 			if(Sourcefire_assetSerialNumberIsDisplayed==true)
 			{
 				Flag++;
+				UtilLib.Report_PASS("Metafield of Sourcefire : Asset Serial Number", "is dispalyed", "MetafieldVerifiaction()");
 				
 			}else{
 				rerunflag++;
-				UtilLib.Report_PASS("Metafield of Sourcefire : Asset Serial Number", "is not dispalyed", "MetafieldVerifiaction()");
+				UtilLib.Report_FAIL("Metafield of Sourcefire : Asset Serial Number", "is not dispalyed", "MetafieldVerifiaction()");
 			}
 			
 			boolean Sourcefire_BugIDIsDisplayed=driver.findElement(By.xpath(element.uf_SH_Sourcefire_BugID)).isDisplayed();
 			if(Sourcefire_BugIDIsDisplayed==true)
 			{
 				Flag++;
+				UtilLib.Report_PASS("Metafield of Sourcefire : BugID", "is dispalyed", "MetafieldVerifiaction()");
 				
 			}else{
 				rerunflag++;
@@ -18992,6 +19521,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 			if(Sourcefire_CaseNumber==true)
 			{
 				Flag++;
+				UtilLib.Report_PASS("Metafield of Sourcefire : CaseNumber", "is dispalyed", "MetafieldVerifiaction()");
 				
 			}else{
 				rerunflag++;
@@ -19002,6 +19532,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 			if(Sourcefire_CaseOrigin==true)
 			{
 				Flag++;
+				UtilLib.Report_PASS("Metafield of Sourcefire : CaseOrigin", "is dispalyed", "MetafieldVerifiaction()");
 				
 			}else{
 				rerunflag++;
@@ -19012,6 +19543,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 			if(Sourcefire_CaseType==true)
 			{
 				Flag++;
+				UtilLib.Report_PASS("Metafield of Sourcefire : CaseType", "is dispalyed", "MetafieldVerifiaction()");
 				
 			}else{
 				rerunflag++;
@@ -19022,6 +19554,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 			if(Sourcefire_Company==true)
 			{
 				Flag++;
+				UtilLib.Report_PASS("Metafield of Sourcefire : Company", "is dispalyed", "MetafieldVerifiaction()");
 				
 			}else{
 				rerunflag++;
@@ -19031,6 +19564,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 			if(uf_SH_Sourcefire_CreatedDate==true)
 			{
 				Flag++;
+				UtilLib.Report_PASS("Metafield of Sourcefire : CreatedDate", "is dispalyed", "MetafieldVerifiaction()");
 				
 			}else{
 				rerunflag++;
@@ -19040,6 +19574,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 			if(Sourcefire_IncidentResolvedDate==true)
 			{
 				Flag++;
+				UtilLib.Report_PASS("Metafield of Sourcefire : IncidentResolvedDate", "is dispalyed", "MetafieldVerifiaction()");
 				
 			}else{
 				rerunflag++;
@@ -19049,16 +19584,18 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 			if(Sourcefire_Owner==true)
 			{
 				Flag++;
+				UtilLib.Report_PASS("Metafield of Sourcefire : Owner", "is  dispalyed", "MetafieldVerifiaction()");
 				
 			}else{
 				rerunflag++;
-				UtilLib.Report_FAIL("Metafield of Sourcefire : BugID", "is not dispalyed", "MetafieldVerifiaction()");
+				UtilLib.Report_FAIL("Metafield of Sourcefire : Owner", "is not dispalyed", "MetafieldVerifiaction()");
 			}
 			
 			boolean Sourcefire_ParentCaseId=driver.findElement(By.xpath(element.uf_SH_Sourcefire_ParentCaseId)).isDisplayed();
 			if(Sourcefire_ParentCaseId==true)
 			{
 				Flag++;
+				UtilLib.Report_PASS("Metafield of Sourcefire : ParentCaseId", "is dispalyed", "MetafieldVerifiaction()");
 				
 			}else{
 				rerunflag++;
@@ -19068,6 +19605,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 			if(Sourcefire_Priority==true)
 			{
 				Flag++;
+				UtilLib.Report_PASS("Metafield of Sourcefire : Priority", "is dispalyed", "MetafieldVerifiaction()");
 				
 			}else{
 				rerunflag++;
@@ -19080,10 +19618,11 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 			if(Sourcefire_Status==true)
 			{
 				Flag++;
+				UtilLib.Report_PASS("Metafield of Sourcefire : Status	", "is  dispalyed", "MetafieldVerifiaction()");
 				
 			}else{
 				rerunflag++;
-				UtilLib.Report_FAIL("Metafield of Sourcefire : BugID", "is not dispalyed", "MetafieldVerifiaction()");
+				UtilLib.Report_FAIL("Metafield of Sourcefire : Status	", "is not dispalyed", "MetafieldVerifiaction()");
 			}
 			
 			
@@ -19098,6 +19637,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 			
 			
 			if(rerunflag>0){
+				DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 				status=false;
 				UtilLib.Report_FAIL("SearchTopic_Sourcefire_UI_Sourcefire_DataSource_Addition_MetaFieldsFilters_05", "is not verified", "Search Topic_Sourcefire_UI _Sourcefire data Source additionMetaFields Filters_05");
 			}
@@ -19107,7 +19647,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 				status=true;
 			}
 
-
+			}
 		}
 		catch(UnhandledAlertException alert){
 			UtilLib.CaptureScreenshot(TestCase_Name);
@@ -19294,6 +19834,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					
 				}
 				if(rerunflag>0){
+				DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("Search Topic 3 0 UI_Attivio Migration_PROG_RSLT 1_Result page_Sort by date Oldest_23", "is not verified", "TS079_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT1_ResultPage_SortbyDateOldest_23()");
 				}
@@ -19424,6 +19965,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 
 
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("Search Topic 3 0 UI_Attivio Migration_PROG_Q4 SCOPE_CSSCSO 316_Metadata display to be consistent_Tech Zone data source_57", "is not verified", "SearchTopic_3_0_UI_AttivioMigration_PROG_Q4SCOPE_CSSCSO316_Metadata_Display_to_consistent_TechZone_dataSource_57()");
 				}
@@ -19528,6 +20070,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 
 
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("Topic_3_0_UI_Aug14_Rel_PROG_User_clicks_on_SearchButton_without_Giving_any_query_in__searchbox_07 to be consistent_C3 data source_109", "is not verified", "Topic 3.0 UI_Aug 14 Rel_PROG_User clicks on Search button without giving any query in the search box_07()");
 				}
@@ -19650,6 +20193,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 				}
 				else{
 					UtilLib.Report_FAIL("SR Contact Name ", "is not dispalyed as a metafield for C3", "Metavalueverification()");
+					rerunflag++;
 				}
 
 
@@ -19657,6 +20201,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 
 
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("Search Topic 3 0 UI_Attivio Migration_PROG_Q4 SCOPE_CSSCSO 316_Metadata display to be consistent_C3 data source_109", "is not verified", "SearchTopic_3_UI_AttivioMigration_PROG_Q4SCOPE_CSSCSO_MetadataDisplay_consistent_C3datasource_109()");
 				}
@@ -19731,6 +20276,31 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 						DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);	
 					}
 
+					System.out.println("***************   Clicking on ClearAll and selecting one datasource   ***************");
+
+					status=UtilLib.uf_C_ClickOnElement1("Clear All", element.uf_SH_clearAll, TestCase_Name);
+					System.out.println("Clear All Status : "+status);
+					if(status==true)
+					{
+						UtilLib.Report_PASS("Clear All ", "is clicked", "ClearAllVerifiaction()");
+					}
+					else
+					{
+						rerunflag++;
+					}
+
+					status=UtilLib.uf_C_ClickOnElement1("CDETS", element.uf_SH_CDETS_DDTScheckbox, TestCase_Name);
+					System.out.println("CDETS Status : "+status);
+					if(status==true)
+					{
+						UtilLib.Report_PASS("CDETS data source ", "is selected", "selectingDataSource()");
+					}
+					else
+					{
+						rerunflag++;
+					}
+
+					
 					String searchQuery=UtilLib.uf_C_EnterDataInTextBox("Search TextBox", element.uf_N_queryText, data.getI_PORTLET_VALUE1(), TestCase_Name);
 					if(searchQuery.equals(null))
 					{
@@ -19750,16 +20320,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					else{
 						rerunflag++;
 					}
-					UtilLib.uf_C_ClickOnElement1("All Checkbox", element.uf_N_allChkBox, TestCase_Name);
-					UtilLib.WaitTime(1000);
 					
-					
-					UtilLib.uf_C_ClickOnElement1("CDETS Checkbox", element.uf_N_cdetsChkBox, TestCase_Name);
-					UtilLib.WaitTime(6000);
-					
-					/*Actions action = new Actions(driver);
-					WebElement e = driver.findElement(By.xpath(element.uf_SH_Newsgroupresult1));
-					action.moveToElement(e).build().perform();*/
 					
 					
 					
@@ -19794,6 +20355,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					}
 					
 					if(rerunflag>0){
+						DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("Search Topic3.1.4_UI_Dec 14  Rel_PROG_CDETS_MoreLink_Expand_Values_TopicBuddyPreview_24", "is not verified", "TS103_SearchTopic_3_1_4_UI_Dec_14_Rel_PROG_CDETS_MoreLink_Expand_Values_TopicBuddyPreview_24");
 				}
@@ -19919,6 +20481,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					
 					
 					if(rerunflag>0){
+						DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("SearchTopic_3_1_4_UI_Dec_14Rel_PROG_Newsgroup_SpecialCharacter_TopicBuddyPreview_29", "is not verified", "TS104_SearchTopic_3_1_4_UI_Dec_14Rel_PROG_Newsgroup_SpecialCharacter_TopicBuddyPreview_29");
 				}
@@ -20030,7 +20593,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					UtilLib.WaitTime(1000);
 					
 					String CDETS_TopicPreview_Header=UtilLib.uf_C_GetUIData1("CDETS Header in Topic Buddy Preview", element.uf_SH_CDETS_TopicPreview_Header, TestCase_Name);
-				    System.out.println("Newsgroup Header in Topic buddy Preview is : "+CDETS_TopicPreview_Header);
+				    System.out.println("CDETS Header in Topic Buddy Preview is : "+CDETS_TopicPreview_Header);
 					if(CDETS_TopicPreview_Header.contains("CDETS/DDTS-"))
 					{
 						UtilLib.Report_PASS("CDETS Header is present in Topic buddy Preview ","Preview functionality verified","Preview_SunctionalityVerification()");
@@ -20071,6 +20634,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					
 					
 					if(rerunflag>0){
+						DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("Search Topic3.1.4_UI_Dec 14  Rel_PROG_CDETS_MoreLink_Collapse_Values_TopicBuddyPreview_25", "is not verified", "TS105_SearchTopic_3_1_4_UI_Dec14_Rel_PROG_CDETS_MoreLink_Collapse_Values_TopicBuddyPreview_25");
 				}
@@ -20145,6 +20709,31 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 						DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);	
 					}
 
+					
+					System.out.println("***************   Clicking on ClearAll and selecting one datasource   ***************");
+
+					status=UtilLib.uf_C_ClickOnElement1("Clear All", element.uf_SH_clearAll, TestCase_Name);
+					System.out.println("Clear All Status : "+status);
+					if(status==true)
+					{
+						UtilLib.Report_PASS("Clear All ", "is clicked", "ClearAllVerifiaction()");
+					}
+					else
+					{
+						rerunflag++;
+					}
+
+					status=UtilLib.uf_C_ClickOnElement1("CDETS", element.uf_SH_C3_CSOne_CAREcheckbox, TestCase_Name);
+					System.out.println("CDETS Status : "+status);
+					if(status==true)
+					{
+						UtilLib.Report_PASS("CDETS data source ", "is selected", "selectingDataSource()");
+					}
+					else
+					{
+						rerunflag++;
+					}
+
 					String searchQuery=UtilLib.uf_C_EnterDataInTextBox("Search TextBox", element.uf_N_queryText, data.getI_PORTLET_VALUE1(), TestCase_Name);
 					if(searchQuery.equals(null))
 					{
@@ -20164,12 +20753,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					else{
 						rerunflag++;
 					}
-					UtilLib.uf_C_ClickOnElement1("All Checkbox", element.uf_N_allChkBox, TestCase_Name);
-					UtilLib.WaitTime(1000);
 					
-					
-					UtilLib.uf_C_ClickOnElement1("C3 Checkbox", element.uf_N_c3ChkBox, TestCase_Name);
-					UtilLib.WaitTime(6000);
 					
 					/*Actions action = new Actions(driver);
 					WebElement e = driver.findElement(By.xpath(element.uf_SH_Newsgroupresult1));
@@ -20223,6 +20807,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					
 					
 					if(rerunflag>0){
+						DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("Search Topic3.1.4_UI_Dec 14  Rel_PROG_CDETS_MoreLink_Collapse_Values_TopicBuddyPreview_25", "is not verified", "TS105_SearchTopic_3_1_4_UI_Dec14_Rel_PROG_CDETS_MoreLink_Collapse_Values_TopicBuddyPreview_25");
 				}
@@ -20341,7 +20926,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					
 					status=uf_SH_EditFilterVerification_Techzone(element.uf_N_datasources, data, TestCase_Name);
 					if(status=false){
-						RerunFlag++;
+						rerunflag++;
 					}
 					status=UtilLib.uf_C_ClickOnElement1("SelectAll Link ", element.uf_SH_editSelectAllPopUp, TestCase_Name);
 					if(status==false)
@@ -20415,7 +21000,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 						
 					}
 					else{
-						
+						rerunflag++;
 						UtilLib.Report_FAIL("Style Filter ", "is not  Displayed", "resultPageVerification()");
 					}
 					
@@ -20428,6 +21013,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					else{
 						
 						UtilLib.Report_FAIL("State Filter", "is not  Displayed", "resultPageVerification()");
+						rerunflag++;
 					}
 					
 					String BoardFilter_Techzone=UtilLib.uf_C_GetUIData1("Board Filter", element.uf_SH_BoardFilter_Techzone, TestCase_Name);
@@ -20439,6 +21025,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					else{
 						
 						UtilLib.Report_FAIL("Board Filter ", "is not  Displayed", "resultPageVerification()");
+						rerunflag++;
 					}
 					String HasLinkedSRFilter_Techzone=UtilLib.uf_C_GetUIData1("Has Linked SR Filter", element.uf_SH_HasLinkedSRFilter_Techzone, TestCase_Name);
 					if(HasLinkedSRFilter_Techzone.equals(data.getI_PORTLET_VALUE9()))
@@ -20449,6 +21036,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					else{
 						
 						UtilLib.Report_FAIL("HasLinked SR Filter", "is not  Displayed", "resultPageVerification()");
+						rerunflag++;
 					}
 					String HadKudosFilter_Techzone=UtilLib.uf_C_GetUIData1("Had Kudos Filter", element.uf_SH_HadKudosFilter_Techzone, TestCase_Name);
 					if(HadKudosFilter_Techzone.equals(data.getI_PORTLET_VALUE10()))
@@ -20459,6 +21047,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					else{
 					
 						UtilLib.Report_FAIL("Had Kudos Filter", "is not Displayed", "resultPageVerification()");
+						rerunflag++;
 					}
 					String CountofLinkedSRFilter_Techzone=UtilLib.uf_C_GetUIData1("Count of Linked SR Filter", element.uf_SH_CountofLinkedSRFilter_Techzone, TestCase_Name);
 					if(CountofLinkedSRFilter_Techzone.equals(data.getI_PORTLET_VALUE11()))
@@ -20469,6 +21058,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					else{
 						
 						UtilLib.Report_FAIL("Count of Linked SR Filter", "is not  Displayed", "resultPageVerification()");
+						rerunflag++;
 					}
 					String LinkedSRFilter_Techzone=UtilLib.uf_C_GetUIData1("LinkedSR Filter", element.uf_SH_LinkedSRFilter_Techzone, TestCase_Name);
 					if(LinkedSRFilter_Techzone.equals(data.getI_PORTLET_VALUE12()))
@@ -20479,6 +21069,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					else{
 						
 						UtilLib.Report_FAIL("Linked SR Filter", "is not  Displayed", "resultPageVerification()");
+						rerunflag++;
 					}
 					
 				if(flag1==8){
@@ -20489,6 +21080,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					rerunflag++;
 				}
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3_Result_pageFiltering_options_defaultSearchFilters_FILTERS_Edit_Filter_for_dataSourceName_SelectAll_39", "is not verified", "TS075_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3_Result_pageFiltering_options_defaultSearchFilters_FILTERS_Edit_Filter_for_dataSourceName_SelectAll_39");
 				}
@@ -20776,6 +21368,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					rerunflag++;
 				}*/
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3_Result_pagefilteringOptions_default_search_filters_FILTERS_EditFilter_for_dataSourceName_ADDfilter_ClearAll_40", "is not verified", "TS076_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3_Result_pagefilteringOptions_default_search_filters_FILTERS_EditFilter_for_dataSourceName_ADDfilter_ClearAll_40");
 				}
@@ -20961,6 +21554,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					else{
 						
 						UtilLib.Report_FAIL("Author Filter  ", "is not Displayed", "resultPageVerification()");
+						
 					}
 					
 					
@@ -20974,6 +21568,8 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					else{
 						
 						UtilLib.Report_FAIL("Style Filter ", "is not  Displayed", "resultPageVerification()");
+				
+					
 					}
 					
 					String StateFilter_Techzone=UtilLib.uf_C_GetUIData1("State Filter", element.uf_SH_StateFilter_Techzone, TestCase_Name);
@@ -21046,6 +21642,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					rerunflag++;
 				}
 				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 					status=false;
 					UtilLib.Report_FAIL("SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3_Result_pageFiltering_options_defaultSearchFilters_FILTERS_Edit_Filter_for_dataSourceName_SelectAll_39", "is not verified", "TS075_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3_Result_pageFiltering_options_defaultSearchFilters_FILTERS_Edit_Filter_for_dataSourceName_SelectAll_39");
 				}
@@ -21208,6 +21805,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					
 					
 					if(rerunflag>0){
+						DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 						status=false;
 						UtilLib.Report_FAIL("SearchTopic_Mar15_RelUI_AttivioMigration_PROG_CDETSonly_Expand_MoreFragments_displayOf_duplicatesOf_large_file", "is not verified", "Search Topic Mar15 Rel UI_Attivio Migration_PROG_CDETS only_Expand More Fragments  the display of duplicates of large file");
 					}
@@ -21393,6 +21991,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					}
 					
 					if(rerunflag>0){
+						DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 						status=false;
 						UtilLib.Report_FAIL("SearchTopicMar15RelUI_AttivioMigration_PROG_CDETSonly_Collapse_display_duplicatesOf_largeFile", "is not verified", "Search Topic  Mar15 Rel UI_Attivio Migration_PROG_CDETS only_Collapse the display of duplicates of large file");
 					}
@@ -21586,6 +22185,7 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 					}
 					
 					if(rerunflag>0){
+						DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
 						status=false;
 						UtilLib.Report_FAIL("SearchTopicMar15RelUI_AttivioMigration_PROG_CDETSonly_Collapse_display_duplicatesOf_largeFile", "is not verified", "Search Topic  Mar15 Rel UI_Attivio Migration_PROG_CDETS only_Collapse the display of duplicates of large file");
 					}
@@ -21603,6 +22203,765 @@ public static boolean AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3
 		catch (AWTException e) {
 			e.printStackTrace();
 		}
+		catch(UnhandledAlertException alert){
+			UtilLib.CaptureScreenshot(TestCase_Name);
+
+			DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
+			UtilLib.Report_FAIL("Unexpected & Unhandled Alert", "Unhandled alert window found",TestCase_Name);
+			return false;
+		}
+
+		catch (NoSuchElementException e) {
+
+			UtilLib.CaptureScreenshot(TestCase_Name);
+			DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
+			UtilLib.Report_FAIL("Change in XPATH", "Kindly change the xpath value",TestCase_Name);
+			return false;
+		}
+
+		catch (NoSuchFrameException e) {
+			UtilLib.CaptureScreenshot(TestCase_Name);
+			DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
+			UtilLib.Report_FAIL("NoSuchFrameException", "Expected frame is not present in the UI. This is an intermittent issue. Kindly re-execute the testcase",TestCase_Name);
+			return false;
+		}
+
+		catch (Error e) {
+			UtilLib.CaptureScreenshot(TestCase_Name);
+			DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
+			UtilLib.Report_FAIL("Java Error", "Kindly re-execute the testcase",TestCase_Name);
+			return false;
+		}
+
+
+		return status;
+	}
+	
+	
+	
+	/********************************************************************************************
+	 * @Function_Name :  SearchTopic_Feb15Rel_Ubiqysys_UI_Rel_PROG_Performing_search_while_Editing_dataSourceFilters_01
+	 * @Description :This Scenario is to verify the search results functionality while editing the data sources
+	 * @author SHAFMEHT
+	 * @return boolean
+	 * @param TestCase_Name :Search Topic_Feb15Rel_Ubiqysys_UI_Rel_PROG_Performing the search while  Editing the data source filters_01
+	 * @throws Exception 
+	 ********************************************************************************************/
+
+	public static boolean SearchTopic_Feb15Rel_Ubiqysys_UI_Rel_PROG_Performing_search_while_Editing_dataSourceFilters_01(
+			List<TopicSearchTestData> dataList, String TestCase_Name) throws Exception {
+		boolean status=false;
+		int rerunflag=0;
+		try {
+			for(TopicSearchTestData data :dataList ){
+
+				uf_p2s_driverInitiation(data.getI_URL(), dataList,TestCase_Name);
+				UtilLib.WaitTime(5000);
+				status = uf_R_Login_Topic_Search(dataList,"Topic Search", TestCase_Name);
+				if(status==false){
+					rerunflag++;
+					DefectDetailsDriver.AppendDefectDetailsXML("ERROR004",TestCase_Name,UtilLib.CaptureScreenshot(TestCase_Name));
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);	
+				}
+
+				String searchQuery=UtilLib.uf_C_EnterDataInTextBox("Search TextBox", element.uf_N_queryText, data.getI_PORTLET_VALUE1(), TestCase_Name);
+				if(searchQuery.equals(null))
+				{
+					rerunflag++;
+				}
+				
+				UtilLib.ClickOnElement("Search", element.uf_N_searchButton, TestCase_Name);
+				
+				UtilLib.WaitTime(3000);
+					
+				String SearchResults=UtilLib.uf_C_GetUIData1("Search Results", element.uf_SH_searchResults, TestCase_Name);
+				if(SearchResults.equals(data.getI_PORTLET_VALUE2()))
+				{
+					UtilLib.Report_PASS(" Application is  navigated to the results page ", "is not verified", "resultPageVerification()");
+				}
+				else{
+					rerunflag++;
+				}
+				
+				String noOfSearchResults=UtilLib.uf_C_GetUIData1("No of search results", element.uf_N_correspondingTotalResults, TestCase_Name);
+				
+				String[] parts = noOfSearchResults.split(" ");
+				String label1 = parts[0]; 
+				String label2=parts[1];
+				String label3=parts[2];
+				String label4=parts[3];
+				if(label3.equals(null)&&label4.equals(null))
+				{
+					UtilLib.Report_FAIL("  Results in the results page  ", "are not displayed", "NoofResultsVerification()");
+					rerunflag++;
+				}
+				else{
+					UtilLib.Report_PASS("  Results in the results page  ", "are  displayed", "NoofResultsVerification()");
+				}
+
+	
+				status=UtilLib.uf_C_ClickOnElement1("Edit", element.uf_SH_editLinkDatasource, TestCase_Name);
+				if(status=false)
+				{
+					rerunflag++;
+				}
+				
+				
+				
+				
+				status=UtilLib.ClickOnElement("Ubiquisys", element.uf_SH_editUbiquisysPopUp, TestCase_Name);
+				if(status=false)
+				{
+					rerunflag++;
+				}
+				UtilLib.WaitTime(1000);
+				
+				
+				status=UtilLib.ClickOnElement("Cancel", element.Cancel_SH_editDatasourcePopUp, TestCase_Name);
+				if(status=false)
+				{
+					rerunflag++;
+				}
+				UtilLib.WaitTime(2000);
+				boolean status1=driver.findElement(By.xpath(element.uf_N_c3ChkBox)).isSelected();
+				boolean status2=driver.findElement(By.xpath(element.uf_N_cdetsChkBox)).isSelected();
+				boolean status3=driver.findElement(By.xpath(element.uf_N_techzoneChkBox)).isSelected();
+				boolean status4=driver.findElement(By.xpath(element.uf_N_newsGroupChkBox)).isSelected();
+				
+				if(status1==true && status2==true && status3==true && status4==true )
+				{
+					UtilLib.Report_PASS(" The default data sources  ", "are checked", "editDefaultVerification()");
+				}
+				else
+				{
+					UtilLib.Report_FAIL(" The default data sources  ", "are not checked", "editDefaultVerification()");
+					rerunflag++;
+				}
+				
+				
+				
+				
+				status=UtilLib.uf_C_ClickOnElement1("Edit", element.uf_SH_editLinkDatasource, TestCase_Name);
+				if(status=false)
+				{
+					rerunflag++;
+				}
+				
+				
+				
+				
+				status=UtilLib.ClickOnElement("Ubiquisys", element.uf_SH_editUbiquisysPopUp, TestCase_Name);
+				if(status=false)
+				{
+					rerunflag++;
+				}
+				UtilLib.WaitTime(1000);
+		
+				
+				status=UtilLib.ClickOnElement("OK", element.OK_SH_editDatasourcePopUp, TestCase_Name);
+				if(status=false)
+				{
+					rerunflag++;
+				}
+				UtilLib.WaitTime(4000);
+				 status1=driver.findElement(By.xpath(element.uf_N_c3ChkBox)).isSelected();
+				 status2=driver.findElement(By.xpath(element.uf_N_cdetsChkBox)).isSelected();
+				 status3=driver.findElement(By.xpath(element.uf_N_techzoneChkBox)).isSelected();
+				 status4=driver.findElement(By.xpath(element.uf_N_newsGroupChkBox)).isSelected();
+				boolean status5=driver.findElement(By.xpath(element.uf_N_ubiquisysChkBox)).isSelected();
+				 
+				
+				if(status1==true && status2==true && status3==true && status4==true && status5==true )
+				{
+					UtilLib.Report_PASS(" The  data sources selected ", "are checked", "editDefaultVerification()");
+				}
+				else
+				{
+					UtilLib.Report_FAIL(" The data sources  selected ", "are not checked", "editDefaultVerification()");
+					rerunflag++;
+				}
+				
+				
+			
+				String results=UtilLib.uf_C_GetUIData1("No of Results", element.uf_N_correspondingTotalResults, TestCase_Name);
+				results=results.substring(8,11);
+				System.out.println("The no of results on result page are : "+results);
+				
+				int noOfResults=Integer.parseInt(results);
+				int flag = 0;
+				for(int i=3;i<=noOfResults;i++){
+				String statusValue=driver.findElement(By.xpath("//*[@id='resultsForm']/table/tbody/tr[9]/td[2]/table/tbody/tr["+i+"]/td[1]/div[1]/label[1]")).getText().trim();	
+				
+				
+				//*[@id='resultsForm']/table/tbody/tr[9]/td[2]/table/tbody/tr[3]/td[1]/div[1]/label[1]//String statusValue=UtilLib.uf_C_GetUIData1("status", "//*[@id='resultsForm']/table/tbody/tr[9]/td[2]/table/tbody/tr["+i+"]/td/div/label", TestCase_Name);
+				parts = statusValue.split(" -");
+				String statusValue1 = parts[0]; 
+				
+				if(statusValue1.equals("C3/CSOne/CARE")|| statusValue1.equals("Newsgroup")||statusValue1.equals("Tech Zone")||statusValue1.equals("CDETS/DDTS")||statusValue1.equals("Ubiquisys")|| statusValue1.equals("Ubiquisys")){
+
+				}else{
+				flag++;
+				}
+				}
+
+				if(flag>0){
+				UtilLib.Report_FAIL("Results are not filtered", "according to selected status", "verifyFilteredList");
+				rerunflag++;
+				
+				}else{
+				UtilLib.Report_PASS("Results are filtered", "according to selected status", "verifyFilteredList");
+			
+
+				}
+				
+				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
+					status=false;
+					UtilLib.Report_FAIL("Search Topic_Feb15Rel_Ubiqysys_UI_Rel_PROG_Performing the search while  Editing the data source filters_01", "is not verified", "SearchTopic_Feb15Rel_Ubiqysys_UI_Rel_PROG_Performing_search_while_Editing_dataSourceFilters_01()");
+				}
+				else
+				{
+					UtilLib.Report_PASS("Search Topic_Feb15Rel_Ubiqysys_UI_Rel_PROG_Performing the search while  Editing the data source filters_01", "is verified", "SearchTopic_Feb15Rel_Ubiqysys_UI_Rel_PROG_Performing_search_while_Editing_dataSourceFilters_01()");
+					status=true;
+				}
+
+				
+				}}
+			catch(UnhandledAlertException alert){
+				UtilLib.CaptureScreenshot(TestCase_Name);
+
+				DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
+				UtilLib.Report_FAIL("Unexpected & Unhandled Alert", "Unhandled alert window found",TestCase_Name);
+				return false;
+			}
+
+			catch (NoSuchElementException e) {
+
+				UtilLib.CaptureScreenshot(TestCase_Name);
+				DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
+				UtilLib.Report_FAIL("Change in XPATH", "Kindly change the xpath value",TestCase_Name);
+				return false;
+			}
+
+			catch (NoSuchFrameException e) {
+				UtilLib.CaptureScreenshot(TestCase_Name);
+				DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
+				UtilLib.Report_FAIL("NoSuchFrameException", "Expected frame is not present in the UI. This is an intermittent issue. Kindly re-execute the testcase",TestCase_Name);
+				return false;
+			}
+
+			catch (Error e) {
+				UtilLib.CaptureScreenshot(TestCase_Name);
+				DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
+				UtilLib.Report_FAIL("Java Error", "Kindly re-execute the testcase",TestCase_Name);
+				return false;
+			}
+
+		
+		return status;
+	}
+	
+	
+	/********************************************************************************************
+	 * @Function_Name :  SearchTopic_Sourcefire_UI_Error_ErrorMessage_03
+	 * @Description : This scenario is to verifythe results page when there  are  zero results for a query string
+	 * @author SHAFMEHT
+	 * @return boolean
+	 * @param TestCase_Name -Search Topic_Sourcefire_UI _Error _Error Message_03
+	 * @throws Exception 
+	 ********************************************************************************************/
+
+	public static boolean SearchTopic_Sourcefire_UI_Error_ErrorMessage_03(
+			List<TopicSearchTestData> dataList, String TestCase_Name) throws Exception {
+
+		boolean status=false;
+		int rerunflag=0;
+		try {
+			for(TopicSearchTestData data :dataList ){
+
+				uf_p2s_driverInitiation(data.getI_URL(), dataList,TestCase_Name);
+				UtilLib.WaitTime(5000);
+				status = uf_R_Login_Topic_Search(dataList,"Topic Search", TestCase_Name);
+				if(status==false){
+					rerunflag++;
+					DefectDetailsDriver.AppendDefectDetailsXML("ERROR004",TestCase_Name,UtilLib.CaptureScreenshot(TestCase_Name));
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);	
+				}
+
+				
+				
+				status=UtilLib.uf_C_ClickOnElement1("Clear All Link", element.uf_SH_clearAll, TestCase_Name);
+				if(status==false)
+				{
+					rerunflag++;
+				}
+				status=UtilLib.uf_C_ClickOnElement1("More Data Sources Link", element.uf_SH_moreDataSourcesLink, TestCase_Name);
+				if(status==false)
+				{
+					rerunflag++;
+				}
+				
+				
+				status=UtilLib.uf_C_ClickOnElement1("More Data Sources Link", element.uf_SH_editSourceFirePopUp, TestCase_Name);
+				if(status==false)
+				{
+					rerunflag++;
+				}
+				
+				
+				String searchQuery=UtilLib.uf_C_EnterDataInTextBox("Search TextBox", element.uf_N_queryText, data.getI_PORTLET_VALUE1(), TestCase_Name);
+				if(searchQuery.equals(null))
+				{
+					rerunflag++;
+				}
+				
+				UtilLib.ClickOnElement("Search", element.uf_N_searchButton, TestCase_Name);
+				
+				UtilLib.WaitTime(3000);
+					
+				/*String SearchResults=UtilLib.uf_C_GetUIData1("Search Results", element.uf_SH_searchResults, TestCase_Name);
+				if(SearchResults.equals(data.getI_PORTLET_VALUE2()))
+				{
+					UtilLib.Report_PASS(" Application is  navigated to the results page ", "is not verified", "resultPageVerification()");
+				}
+				else{
+					rerunflag++;
+				}*/
+				UtilLib.WaitTime(2000);
+				String errorColonMessage=UtilLib.uf_C_GetUIData1("Error Message", element.uf_SH_errorColonMessage, TestCase_Name).trim();
+				System.out.println("Error Message is  : "+errorColonMessage);
+				if(errorColonMessage.contains("No matches found, try to refine your query or select additional data sources"))
+				{	
+					UtilLib.Report_PASS("Error Message for zero results","is verified","ErrorMessageVerification()");
+				}
+				else{
+					UtilLib.Report_FAIL("Error Message for zero results","is not verified","ErrorMessageVerification()");
+					rerunflag++;
+				}
+			}
+
+
+
+			if(rerunflag>0){
+				DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
+				status=false;
+				UtilLib.Report_FAIL("Search Topic 3 0 UI_Attivio Migration_PROG_CSSCSO262 _Error Message_12", "is not verified", "SearchTopic_3_UI_AttivioMigration_PROG_CSSCSO262_ErrorMessage_12()");
+			}
+			else
+			{
+				UtilLib.Report_PASS("Search Topic 3 0 UI_Attivio Migration_PROG_CSSCSO262 _Error Message_12", "is verified", "SearchTopic_3_UI_AttivioMigration_PROG_CSSCSO262_ErrorMessage_12()");
+				status=true;
+			}
+
+
+		}
+		catch(UnhandledAlertException alert){
+			UtilLib.CaptureScreenshot(TestCase_Name);
+
+			DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
+			UtilLib.Report_FAIL("Unexpected & Unhandled Alert", "Unhandled alert window found",TestCase_Name);
+			return false;
+		}
+
+		catch (NoSuchElementException e) {
+
+			UtilLib.CaptureScreenshot(TestCase_Name);
+			DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
+			UtilLib.Report_FAIL("Change in XPATH", "Kindly change the xpath value",TestCase_Name);
+			return false;
+		}
+
+		catch (NoSuchFrameException e) {
+			UtilLib.CaptureScreenshot(TestCase_Name);
+			DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
+			UtilLib.Report_FAIL("NoSuchFrameException", "Expected frame is not present in the UI. This is an intermittent issue. Kindly re-execute the testcase",TestCase_Name);
+			return false;
+		}
+
+		catch (Error e) {
+			UtilLib.CaptureScreenshot(TestCase_Name);
+			DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
+			UtilLib.Report_FAIL("Java Error", "Kindly re-execute the testcase",TestCase_Name);
+			return false;
+		}
+
+
+		return status;
+	}
+	
+	/********************************************************************************************
+	 * @Function_Name :  SearchTopic_Feb15Rel_Ubiqysys_UI_submissionof_Relevance_Feedback_shouldacknowledged_04
+	 * @Description :  This scenario is to verify that an explicit feedback should be provided when user rates the result
+	 * @author SHAFMEHT
+	 * @return boolean
+	 * @param TestCase_Name -Search Topic_Feb15Rel_Ubiqysys_UI _submissionof relevance feedback shouldacknowledged_04
+	 * @throws Exception 
+	 ********************************************************************************************/
+
+	public static boolean SearchTopic_Feb15Rel_Ubiqysys_UI_submissionof_Relevance_Feedback_shouldacknowledged_04(
+			List<TopicSearchTestData> dataList, String TestCase_Name) throws Exception {
+
+		boolean status=false;
+		int rerunflag=0;
+		try {
+			for(TopicSearchTestData data :dataList ){
+
+				uf_p2s_driverInitiation(data.getI_URL(), dataList,TestCase_Name);
+				UtilLib.WaitTime(5000);
+				status = uf_R_Login_Topic_Search(dataList,"Topic Search", TestCase_Name);
+				if(status==false){
+					rerunflag++;
+					DefectDetailsDriver.AppendDefectDetailsXML("ERROR004",TestCase_Name,UtilLib.CaptureScreenshot(TestCase_Name));
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);	
+				}
+
+				
+				
+				status=UtilLib.uf_C_ClickOnElement1("Clear All Link", element.uf_SH_clearAll, TestCase_Name);
+				if(status==false)
+				{
+					rerunflag++;
+				}
+				status=UtilLib.uf_C_ClickOnElement1("More Data Sources Link", element.uf_SH_moreDataSourcesLink, TestCase_Name);
+				if(status==false)
+				{
+					rerunflag++;
+				}
+				
+				
+				status=UtilLib.uf_C_ClickOnElement1("Ubiquisys Datasource", element.uf_SH_editUbiquisysPopUp1, TestCase_Name);
+				if(status==false)
+				{
+					rerunflag++;
+				}
+				
+				
+				String searchQuery=UtilLib.uf_C_EnterDataInTextBox("Search TextBox", element.uf_N_queryText, data.getI_PORTLET_VALUE1(), TestCase_Name);
+				if(searchQuery.equals(null))
+				{
+					rerunflag++;
+				}
+				
+				UtilLib.ClickOnElement("Search", element.uf_N_searchButton, TestCase_Name);
+				
+				UtilLib.WaitTime(3000);
+					
+				String SearchResults=UtilLib.uf_C_GetUIData1("Search Results", element.uf_SH_searchResults, TestCase_Name);
+				if(SearchResults.equals(data.getI_PORTLET_VALUE2()))
+				{
+					UtilLib.Report_PASS(" Application is  navigated to the results page ", "is not verified", "resultPageVerification()");
+				}
+				else{
+					rerunflag++;
+				}
+				
+				System.out.println("***************   Feedback  verification  ***************");
+				String type1=driver.findElement(By.xpath(element.uf_SH_veryRelevantradioButton_Ubiquisys)).getAttribute("type");
+
+
+				if(type1.equals("radio")){
+					UtilLib.Report_PASS("Radio button for 'Very Relevant ' ", "is present", "FeedbackVaerifiaction()");
+				}
+				else{
+					UtilLib.Report_FAIL("Radio button for 'Very Relevant ' ", "is not present", "FeedbackVaerifiaction()");
+					rerunflag++;
+				}
+
+				String type2=driver.findElement(By.xpath(element.uf_SH_somewhatRelevantradioButton_Ubiquisys)).getAttribute("type");
+
+
+				if(type2.equals("radio")){
+					UtilLib.Report_PASS("Radio button for 'Somewhat Relevant ' ", "is present", "FeedbackVaerifiaction()");
+				}
+				else{
+					UtilLib.Report_FAIL("Radio button for 'Somewhat Relevant' ", "is not present", "FeedbackVaerifiaction()");
+					rerunflag++;
+				}
+				String type3=driver.findElement(By.xpath(element.uf_SH_uncertainradioButton_Ubiquisys)).getAttribute("type");
+
+
+				if(type3.equals("radio")){
+					UtilLib.Report_PASS("Radio button for 'Uncertain ' ", "is present", "FeedbackVaerifiaction()");
+				}
+				else{
+					UtilLib.Report_FAIL("Radio button for 'Uncertain  ' ", "is not present", "FeedbackVaerifiaction()");
+					rerunflag++;
+				}
+				String type4=driver.findElement(By.xpath(element.uf_SH_irrelevantradioButton_Ubiquisys)).getAttribute("type");
+
+
+				if(type4.equals("radio")){
+					UtilLib.Report_PASS("Radio button for 'Irrelevant ' ", "is present", "FeedbackVaerifiaction()");
+				}
+				else{
+					UtilLib.Report_FAIL("Radio button for 'Irrelevant' ", "is not present", "FeedbackVaerifiaction()");
+					rerunflag++;
+				}
+
+				status=UtilLib.uf_C_ClickOnElement1("Somwhat Relevant radio button", element.uf_SH_somewhatRelevantradioButton_Ubiquisys, TestCase_Name);
+				if(status==true)
+				{
+					UtilLib.WaitTime(1000);
+					String feedbackVisibility= driver.findElement(By.xpath(element.uf_N_dateRange)).getCssValue("visibility").trim();
+
+					System.out.println("feedback visibilty :"+feedbackVisibility);
+					if(feedbackVisibility.equals("hidden"))
+
+						UtilLib.Report_PASS("User is able to give the feedback 'Somewhat relevant ' and explicit feedback is provided when user rates ", "", "FeedbackVaerifiaction()");
+				}
+				else
+				{
+					UtilLib.Report_FAIL("User is unable to give the feedback 'Somewhat relevant ' ", "", "FeedbackVaerifiaction()");
+					rerunflag++;
+				}
+
+
+				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
+					status=false;
+					UtilLib.Report_FAIL("Search Topic_Feb15Rel_Ubiqysys_UI _submissionof relevance feedback shouldacknowledged_04", "is not verified", "SearchTopic_Feb15Rel_Ubiqysys_UI_submissionof_Relevance_Feedback_shouldacknowledged_04");
+				}
+				else
+				{
+					UtilLib.Report_PASS("Search Topic_Feb15Rel_Ubiqysys_UI _submissionof relevance feedback shouldacknowledged_04", "is verified", "SearchTopic_Feb15Rel_Ubiqysys_UI_submissionof_Relevance_Feedback_shouldacknowledged_04");
+					status=true;
+				}
+
+			}
+		}
+		catch(UnhandledAlertException alert){
+			UtilLib.CaptureScreenshot(TestCase_Name);
+
+			DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
+			UtilLib.Report_FAIL("Unexpected & Unhandled Alert", "Unhandled alert window found",TestCase_Name);
+			return false;
+		}
+
+		catch (NoSuchElementException e) {
+
+			UtilLib.CaptureScreenshot(TestCase_Name);
+			DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
+			UtilLib.Report_FAIL("Change in XPATH", "Kindly change the xpath value",TestCase_Name);
+			return false;
+		}
+
+		catch (NoSuchFrameException e) {
+			UtilLib.CaptureScreenshot(TestCase_Name);
+			DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
+			UtilLib.Report_FAIL("NoSuchFrameException", "Expected frame is not present in the UI. This is an intermittent issue. Kindly re-execute the testcase",TestCase_Name);
+			return false;
+		}
+
+		catch (Error e) {
+			UtilLib.CaptureScreenshot(TestCase_Name);
+			DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
+			UtilLib.Report_FAIL("Java Error", "Kindly re-execute the testcase",TestCase_Name);
+			return false;
+		}
+
+
+		return status;
+	}
+	
+	/********************************************************************************************
+	 * @Function_Name :  SearchTopic_Feb15Rel_Ubiqysys_UI_SearchTips_09
+	 * @Description : verify the search tip on the results page 
+	 * @author SHAFMEHT
+	 * @return boolean
+	 * @param TestCase_Name -Search Topic_Feb15Rel_Ubiqysys_UI _Search Tips_09
+	 * @throws Exception 
+	 ********************************************************************************************/
+
+	public static boolean SearchTopic_Feb15Rel_Ubiqysys_UI_SearchTips_09(
+			List<TopicSearchTestData> dataList, String TestCase_Name) throws Exception {
+
+		boolean status=false;
+		int rerunflag=0;
+		try {
+			for(TopicSearchTestData data :dataList ){
+
+				uf_p2s_driverInitiation(data.getI_URL(), dataList,TestCase_Name);
+				UtilLib.WaitTime(5000);
+				status = uf_R_Login_Topic_Search(dataList,"Topic Search", TestCase_Name);
+				if(status==false){
+					rerunflag++;
+					DefectDetailsDriver.AppendDefectDetailsXML("ERROR004",TestCase_Name,UtilLib.CaptureScreenshot(TestCase_Name));
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);	
+				}
+
+				String searchQuery=UtilLib.uf_C_EnterDataInTextBox("Search TextBox", element.uf_N_queryText, data.getI_PORTLET_VALUE1(), TestCase_Name);
+				if(searchQuery.equals(null))
+				{
+					rerunflag++;
+				}
+				
+				UtilLib.ClickOnElement("Search", element.uf_N_searchButton, TestCase_Name);
+				
+				UtilLib.WaitTime(3000);
+					
+				String SearchResults=UtilLib.uf_C_GetUIData1("Search Results", element.uf_SH_searchResults, TestCase_Name);
+				if(SearchResults.equals(data.getI_PORTLET_VALUE2()))
+				{
+					UtilLib.Report_PASS(" Application is  navigated to the results page ", "is not verified", "resultPageVerification()");
+				}
+				else{
+					rerunflag++;
+				}
+				
+				status=UtilLib.uf_C_ClickOnElement1("Edit", element.uf_SH_editLinkDatasource, TestCase_Name);
+				if(status=false)
+				{
+					rerunflag++;
+				}
+				
+				
+				
+				
+				status=UtilLib.ClickOnElement("Ubiquisys", element.uf_SH_editUbiquisysPopUp, TestCase_Name);
+				if(status=false)
+				{
+					rerunflag++;
+				}
+				UtilLib.WaitTime(1000);
+				status=UtilLib.ClickOnElement("OK", element.uf_SH_editOKButtonPopUp, TestCase_Name);
+				if(status=false)
+				{
+					rerunflag++;
+				}
+				UtilLib.WaitTime(4000);
+				
+				/////***************************Veification of Search Tip for Sourcefire***************///////////
+				String randomTip=UtilLib.uf_C_GetUIData1("IOS Crash", element.uf_SH_randomTip, TestCase_Name);	
+				if(randomTip.contains("IOS crash"))
+				{
+					UtilLib.Report_PASS("Random tip ", "is present",TestCase_Name);
+				}
+				else{
+					UtilLib.Report_FAIL("Random tip ", "is not present",TestCase_Name);
+					rerunflag++;
+				}
+
+				String moreTip=UtilLib.uf_C_GetUIData1("More Tips", element.uf_SH_moreTips, TestCase_Name);	
+				if(moreTip.contains("More tips"))
+				{
+					UtilLib.Report_PASS("More tip ", "is present on top of the search box in the results page",TestCase_Name);
+				}
+				else{
+					UtilLib.Report_FAIL("Random tip ", "is not present on top of the search box in the results page",TestCase_Name);
+					rerunflag++;
+				}	
+
+				status=UtilLib.uf_C_ClickOnElement1("More Tips",element.uf_SH_moreTips , TestCase_Name);
+				if(status==false)
+				{
+					rerunflag++;
+				}
+				UtilLib.WaitTime(1000);
+
+				String lessTip=UtilLib.uf_C_GetUIData1("Less Tips", element.uf_SH_lessTips, TestCase_Name);	
+				if(lessTip.contains("Less tips"))
+				{
+					UtilLib.Report_PASS("Less tip ", "is present on top of the search box in the More Links page",TestCase_Name);
+				}
+				else{
+					UtilLib.Report_FAIL("Less tip ", "is not present on top of the search box in the More Links page",TestCase_Name);
+					rerunflag++;
+				}
+
+				String IOSCrash=UtilLib.uf_C_GetUIData1("Ios Crash", element.uf_SH_IOScrash_Sourcefire, TestCase_Name);	
+				int flag = 0;
+				System.out.println("IOSCrash : "+driver.findElement(By.xpath(element.uf_SH_IOScrash_Sourcefire)).getText().trim());
+				if(IOSCrash.contains("IOS crash"))
+				{
+					flag++;
+				}
+				else{
+					UtilLib.Report_FAIL("IOS Crash ", "is not present  in the More Links page",TestCase_Name);
+					rerunflag++;
+				}
+
+
+				String IOSANDcrash=UtilLib.uf_C_GetUIData1("IOS AND crash", element.uf_SH_IOSANDcrash_Sourcefire, TestCase_Name);	
+				System.out.println("IOS and Crash : "+driver.findElement(By.xpath(element.uf_SH_IOSANDcrash_Sourcefire)).getText().trim());
+				if(IOSANDcrash.contains("IOS"))
+				{
+					flag++;
+				}
+				else{
+					UtilLib.Report_FAIL("IOS AND Crash ", "is not present  in the More Links page",TestCase_Name);
+					rerunflag++;
+				}
+
+				String IOSCrashORexception=UtilLib.uf_C_GetUIData1("Ios Crash OR exception", element.uf_SH_IOScrashORexception_Sourcefire, TestCase_Name);	
+				System.out.println("IOS Crash OR exception : "+driver.findElement(By.xpath(element.uf_SH_IOScrashORexception_Sourcefire)).getText().trim());
+				if(IOSCrashORexception.contains("IOS crash OR exception"))
+				{
+					flag++;
+				}
+				else{
+					UtilLib.Report_FAIL("IOS crash OR exception ", "is not present  in the More Links page",TestCase_Name);
+					rerunflag++;
+				}
+				String cat65=UtilLib.uf_C_GetUIData1("cat65", element.uf_SH_cat65_Sourcefire, TestCase_Name);	
+				System.out.println("cat 65 : "+driver.findElement(By.xpath(element.uf_SH_cat65_Sourcefire)).getText().trim());
+				if(cat65.contains("cat65"))
+				{
+					flag++;
+				}
+				else{
+					UtilLib.Report_FAIL("cat65 ", "is not present  in the More Links page",TestCase_Name);
+					rerunflag++;
+				}
+				String cat6=UtilLib.uf_C_GetUIData1("cat65", element.uf_SH_cat6_Sourcefire, TestCase_Name);	
+				System.out.println("cat 6 : "+driver.findElement(By.xpath(element.uf_SH_cat6_Sourcefire)).getText().trim());
+				if(cat6.contains("cat6"))
+				{
+					flag++;
+				}
+				else{
+					UtilLib.Report_FAIL("cat6", "is not present  in the More Links page",TestCase_Name);
+					rerunflag++;
+				}
+				String SxI12=UtilLib.uf_C_GetUIData1("12*SXI", element.uf_SH_12SxI_Sourcefire, TestCase_Name);	
+				System.out.println("SxI12 : "+driver.findElement(By.xpath(element.uf_SH_12SxI_Sourcefire)).getText().trim());
+				if(SxI12.contains("12*SXI"))
+				{
+					flag++;
+				}
+				else{
+					UtilLib.Report_FAIL("12*SXI", "is not present  in the More Links page",TestCase_Name);
+					rerunflag++;
+				}
+				String Sx_I12=UtilLib.uf_C_GetUIData1("12**SXI", element.uf_SH_12SXI_Sourcefire, TestCase_Name);	
+				System.out.println("Sx_I12 : "+driver.findElement(By.xpath(element.uf_SH_12SXI_Sourcefire)).getText().trim());
+				if(Sx_I12.contains("12 * * SXI?"))
+				{
+					flag++;
+				}
+				else{
+					UtilLib.Report_FAIL("12**SXI", "is not present  in the More Links page",TestCase_Name);
+					rerunflag++;
+				}
+
+				if(flag==7)
+				{
+					UtilLib.Report_PASS("Labels in", "More Links page are verified",TestCase_Name);
+				}
+
+
+
+				if(rerunflag>0){
+					DefectDetailsDriver.AppendFailedTestXML(TestCase_Name);
+					status=false;
+					UtilLib.Report_FAIL("SearchTopic_Sourcefire_UI_SearchTips_09", "is not verified", "TS114_SearchTopic_Feb15Rel_Ubiqysys_UI_SearchTips_09()");
+				}
+				else
+				{
+					UtilLib.Report_PASS("SearchTopic_Sourcefire_UI_SearchTips_09", "is verified", "TS114_SearchTopic_Feb15Rel_Ubiqysys_UI_SearchTips_09");
+				}
+
+
+			}}
 		catch(UnhandledAlertException alert){
 			UtilLib.CaptureScreenshot(TestCase_Name);
 

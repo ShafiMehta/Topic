@@ -1,5 +1,4 @@
 
-
 package TestScript;
 
 
@@ -22,9 +21,9 @@ import resources.utilFiles.POM_Lib;
 import resources.utilFiles.TopicSearchTestData;
 import resources.utilFiles.UtilLib;
 
-public class TS015_Search_Topic_3_UI_AttivioMigration_PROG_queries_with_colon_may_taken_fielded_search_query_term_preceding_term_matches_one_metadata_field_names {
+public class TS112_SearchTopic_Feb15Rel_Ubiqysys_UI_submissionof_Relevance_Feedback_shouldacknowledged_04 {
 
-	public static String TestCase_Name = "TS015_Search_Topic_3_UI_AttivioMigration_PROG_queries_with_colon_may_taken_fielded_search_query_term_preceding_term_matches_one_metadata_field_names";
+	public static String TestCase_Name = "TS112_SearchTopic_Feb15Rel_Ubiqysys_UI_submissionof_Relevance_Feedback_shouldacknowledged_04";
 	private DBAutomationFunction arr_data = new DBAutomationFunction();
 	private DBAutomationConnection db = new DBAutomationConnection();
 	Connection con = null;
@@ -50,7 +49,7 @@ public class TS015_Search_Topic_3_UI_AttivioMigration_PROG_queries_with_colon_ma
 
 
 	@Test	
-	public void ts003_Search_Topic_3_UI_AttivioMigration_PROG_queries_with_colon_may_taken_fielded_search_query_term_preceding_term_matches_one_metadata_field_names() throws Exception {
+	public void ts112_SearchTopic_Feb15Rel_Ubiqysys_UI_submissionof_Relevance_Feedback_shouldacknowledged_04() throws Exception {
 		String TEST_SCENARIO = TestCase_Name;
 		String TEST_PHASE = "REG";
 		String EXECUTION = "Y";
@@ -58,7 +57,7 @@ public class TS015_Search_Topic_3_UI_AttivioMigration_PROG_queries_with_colon_ma
 		retObjArr = new ArrayList<TopicSearchTestData>();
 		retObjArr= arr_data.getDbData(TEST_SCENARIO,TEST_PHASE, EXECUTION, con);
 		System.out.println(retObjArr.get(0).getI_URL());
-		ExecutionStatus=POM_Lib.Search_Topic_3_UI_AttivioMigration_PROG_queries_with_colon_may_taken_fielded_search_query_term_preceding_term_matches_one_metadata_field_names(retObjArr,TestCase_Name);
+		ExecutionStatus=POM_Lib.SearchTopic_Feb15Rel_Ubiqysys_UI_submissionof_Relevance_Feedback_shouldacknowledged_04(retObjArr,TestCase_Name);
 		AssertJUnit.assertTrue(ExecutionStatus);
 
 	}

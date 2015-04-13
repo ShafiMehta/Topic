@@ -21,9 +21,9 @@ import resources.utilFiles.POM_Lib;
 import resources.utilFiles.TopicSearchTestData;
 import resources.utilFiles.UtilLib;
 
-public class TS076_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3_Result_pagefilteringOptions_default_search_filters_FILTERS_EditFilter_for_dataSourceName_ADDfilter_ClearAll_40 {
+public class TS111_SearchTopic_Feb15Rel_Ubiqysys_UI_Error_ErrorMessage_03 {
 
-	public static String TestCase_Name = "TS076_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3_Result_pagefilteringOptions_default_search_filters_FILTERS_EditFilter_for_dataSourceName_ADDfilter_ClearAll_40";
+	public static String TestCase_Name = "TS111_SearchTopic_Feb15Rel_Ubiqysys_UI_Error_ErrorMessage_03";
 	private DBAutomationFunction arr_data = new DBAutomationFunction();
 	private DBAutomationConnection db = new DBAutomationConnection();
 	Connection con = null;
@@ -49,7 +49,7 @@ public class TS076_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3_Result_pagefil
 
 
 	@Test	
-	public void ts076_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3_Result_pagefilteringOptions_default_search_filters_FILTERS_EditFilter_for_dataSourceName_ADDfilter_ClearAll_40() throws Exception {
+	public void ts111_SearchTopic_Feb15Rel_Ubiqysys_UI_Error_ErrorMessage_03() throws Exception {
 		String TEST_SCENARIO = TestCase_Name;
 		String TEST_PHASE = "REG";
 		String EXECUTION = "Y";
@@ -57,7 +57,7 @@ public class TS076_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3_Result_pagefil
 		retObjArr = new ArrayList<TopicSearchTestData>();
 		retObjArr= arr_data.getDbData(TEST_SCENARIO,TEST_PHASE, EXECUTION, con);
 		System.out.println(retObjArr.get(0).getI_URL());
-		ExecutionStatus=POM_Lib.SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3_Result_pagefilteringOptions_default_search_filters_FILTERS_EditFilter_for_dataSourceName_ADDfilter_ClearAll_40(retObjArr,TestCase_Name);
+		ExecutionStatus=POM_Lib.SearchTopic_Feb15Rel_Ubiqysys_UI_Error_ErrorMessage_03(retObjArr,TestCase_Name);
 		AssertJUnit.assertTrue(ExecutionStatus);
 
 	}
@@ -74,3 +74,5 @@ public class TS076_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3_Result_pagefil
 	}
 
 }
+
+

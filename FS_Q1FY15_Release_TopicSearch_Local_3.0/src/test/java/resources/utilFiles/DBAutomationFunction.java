@@ -730,10 +730,10 @@ public class DBAutomationFunction {
 					td.setSUB_TRACK(rset.getString("SUB_TRACK"));
 				}
 				
-				if (null ==rset.getString("TEST_CASE_ID")){
+				if (null ==rset.getString("TEST_SCRIPT_ID")){
 					td.setTEST_CASE_ID("");
 				}else{
-					td.setTEST_CASE_ID(rset.getString("TEST_CASE_ID"));
+					td.setTEST_CASE_ID(rset.getString("TEST_SCRIPT_ID"));
 				}
 				
 				
@@ -964,10 +964,10 @@ public class DBAutomationFunction {
 					td.setSUB_TRACK(rset.getString("SUB_TRACK"));
 				}
 				
-				if (null ==rset.getString("TEST_CASE_ID")){
+				if (null ==rset.getString("TEST_SCRIPT_ID")){
 					td.setTEST_CASE_ID("");
 				}else{
-					td.setTEST_CASE_ID(rset.getString("TEST_CASE_ID"));
+					td.setTEST_CASE_ID(rset.getString("TEST_SCRIPT_ID"));
 				}
 				
 				

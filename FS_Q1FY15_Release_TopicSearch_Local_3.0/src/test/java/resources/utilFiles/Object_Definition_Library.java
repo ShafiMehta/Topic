@@ -64,6 +64,8 @@ public String uf_R_ResolutionSummary="//*[@id='c3buddyContent']/tbody/tr[3]/td[1
 public String uf_R_CDETSTopicBuddy="//*[@id='topicBuddyDiv']";
 public String uf_R_TopicBuddyClose = "//*[@id='topicBuddyclose']";
 public String uf_R_ChevronTopicBuddy = "//*[@id='resultsForm']/table/tbody/tr[9]/td[2]/table/tbody/tr[3]/td[2]/img";
+
+public String uf_R_ChevronTopicBuddy_IMG = "//*[@class='chevronTd']";
 public String uf_R_C3ResultContent = "//*[@id='resultsForm']/table/tbody/tr[9]/td[2]/table/tbody/tr[3]/td[1]/div[1]";
 public String uf_R_C3 = "//*[@id='C3/CSOne/CARERepo']";
 public String uf_R_NewsGroup = "//*[@id='resultsForm']/table/tbody/tr[9]/td[1]/div/table[2]/tbody/tr[4]/td[2]/input";
@@ -137,7 +139,7 @@ public String uf_N_queryText="//*[@id='queryText']";
 public String uf_N_searchButton="//*[@id='Searchbtn']";
 public String uf_N_correspondingTotalResults="//*[@id='resultsForm']/table/tbody/tr[9]/td[2]/table/tbody/tr/td/table/tbody/tr/td";
 public String uf_SH_PDFChechox="//*[@id='PDFs']";
-public String uf_SH_PDF_NoofResults="//*[@id='File FormatDiv']/table/tbody/tr[6]/td[2]/ul/li/span[2]";
+public String uf_SH_PDF_NoofResults="//*[@id='File FormatDiv']/table/tbody/tr[5]/td[2]/ul/li/span[2]";
 public String uf_SH_searchResults="//*[@id='resultsForm']/table/tbody/tr[9]/td[2]/table/tbody/tr[2]/td/table/tbody/tr/td";
 public String uf_SH_Date_Latest="//*[@id='resultsForm']/table/tbody/tr[9]/td[2]/table/tbody/tr[1]/td/table/tbody/tr/td[2]/a[1]";
 public String uf_SH_Date_Oldest="//*[@id='resultsForm']/table/tbody/tr[9]/td[2]/table/tbody/tr[1]/td/table/tbody/tr/td[2]/a[2]";
@@ -147,8 +149,10 @@ public String uf_SH_DateBeforeSourcefire="//*[@id='resultsForm']/table/tbody/tr[
 public String uf_SH_DateAfter="//*[@id='resultsForm']/table/tbody/tr[9]/td[2]/table/tbody/tr[3]/td[1]/table/tbody/tr[2]/td[2]/label[2]";
 public String uf_SH_DateAfterSourcefire="//*[@id='resultsForm']/table/tbody/tr[9]/td[2]/table/tbody/tr[3]/td[1]/table/tbody/tr[3]/td[2]/label[2]";
 public String uf_SH_application_vndChechox="//*[@id='PPTx']";
+public String uf_SH_application_vndChechoxpowerpoint="//*[@id='application/vnd.ms-powerpoint']";
+
 public String uf_SH_ShowAllLink="//*[@id='a-File Format']";
-public String uf_SH_application_vnd_NoofResults="//*[@id='File FormatDiv']/table/tbody/tr[7]/td[1]/div/table/tbody/tr[1]/td[2]/ul/li/span[2]";
+public String uf_SH_application_vnd_NoofResults="//*[@id='resultsForm']/table/tbody/tr[9]/td[1]/div/div[1]/div[2]/table/tbody/tr[4]/td[2]/ul/li/span[2]";
 public String uf_SH_webpages_NoofResults="//*[@id='File FormatDiv']/table/tbody/tr[3]/td[2]/ul/li/span[2]";
 public String uf_SH_webpagesChechox="//*[@id='Webpages']";
 public String uf_SH_noOfC3Results="//*[@id='resultsForm']/table/tbody/tr[9]/td[1]/div/table[2]/tbody/tr[2]/td[2]/span[2]";
@@ -182,11 +186,12 @@ public String uf_SH_editLinkDatasource="//*[@id='Save']/span";
 public String uf_SH_editLinkDatasourcePopUp="//*[@id='editDSdialog']/div/table/tbody/tr/td/div";
 public String uf_SH_editDynamicSoftPopUp="//*[@id='Dynamicsoft']";
 public String uf_SH_editSourcefirePopUp="//*[@id='Sourcefire']";
+public String uf_SH_editUbiquisysPopUp="//*[@id='Ubiquisys']";
 public String uf_SH_editSourcefireSoftPopUp="//*[@id='Sourcefire']";
-public String uf_SH_editOKButtonPopUp="//*[@id='editDSdialog']/table/tbody/tr[2]/td/input";
+public String uf_SH_editOKButtonPopUp="//*[@id='resultsForm']/div[7]/table/tbody/tr[2]/td/input[1]";
 public String uf_SH_PriorityFilterAfterEdit="//*[@id='PriorityDiv']/table/tbody/tr/td/span";
-public String uf_SH_editCancelButtonPopUp="//*[@id='editFiltersdialog']/div/table/tbody/tr[8]/td/span/input[3]";
-public String uf_SH_editResetButtonPopUp="//*[@id='editFiltersdialog']/div/table/tbody/tr[8]/td/span/input[3]";
+public String uf_SH_editCancelButtonPopUp="//*[@id='resultsForm']/div[7]/table/tbody/tr[2]/td/input[2]";
+public String uf_SH_editResetButtonPopUp="//*[@id='resultsForm']/div[7]/table/tbody/tr[2]/td/input[3]";
 public String uf_SH_editSelectAllPopUp="//*[@id='editFiltersdialog']/div/table/tbody/tr[5]/td[1]/table/tbody/tr/td[1]/div[2]/a[1]/span";
 public String uf_SH_editClearAllPopUp="//*[@id='editFiltersdialog']/div/table/tbody/tr[5]/td[1]/table/tbody/tr/td[1]/div[2]/a[2]/span";
 
@@ -215,15 +220,17 @@ public String uf_SH_AuthorFilterChkbox_Techzone="//*[@id='filtersTbl']/tbody/tr[
 public String uf_SH_AuthorFilter_Techzone="//*[@id='resultsForm']/table/tbody/tr[9]/td[1]/div/div[1]/div[2]/table/tbody/tr[1]/td/span[1]";
 public String uf_SH_StyleFilter_Techzone="//*[@id='resultsForm']/table/tbody/tr[9]/td[1]/div/div[1]/div[3]/table/tbody/tr[1]/td/span[1]";
 public String uf_SH_StateFilter_Techzone="//*[@id='resultsForm']/table/tbody/tr[9]/td[1]/div/div[1]/div[4]/table/tbody/tr[1]/td/span[1]";
-public String uf_SH_BoardFilter_Techzone="//*[@id='resultsForm']/table/tbody/tr[9]/td[1]/div/div[1]/div[5]/table/tbody/tr[1]/td/span[1]";
-public String uf_SH_HasLinkedSRFilter_Techzone="//*[@id='resultsForm']/table/tbody/tr[9]/td[1]/div/div[1]/div[6]/table/tbody/tr[1]/td/span[1]";
-public String uf_SH_HadKudosFilter_Techzone="//*[@id='resultsForm']/table/tbody/tr[9]/td[1]/div/div[1]/div[7]/table/tbody/tr[1]/td/span[1]";
-public String uf_SH_CountofLinkedSRFilter_Techzone="//*[@id='resultsForm']/table/tbody/tr[9]/td[1]/div/div[1]/div[8]/table/tbody/tr[1]/td/span[1]";
-public String uf_SH_LinkedSRFilter_Techzone="//*[@id='resultsForm']/table/tbody/tr[9]/td[1]/div/div[1]/div[9]/table/tbody/tr[1]/td/span[1]";
+public String uf_SH_BoardFilter_Techzone="//*[@id='resultsForm']/table/tbody/tr[9]/td[1]/div/div[1]/div[6]/table/tbody/tr[1]/td/span[1]";
+
+public String uf_SH_HasLinkedSRFilter_Techzone="//*[@id='resultsForm']/table/tbody/tr[9]/td[1]/div/div[1]/div[7]/table/tbody/tr[1]/td/span[1]";
+public String uf_SH_HadKudosFilter_Techzone="//*[@id='resultsForm']/table/tbody/tr[9]/td[1]/div/div[1]/div[8]/table/tbody/tr[1]/td/span[1]";
+public String uf_SH_CountofLinkedSRFilter_Techzone="//*[@id='resultsForm']/table/tbody/tr[9]/td[1]/div/div[1]/div[9]/table/tbody/tr[1]/td/span[1]";
+public String uf_SH_LinkedSRFilter_Techzone="//*[@id='resultsForm']/table/tbody/tr[9]/td[1]/div/div[1]/div[10]/table/tbody/tr[1]/td/span[1]";
 
 public String uf_SH_editCDETS_DDTS_PopUp="//*[@id='CDETS/DDTS']";
 public String uf_SH_editC3_CSOne_CAREPopUp="//*[@id='C3/CSOne/CARE']";
 public String uf_SH_editSourceFirePopUp="//*[@id='Sourcefire']";
+public String uf_SH_editUbiquisysPopUp1="//*[@id='Ubiquisys']";
 public String uf_SH_editTech_ZonePopUp="//*[@id='Tech Zone']";
 public String uf_SH_editNewsgroupPopUp="//*[@id='Newsgroup']";
 public String uf_SH_asapediaPopUp="//*[@id='Asapedia']";
@@ -243,6 +250,7 @@ public String uf_SH_cdetsPopUp="//*[@id='CDETS/DDTS']";
 public String uf_SH_newsgroupPopUp="//*[@id='Newsgroup']";
 public String uf_SH_techzonePopUp="//*[@id='Tech Zone']";
 public String uf_SH_spreadsheet_NoofResults="//*[@id='File FormatDiv']/table/tbody/tr[4]/td[2]/ul/li/span[2]";
+public String uf_SH_Online_NoofResults="//*[@id='resultsForm']/table/tbody/tr[9]/td[1]/div/div[1]/div[2]/table/tbody/tr[7]/td/div/table/tbody/tr[2]/td[2]/ul/li/span[2]";
 public String uf_SH_OnlineTrainingChechox="//*[@id='Online Training']";
 public String uf_SH_MyPreferencesLink="//*[@class='header headerBg headerHt']/span[2]/span[2]/a[2]";
 public String uf_SH_MyPreferences_BrowserHistory_RadioButton="//*[@id='maindiv']/div/table/tbody/tr/td/input";
@@ -270,6 +278,7 @@ public String uf_N_datasources="//*[@id='resultsForm']/table/tbody/tr[9]/td/div/
 public String uf_N_allChkBox="//*[@id='allRepo']";
 public String uf_SH_allChkBox_AllDataSource="//*[@id='allRepo']";
 public String uf_N_newsGroupChkBox="//*[@id='NewsgroupRepo']";
+public String uf_N_ubiquisysChkBox="//*[@id='UbiquisysRepo']";
 public String uf_N_c3ChkBox="//*[@id='C3/CSOne/CARERepo']";
 public String uf_SH_EditFilterLink="//*[@id='editFilters']/span";
 public String uf_SH_Edit_OKButton="//*[@id='editFiltersdialog']/div/table/tbody/tr[8]/td/span/input[1]";
@@ -293,6 +302,8 @@ public String uf_SH_C3_CSOne_CAREcheckbox="//*[@id='C3/CSOne/CARE']";
 public String uf_SH_CDETS_DDTScheckbox="//*[@id='CDETS/DDTS']";
 public String uf_SH_Techzonecheckbox="//*[@id='Tech Zone']";
 public String uf_SH_Newsgroupcheckbox="//*[@id='Newsgroup']";
+public String uf_SH_TACFieldcheckbox="//*[@id='TAC FieldAlerts']";
+public String uf_SH_TSTrainingHomecheckbox="//*[@id='TS Training']";
 
 public String uf_SH_clearAll="//*[@id='clearAll']";
 public String uf_N_cachedLink="//*[@class='resultTd']/div/a[2]";
@@ -500,9 +511,13 @@ public String uf_SH_NewsgroupPrevious="//*[@id='resultsForm']/table/tbody/tr[9]/
 ///////////////////////////////////////////---------FEEDBACK------/////////////////////////////////////////////////
 
 public String uf_SH_veryRelevantradioButton="//*[@id='resultsForm']/table/tbody/tr[9]/td[2]/table/tbody/tr[3]/td/div[2]/table/tbody/tr/td[2]/input";
+public String uf_SH_veryRelevantradioButton_Ubiquisys="//*[@id='resultsForm']/table/tbody/tr[9]/td[2]/table/tbody/tr[3]/td/div[3]/table/tbody/tr/td[2]/input";
 public String uf_SH_somewhatRelevantradioButton="//*[@id='resultsForm']/table/tbody/tr[9]/td[2]/table/tbody/tr[4]/td/div[2]/table/tbody/tr/td[3]/input";
+public String uf_SH_somewhatRelevantradioButton_Ubiquisys="//*[@id='resultsForm']/table/tbody/tr[9]/td[2]/table/tbody/tr[4]/td/div[3]/table/tbody/tr/td[3]/input";
 public String uf_SH_uncertainradioButton="//*[@id='resultsForm']/table/tbody/tr[9]/td[2]/table/tbody/tr[5]/td/div[2]/table/tbody/tr/td[4]/input";
+public String uf_SH_uncertainradioButton_Ubiquisys="//*[@id='resultsForm']/table/tbody/tr[9]/td[2]/table/tbody/tr[5]/td/div[3]/table/tbody/tr/td[4]/input";
 public String uf_SH_irrelevantradioButton="//*[@id='resultsForm']/table/tbody/tr[9]/td[2]/table/tbody/tr[6]/td/div[2]/table/tbody/tr/td[5]/input";
+public String uf_SH_irrelevantradioButton_Ubiquisys="//*[@id='resultsForm']/table/tbody/tr[9]/td[2]/table/tbody/tr[6]/td/div[3]/table/tbody/tr/td[5]/input";
 public String uf_SH_feedbackReceieved="//*[@id='resultsForm']/table/tbody/tr[9]/td[2]/table/tbody/tr[6]/td/div[2]/table/tbody/tr[2]/td/div/b/font";
 
 
@@ -559,22 +574,22 @@ public String Cancel_SH_editDatasourcePopUp= "//*[@id='CancelDS']";
 public String OK_SH_editDatasourcePopUp= "//*[@id='editDSdialog']/table/tbody/tr[2]/td/input[1]";
 
 /////////////////******** SourceFire MetaFields ************//////////////////////////
-public String uf_SH_Sourcefire_AssetSerialNumber="//*[@class='selResult']/td[1]/table/tbody/tr[1]/td[2]/label[1]";
-public String uf_SH_Sourcefire_BugID= "//*[@class='selResult']/td[1]/table/tbody/tr[1]/td[4]/label[1]";
-public String uf_SH_Sourcefire_CaseNumber= "//*[@class='selResult']/td[1]/table/tbody/tr[1]/td[6]/label[1]";
+public String uf_SH_Sourcefire_AssetSerialNumber="//*[@id='resultsForm']/table/tbody/tr[9]/td[2]/table/tbody/tr[3]/td[1]/table/tbody/tr[1]/td[2]/label[1]";
+public String uf_SH_Sourcefire_BugID= "//*[@id='resultsForm']/table/tbody/tr[9]/td[2]/table/tbody/tr[3]/td[1]/table/tbody/tr[1]/td[4]/label[1]";
+public String uf_SH_Sourcefire_CaseNumber= "//*[@id='resultsForm']/table/tbody/tr[9]/td[2]/table/tbody/tr[3]/td[1]/table/tbody/tr[1]/td[6]/label[1]";
 
-public String uf_SH_Sourcefire_CaseOrigin= "//*[@class='selResult']/td[1]/table/tbody/tr[2]/td[2]/label[1]";
-public String uf_SH_Sourcefire_CaseType= "//*[@class='selResult']/td[1]/table/tbody/tr[2]/td[4]/label[1]";
-public String uf_SH_Sourcefire_Company= "//*[@class='selResult']/td[1]/table/tbody/tr[2]/td[6]/label[1]";
+public String uf_SH_Sourcefire_CaseOrigin= "//*[@id='resultsForm']/table/tbody/tr[9]/td[2]/table/tbody/tr[3]/td[1]/table/tbody/tr[2]/td[2]/label[1]";
+public String uf_SH_Sourcefire_CaseType= "//*[@id='resultsForm']/table/tbody/tr[9]/td[2]/table/tbody/tr[3]/td[1]/table/tbody/tr[2]/td[4]/label[1]";
+public String uf_SH_Sourcefire_Company= "//*[@id='resultsForm']/table/tbody/tr[9]/td[2]/table/tbody/tr[3]/td[1]/table/tbody/tr[2]/td[6]/label[1]";
 
-public String uf_SH_Sourcefire_CreatedDate="//*[@class='selResult']/td[1]/table/tbody/tr[3]/td[2]/label[1]";
+public String uf_SH_Sourcefire_CreatedDate="//*[@id='resultsForm']/table/tbody/tr[9]/td[2]/table/tbody/tr[3]/td[1]/table/tbody/tr[3]/td[2]/label[1]";
 public String uf_SH_Sourcefire_CreatedDate_value="//*[@id='resultsForm']/table/tbody/tr[9]/td[2]/table/tbody/tr[3]/td[1]/table/tbody/tr[3]/td[2]/label[2]";
-public String uf_SH_Sourcefire_IncidentResolvedDate= "//*[@class='selResult']/td[1]/table/tbody/tr[3]/td[2]/label[1]";
-public String uf_SH_Sourcefire_Owner= "//*[@class='selResult']/td[1]/table/tbody/tr[3]/td[2]/label[1]";
+public String uf_SH_Sourcefire_IncidentResolvedDate= "//*[@id='resultsForm']/table/tbody/tr[9]/td[2]/table/tbody/tr[3]/td[1]/table/tbody/tr[3]/td[4]/label[1]";
+public String uf_SH_Sourcefire_Owner= "//*[@id='resultsForm']/table/tbody/tr[9]/td[2]/table/tbody/tr[3]/td[1]/table/tbody/tr[3]/td[6]/label[1]";
 
-public String uf_SH_Sourcefire_ParentCaseId= "//*[@class='selResult']/td[1]/table/tbody/tr[4]/td[2]/label[1]";
-public String uf_SH_Sourcefire_Priority= "//*[@class='selResult']/td[1]/table/tbody/tr[4]/td[4]/label[1]";
-public String uf_SH_Sourcefire_Status= "//*[@class='selResult']/td[1]/table/tbody/tr[4]/td[6]/label[1]";
+public String uf_SH_Sourcefire_ParentCaseId= "//*[@id='resultsForm']/table/tbody/tr[9]/td[2]/table/tbody/tr[3]/td[1]/table/tbody/tr[4]/td[2]/label[1]";
+public String uf_SH_Sourcefire_Priority= "//*[@id='resultsForm']/table/tbody/tr[9]/td[2]/table/tbody/tr[3]/td[1]/table/tbody/tr[4]/td[4]/label[1]";
+public String uf_SH_Sourcefire_Status= "//*[@id='resultsForm']/table/tbody/tr[9]/td[2]/table/tbody/tr[3]/td[1]/table/tbody/tr[4]/td[6]/label[1]";
 
 public String uf_SH_CDETS_ExpandMoreFragment_link= "//*[@id='resultsForm']/table/tbody/tr[9]/td[2]/table/tbody/tr[3]/td[1]/div[1]/a[4]";
 public String uf_SH_CDETS_Data_ExpandMoreFragment_link= "//*[@id='resultsForm']/table/tbody/tr[9]/td[2]/table/tbody/tr[3]/td[1]/div[3]/table/tbody/tr[2]/td";

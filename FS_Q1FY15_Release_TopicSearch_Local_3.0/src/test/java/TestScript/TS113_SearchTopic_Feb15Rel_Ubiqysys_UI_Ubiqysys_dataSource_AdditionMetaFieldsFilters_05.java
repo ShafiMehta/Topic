@@ -1,4 +1,4 @@
-
+/*
 package TestScript;
 
 
@@ -21,9 +21,9 @@ import resources.utilFiles.POM_Lib;
 import resources.utilFiles.TopicSearchTestData;
 import resources.utilFiles.UtilLib;
 
-public class TS067_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3_ResultpageFilteringoptions_default_searchfilters_DATASOURCE_FILTER_Newsgroup_navigatorValues_16 {
+public class TS113_SearchTopic_Feb15Rel_Ubiqysys_UI_Ubiqysys_dataSource_AdditionMetaFieldsFilters_05 {
 
-	public static String TestCase_Name = "TS067_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3_ResultpageFilteringoptions_default_searchfilters_DATASOURCE_FILTER_Newsgroup_navigatorValues_16";
+	public static String TestCase_Name = "TS113_SearchTopic_Feb15Rel_Ubiqysys_UI_Ubiqysys_dataSource_AdditionMetaFieldsFilters_05";
 	private DBAutomationFunction arr_data = new DBAutomationFunction();
 	private DBAutomationConnection db = new DBAutomationConnection();
 	Connection con = null;
@@ -49,7 +49,7 @@ public class TS067_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3_ResultpageFilt
 
 
 	@Test	
-	public void ts067_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3_ResultpageFilteringoptions_default_searchfilters_DATASOURCE_FILTER_Newsgroup_navigatorValues_16() throws Exception {
+	public void ts113_SearchTopic_Feb15Rel_Ubiqysys_UI_Ubiqysys_dataSource_AdditionMetaFieldsFilters_05() throws Exception {
 		String TEST_SCENARIO = TestCase_Name;
 		String TEST_PHASE = "REG";
 		String EXECUTION = "Y";
@@ -57,7 +57,7 @@ public class TS067_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3_ResultpageFilt
 		retObjArr = new ArrayList<TopicSearchTestData>();
 		retObjArr= arr_data.getDbData(TEST_SCENARIO,TEST_PHASE, EXECUTION, con);
 		System.out.println(retObjArr.get(0).getI_URL());
-		ExecutionStatus=POM_Lib.SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3_ResultpageFilteringoptions_default_searchfilters_DATASOURCE_FILTER_Newsgroup_navigatorValues_16(retObjArr,TestCase_Name);
+		ExecutionStatus=POM_Lib.TS113_SearchTopic_Feb15Rel_Ubiqysys_UI_Ubiqysys_dataSource_AdditionMetaFieldsFilters_05(retObjArr,TestCase_Name);
 		AssertJUnit.assertTrue(ExecutionStatus);
 
 	}
@@ -74,3 +74,6 @@ public class TS067_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3_ResultpageFilt
 	}
 
 }
+
+
+*/

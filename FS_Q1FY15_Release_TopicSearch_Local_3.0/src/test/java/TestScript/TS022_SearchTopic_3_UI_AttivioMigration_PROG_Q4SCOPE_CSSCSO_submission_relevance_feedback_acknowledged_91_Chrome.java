@@ -1,6 +1,4 @@
 
-
-
 package TestScript;
 
 
@@ -23,9 +21,9 @@ import resources.utilFiles.POM_Lib;
 import resources.utilFiles.TopicSearchTestData;
 import resources.utilFiles.UtilLib;
 
-public class TS071_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3Resultpagefilteringoptions_defaultsearchfilters_DATERANGEFILTERS_Verify_count_displyedagainst_date_ranagefilters_29 {
+public class TS022_SearchTopic_3_UI_AttivioMigration_PROG_Q4SCOPE_CSSCSO_submission_relevance_feedback_acknowledged_91_Chrome {
 
-	public static String TestCase_Name = "TS071_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3Resultpagefilteringoptions_defaultsearchfilters_DATERANGEFILTERS_Verify_count_displyedagainst_date_ranagefilters_29";
+	public static String TestCase_Name = "TS022_SearchTopic_3_UI_AttivioMigration_PROG_Q4SCOPE_CSSCSO_submission_relevance_feedback_acknowledged_91_Chrome";
 	private DBAutomationFunction arr_data = new DBAutomationFunction();
 	private DBAutomationConnection db = new DBAutomationConnection();
 	Connection con = null;
@@ -51,7 +49,7 @@ public class TS071_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3Resultpagefilte
 
 
 	@Test	
-	public void ts071_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3Resultpagefilteringoptions_defaultsearchfilters_DATERANGEFILTERS_Verify_count_displyedagainst_date_ranagefilters_29() throws Exception {
+	public void ts022_SearchTopic_3_UI_AttivioMigration_PROG_Q4SCOPE_CSSCSO_submission_relevance_feedback_acknowledged_91_Chrome() throws Exception {
 		String TEST_SCENARIO = TestCase_Name;
 		String TEST_PHASE = "REG";
 		String EXECUTION = "Y";
@@ -59,9 +57,12 @@ public class TS071_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3Resultpagefilte
 		retObjArr = new ArrayList<TopicSearchTestData>();
 		retObjArr= arr_data.getDbData(TEST_SCENARIO,TEST_PHASE, EXECUTION, con);
 		System.out.println(retObjArr.get(0).getI_URL());
-		ExecutionStatus=POM_Lib.SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3Resultpagefilteringoptions_defaultsearchfilters_DATERANGEFILTERS_Verify_count_displyedagainst_date_ranagefilters_29(retObjArr,TestCase_Name);
+	
+		
+		ExecutionStatus=POM_Lib.SearchTopic_3_UI_AttivioMigration_PROG_Q4SCOPE_CSSCSO_submission_relevance_feedback_acknowledged_91(retObjArr,TestCase_Name);
+		
 		AssertJUnit.assertTrue(ExecutionStatus);
-
+		
 	}
 
 	@AfterClass
@@ -76,3 +77,5 @@ public class TS071_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3Resultpagefilte
 	}
 
 }
+
+
