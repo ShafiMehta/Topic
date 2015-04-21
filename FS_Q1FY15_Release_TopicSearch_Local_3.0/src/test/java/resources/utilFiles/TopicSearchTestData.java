@@ -36,6 +36,8 @@ public class TopicSearchTestData {
 	public void setOS_TYPE(String oS_TYPE) {
 		OS_TYPE = oS_TYPE;
 	}
+	
+	private String EXECUTION_LOCAL;
 	private String TOPICSRCH_DATA_ID;
 	private String TOPICSRCH_TEST_ID;	
 	private String PORTFOLIO;
@@ -143,17 +145,19 @@ public class TopicSearchTestData {
 	
 	
 	
+	
+	
 	public String getTOPICSRCH_DATA_ID() {
 		return TOPICSRCH_DATA_ID;
 	}
-	public void setTOPICSRCH_DATA_ID(String TOPICSRCH_DATA_ID) {
-		TOPICSRCH_DATA_ID = TOPICSRCH_DATA_ID;
+	public void setTOPICSRCH_DATA_ID(String tOPICSRCH_DATA_ID) {
+		TOPICSRCH_DATA_ID = tOPICSRCH_DATA_ID;
 	}
 	public String getTOPICSRCH_TEST_ID() {
 		return TOPICSRCH_TEST_ID;
 	}
-	public void setTOPICSRCH_TEST_ID(String TOPICSRCH_TEST_ID) {
-		TOPICSRCH_TEST_ID = TOPICSRCH_TEST_ID;
+	public void setTOPICSRCH_TEST_ID(String tOPICSRCH_TEST_ID) {
+		TOPICSRCH_TEST_ID = tOPICSRCH_TEST_ID;
 	}
 	public String getPORTFOLIO() {
 		return PORTFOLIO;
@@ -771,6 +775,12 @@ public class TopicSearchTestData {
 	}
 	public void setI_COMMENTS(String i_COMMENTS) {
 		I_COMMENTS = i_COMMENTS;
+	}
+	public String getEXECUTION_LOCAL() {
+		return EXECUTION_LOCAL;
+	}
+	public void setEXECUTION_LOCAL(String eXECUTION_LOCAL) {
+		EXECUTION_LOCAL = eXECUTION_LOCAL;
 	}
 
 /*	public List<Item> getItems() {

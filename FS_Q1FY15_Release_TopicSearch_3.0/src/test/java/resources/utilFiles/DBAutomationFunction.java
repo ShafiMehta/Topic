@@ -1168,7 +1168,7 @@ public class DBAutomationFunction {
 			Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
 			if(TEST_PHASE.equalsIgnoreCase("REG_FUN")||TEST_PHASE.equalsIgnoreCase("FUN_REG")){
 				String[] phase = TEST_PHASE.split("_");
-				query ="select TEST_SCRIPT_NAME from CITS_CC_FS_TOPICSRCH_TESTDATA where EXECUTION_LOCAL = 'Y' AND TEST_PHASE='"+phase[0]+"'OR TEST_PHASE='"+phase[1]+"'";
+				query ="select TEST_SCRIPT_NAME from CITS_CC_FS_TOPICSRCH_TESTDATA where EXECUTION = 'Y' AND TEST_PHASE='"+phase[0]+"'OR TEST_PHASE='"+phase[1]+"'";
 				
 			}
 			else if(TEST_PHASE.equalsIgnoreCase("Active")){
