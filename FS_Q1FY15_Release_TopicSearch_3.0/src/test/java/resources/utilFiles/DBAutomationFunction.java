@@ -625,6 +625,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
+
 public class DBAutomationFunction {
 	
 	private DBAutomationConnection db = new DBAutomationConnection();
@@ -726,13 +729,13 @@ public class DBAutomationFunction {
 					td.setSUB_TRACK(rset.getString("SUB_TRACK"));
 				}
 				
-				/*if (null ==rset.getString("TEST_CASE_ID")){
+				if (null ==rset.getString("TEST_SCRIPT_ID")){
 					td.setTEST_CASE_ID("");
 				}else{
-					td.setTEST_CASE_ID(rset.getString("TEST_CASE_ID"));
+					td.setTEST_CASE_ID(rset.getString("TEST_SCRIPT_ID"));
 				}
 				
-				*/
+				
 				
 				if (null ==rset.getString("EXECUTION")){
 					td.setEXECUTION("");
@@ -796,7 +799,7 @@ public class DBAutomationFunction {
 				
 				
 				
-				td.setI_PORTLET_VALUE1(rset.getString("I_PORTLET_VALUE1"));
+				/*td.setI_PORTLET_VALUE1(rset.getString("I_PORTLET_VALUE1"));
 				td.setI_PORTLET_VALUE2(rset.getString("I_PORTLET_VALUE2"));
 				td.setI_PORTLET_VALUE3(rset.getString("I_PORTLET_VALUE3"));
 				td.setI_PORTLET_VALUE4(rset.getString("I_PORTLET_VALUE4"));
@@ -886,11 +889,9 @@ public class DBAutomationFunction {
 				td.setI_PORTLET_VALUE79(rset.getString("I_PORTLET_VALUE79"));
 				
 				td.setI_PORTLET_VALUE80(rset.getString("I_PORTLET_VALUE80"));
+				*/
 				
 				
-				
-				
-
 				
 				testDataList.add(td);  // adding item to list
 
@@ -962,17 +963,13 @@ public class DBAutomationFunction {
 					td.setSUB_TRACK(rset.getString("SUB_TRACK"));
 				}
 				
-				/*if (null ==rset.getString("TEST_CASE_ID")){
+				if (null ==rset.getString("TEST_SCRIPT_ID")){
 					td.setTEST_CASE_ID("");
 				}else{
-					td.setTEST_CASE_ID(rset.getString("TEST_CASE_ID"));
-				}*/
-				
-				if (null ==rset.getString("EXECUTION_LOCAL")){
-					td.setEXECUTION_LOCAL("");
-				}else{
-					td.setEXECUTION_LOCAL(rset.getString("TEST_CASE_ID"));
+					td.setTEST_CASE_ID(rset.getString("TEST_SCRIPT_ID"));
 				}
+				
+				
 				
 				if (null ==rset.getString("EXECUTION")){
 					td.setEXECUTION("");
@@ -1009,9 +1006,9 @@ public class DBAutomationFunction {
 					td.setBROWSER_Version(rset.getString("BROWSER_Version"));
 				}
 				if (null ==rset.getString("OS_TYPE")){
-					td.setOsType("");
+					td.setOS_TYPE("");
 				}else{
-					td.setOsType(rset.getString("OS_TYPE"));
+					td.setOS_TYPE(rset.getString("OS_TYPE"));
 				}
 				if (null ==rset.getString("TEST_PHASE")){
 					td.setTEST_PHASE("");
@@ -1044,6 +1041,11 @@ public class DBAutomationFunction {
 				}else{
 					td.setI_PORTLET_VALUE1(rset.getString("I_PORTLET_VALUE1"));
 				}
+				
+				
+				
+				
+				
 				td.setI_PORTLET_VALUE1(rset.getString("I_PORTLET_VALUE1"));
 				td.setI_PORTLET_VALUE2(rset.getString("I_PORTLET_VALUE2"));
 				td.setI_PORTLET_VALUE3(rset.getString("I_PORTLET_VALUE3"));
@@ -1172,7 +1174,7 @@ public class DBAutomationFunction {
 			query ="select TEST_SCRIPT_NAME from CITS_CC_FS_TOPICSRCH_TESTDATA where EXECUTION='Y'";
 				
 			}else{
-			query ="select TEST_SCRIPT_NAME from CITS_CC_FS_TOPICSRCH_TESTDATA where EXECUTION='Y' AND TEST_PHASE='"+TEST_PHASE+"'";
+			query ="select TEST_SCRIPT_NAME from CITS_CC_FS_TOPICSRCH_TESTDATA where EXECUTION ='Y' AND TEST_PHASE='"+TEST_PHASE+"'";
 			}
 			System.out.println(query);
 			ResultSet rset = stmt.executeQuery(query);
