@@ -970,7 +970,11 @@ public class DBAutomationFunction {
 					td.setTEST_CASE_ID(rset.getString("TEST_CASE_ID"));
 				}
 				
-				
+				if (null ==rset.getString("EXECUTION_LOCAL")){
+					td.setEXECUTION_LOCAL("");
+				}else{
+					td.setEXECUTION_LOCAL(rset.getString("TEST_CASE_ID"));
+				}
 				
 				if (null ==rset.getString("EXECUTION")){
 					td.setEXECUTION("");

@@ -36,6 +36,8 @@ public class TopicSearchTestData {
 	public void setOS_TYPE(String oS_TYPE) {
 		OS_TYPE = oS_TYPE;
 	}
+	
+	private String EXECUTION_LOCAL;
 	private String TOPICSRCH_DATA_ID;
 	private String TOPICSRCH_TEST_ID;	
 	private String PORTFOLIO;
@@ -771,6 +773,12 @@ public class TopicSearchTestData {
 	}
 	public void setI_COMMENTS(String i_COMMENTS) {
 		I_COMMENTS = i_COMMENTS;
+	}
+	public String getEXECUTION_LOCAL() {
+		return EXECUTION_LOCAL;
+	}
+	public void setEXECUTION_LOCAL(String eXECUTION_LOCAL) {
+		EXECUTION_LOCAL = eXECUTION_LOCAL;
 	}
 
 /*	public List<Item> getItems() {
