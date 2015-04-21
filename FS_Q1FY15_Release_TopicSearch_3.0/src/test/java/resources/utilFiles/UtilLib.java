@@ -550,7 +550,7 @@ public class UtilLib {
 	 * @Function_Name :  getDriver
 	 * @Description : Creates a FirefoxDriver and InternetExplorer object to launch scripts in Firefox and Internet browser
 
-	 ********************************************************************************************/
+	 ********************************************************************************************//*
 
 		//String Browser = Retrieve_EnvVar.ReportGlobalParameters("Browser");
 	public static  WebDriver getDriver (List<TopicSearchTestData>  dataList) throws MalformedURLException{
@@ -591,15 +591,139 @@ public class UtilLib {
 			}
 
 		}
-		/*String Browser = Retrieve_EnvVar.ReportGlobalParameters("Browser");
+		String Browser = Retrieve_EnvVar.ReportGlobalParameters("Browser");
 		if(Browser.equalsIgnoreCase("Firefox")){
 			driver = new FirefoxDriver();
-		}*/
+		}
 		return driver; 
 
 		//driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 
 	}
+	*/
+	
+	/********************************************************************************************
+	 * @throws MalformedURLException 
+	 * @Function_Name :  getDriver
+	 * @Description : Creates a FirefoxDriver and InternetExplorer object to launch scripts in Firefox and Internet browser
+
+	 ********************************************************************************************/
+
+		//String Browser = Retrieve_EnvVar.ReportGlobalParameters("Browser");
+	public static  RemoteWebDriver getDriver (List<TopicSearchTestData>  dataList) throws MalformedURLException{
+		for (TopicSearchTestData data : dataList) {
+			if(( data.getBROWSER_TYPE().equalsIgnoreCase("Mozilla"))){
+				
+			DesiredCapabilities browser = DesiredCapabilities.firefox();
+			browser.setVersion(data.getBROWSER_Version());
+			browser.setPlatform(Platform.WINDOWS);
+			System.out.println("Browser details : "+browser);
+			//driver = new RemoteWebDriver(new URL("http://10.65.192.110:5555/wd/hub"),data.getBROWSER_TYPE());
+		//	driver = new RemoteWebDriver(new URL("http://bhive-beta.cisco.com/getsession"), browser);
+			driver = new RemoteWebDriver(new URL("http://bhive-beta.cisco.com/getsession"), browser);
+
+	//	driver = new RemoteWebDriver(new URL("http://10.65.192.235:5555/wd/hub"), browser);
+			//driver = new RemoteWebDriver(new URL("http://10.65.192.110:5555/wd/hub"), browser);
+			//driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), browser);
+	//		System.out.println("Firefox Version is -: "+browser);
+			//driver = UtilLib.getDriver();
+			driver.manage().deleteAllCookies();
+			}
+			else if(data.getBROWSER_TYPE().equalsIgnoreCase("Internet Explorer")){
+				System.out.println("driver IE");
+				//String file = Retrieve_EnvVar.ReportGlobalParameters("IEPath");
+				File file = new File("src//test//java//resources//libFiles//IEDriverServer.exe");
+				//File file = new File("C:\\Automation\\IEDriverServer.exe");
+				System.setProperty("webdriver.ie.driver", file.getAbsolutePath());
+				driver = new InternetExplorerDriver();
+				
+				System.out.println("driver IE");
+				//String file = Retrieve_EnvVar.ReportGlobalParameters("IEPath");
+				//File file = new File("src//test//java//resources//libFiles//IEDriverServer.exe");
+				DesiredCapabilities browser = DesiredCapabilities.internetExplorer();
+				browser.setVersion(data.getBROWSER_Version());
+				browser.setPlatform(Platform.WINDOWS);
+				browser.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
+				browser.setBrowserName("internet explorer");
+				//driver = new RemoteWebDriver(new URL("http://10.65.192.235:5555/wd/hub"), browser);
+				driver = new RemoteWebDriver(new URL("http://bhive-beta.cisco.com/getsession"), browser);
+				System.out.println("IE Version is -: "+browser);
+				
+				//DesiredCapabilities browser = DesiredCapabilities.internetExplorer();
+				//browser.setVersion(data.getBROWSER_Version());
+				//browser.setPlatform(Platform.WINDOWS);
+				//browser.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
+				//browser.setBrowserName("internet explorer");
+				//driver = new RemoteWebDriver(new URL("http://10.65.192.235:5555/wd/hub"), browser);
+				//driver = new RemoteWebDriver(new URL("http://bhive-beta.cisco.com/getsession"), browser);
+				//System.out.println("IE Version is -: "+browser);
+				}
+			
+			if(data.getBROWSER_TYPE().equalsIgnoreCase("Internet Explorer")){
+				System.out.println("driver IE");
+				//String file = Retrieve_EnvVar.ReportGlobalParameters("IEPath");
+				//File file = new File("src//test//java//resources//libFiles//IEDriverServer.exe");
+				DesiredCapabilities browser = DesiredCapabilities.internetExplorer();
+				browser.setVersion(data.getBROWSER_Version());
+				browser.setPlatform(Platform.WINDOWS);
+				browser.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
+				browser.setBrowserName("internet explorer");
+				//driver = new RemoteWebDriver(new URL("http://10.65.192.235:5555/wd/hub), "browser);
+				driver = new RemoteWebDriver(new URL("http://bhive-beta.cisco.com/getsession"), browser);
+				System.out.println("IE Version is -: "+browser);
+				}
+			else if(data.getBROWSER_TYPE().equalsIgnoreCase("Chrome")){
+			//	System.out.println("driver chrome");
+				DesiredCapabilities browser = DesiredCapabilities.chrome();
+				browser.setVersion(data.getBROWSER_Version());
+				browser.setPlatform(Platform.WINDOWS);
+				//browser.setCapability(ChromeDriverService.CHROME_DRIVER_EXE_PROPERTY, true);
+				browser.setBrowserName("chrome");
+				System.out.println("Browser details : "+browser);
+				driver = new RemoteWebDriver(new URL("http://bhive-beta.cisco.com/getsession"), browser);
+				System.out.println("chrome Version is -: "+browser);
+
+		}
+			else if(data.getBROWSER_TYPE().equalsIgnoreCase("Safari")){
+				System.out.println("driver Safari");
+				DesiredCapabilities browser = DesiredCapabilities.safari();
+				browser.setVersion(data.getBROWSER_Version());
+				browser.setPlatform(Platform.WINDOWS);
+				//browser.setCapability(ChromeDriverService.CHROME_DRIVER_EXE_PROPERTY, true);
+				browser.setBrowserName("safari");
+				driver = new RemoteWebDriver(new URL("http://bhive-beta.cisco.com/getsession"), browser);
+				System.out.println("Safari Version is -: "+browser);
+
+		}else
+			if(( data.getBROWSER_TYPE().equalsIgnoreCase("Opera"))){
+				System.out.println("Driver method in ");
+				DesiredCapabilities browser = DesiredCapabilities.opera();
+				browser.setVersion(data.getBROWSER_Version());
+				browser.setPlatform(Platform.WINDOWS);
+				//browser.setCapability(operaDriver.BINARY, true);
+				browser.setBrowserName("opera");
+				System.out.println("Opera Version is -: "+browser);
+				//driver = new RemoteWebDriver(new URL("http://10.65.192.110:5555/wd/hub"),data.getBROWSER_TYPE());
+				// driver = new RemoteWebDriver(new URL("http://10.65.192.235:5566/wd/hub"), browser);    
+				driver = new RemoteWebDriver(new URL("http://bhive-beta.cisco.com/getsession"), browser);
+				//driver = new RemoteWebDriver(new URL("http://10.65.192.110:5555/wd/hub"), browser);
+				//driver = new RemoteWebDriver(new URL("http://10.65.192.173:5555/wd/hub"), browser);
+			
+				//driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), browser);
+				
+				
+				System.out.println("Opera Version is -: "+browser);
+				//driver = UtilLib.getDriver();
+				driver.manage().deleteAllCookies();
+				}
+		
+		}
+		return driver; 
+
+		//driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+
+	}
+	
 	
 	/********************************************************************************************
 	 * @throws AWTException 

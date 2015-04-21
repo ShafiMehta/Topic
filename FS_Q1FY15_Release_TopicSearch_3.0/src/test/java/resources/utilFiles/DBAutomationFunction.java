@@ -916,7 +916,7 @@ public class DBAutomationFunction {
 
 		try {                                        
 			Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
-			String query ="select * from CITS_CC_FS_TOPICSRCH_TESTDATA where TEST_SCRIPT_NAME='"+TestScrtipt_Name+"'AND TEST_PHASE='"+TEST_PHASE+"'AND EXECUTION_LOCAL='"+EXECUTION+"'";
+			String query ="select * from CITS_CC_FS_TOPICSRCH_TESTDATA where TEST_SCRIPT_NAME='"+TestScrtipt_Name+"'AND TEST_PHASE='"+TEST_PHASE+"'AND EXECUTION ='"+EXECUTION+"'";
 			System.out.println(query);
 			ResultSet rset = stmt.executeQuery(query);
 			ResultSetMetaData rsmd = rset.getMetaData();
@@ -1172,10 +1172,10 @@ public class DBAutomationFunction {
 				
 			}
 			else if(TEST_PHASE.equalsIgnoreCase("Active")){
-			query ="select TEST_SCRIPT_NAME from CITS_CC_FS_TOPICSRCH_TESTDATA where EXECUTION_LOCAL='Y'";
+			query ="select TEST_SCRIPT_NAME from CITS_CC_FS_TOPICSRCH_TESTDATA where EXECUTION='Y'";
 				
 			}else{
-			query ="select TEST_SCRIPT_NAME from CITS_CC_FS_TOPICSRCH_TESTDATA where EXECUTION_LOCAL='Y' AND TEST_PHASE='"+TEST_PHASE+"'";
+			query ="select TEST_SCRIPT_NAME from CITS_CC_FS_TOPICSRCH_TESTDATA where EXECUTION='Y' AND TEST_PHASE='"+TEST_PHASE+"'";
 			}
 			System.out.println(query);
 			ResultSet rset = stmt.executeQuery(query);
