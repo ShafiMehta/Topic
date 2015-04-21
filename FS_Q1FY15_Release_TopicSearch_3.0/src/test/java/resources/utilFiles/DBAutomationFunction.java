@@ -605,7 +605,6 @@ public class DBAutomationFunction {
 				con.close();
 				
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -625,9 +624,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
-
-
 
 public class DBAutomationFunction {
 	
@@ -763,9 +759,9 @@ public class DBAutomationFunction {
 				}
 				
 				if (null ==rset.getString("BROWSER_TYPE")){
-					td.setBROWSER_TYPE("");
+					td.setBrowserType("");
 				}else{
-					td.setBROWSER_TYPE(rset.getString("BROWSER_TYPE"));
+					td.setBrowserType(rset.getString("BROWSER_TYPE"));
 				}
 				
 				
@@ -800,7 +796,7 @@ public class DBAutomationFunction {
 				
 				
 				
-				/*td.setI_PORTLET_VALUE1(rset.getString("I_PORTLET_VALUE1"));
+				td.setI_PORTLET_VALUE1(rset.getString("I_PORTLET_VALUE1"));
 				td.setI_PORTLET_VALUE2(rset.getString("I_PORTLET_VALUE2"));
 				td.setI_PORTLET_VALUE3(rset.getString("I_PORTLET_VALUE3"));
 				td.setI_PORTLET_VALUE4(rset.getString("I_PORTLET_VALUE4"));
@@ -890,9 +886,11 @@ public class DBAutomationFunction {
 				td.setI_PORTLET_VALUE79(rset.getString("I_PORTLET_VALUE79"));
 				
 				td.setI_PORTLET_VALUE80(rset.getString("I_PORTLET_VALUE80"));
-				*/
 				
 				
+				
+				
+
 				
 				testDataList.add(td);  // adding item to list
 
@@ -1001,19 +999,19 @@ public class DBAutomationFunction {
 				}
 				
 				if (null ==rset.getString("BROWSER_TYPE")){
-					td.setBROWSER_TYPE("");
+					td.setBrowserType("");
 				}else{
-					td.setBROWSER_TYPE(rset.getString("BROWSER_TYPE"));
+					td.setBrowserType(rset.getString("BROWSER_TYPE"));
 				}
 				if (null ==rset.getString("BROWSER_Version")){
-					td.setBROWSER_Version("");
+					td.setBrowserVersion("");
 				}else{
-					td.setBROWSER_Version(rset.getString("BROWSER_Version"));
+					td.setBrowserVersion(rset.getString("BROWSER_Version"));
 				}
 				if (null ==rset.getString("OS_TYPE")){
-					td.setOS_TYPE("");
+					td.setOsType("");
 				}else{
-					td.setOS_TYPE(rset.getString("OS_TYPE"));
+					td.setOsType(rset.getString("OS_TYPE"));
 				}
 				if (null ==rset.getString("TEST_PHASE")){
 					td.setTEST_PHASE("");
@@ -1046,11 +1044,6 @@ public class DBAutomationFunction {
 				}else{
 					td.setI_PORTLET_VALUE1(rset.getString("I_PORTLET_VALUE1"));
 				}
-				
-				
-				
-				
-				
 				td.setI_PORTLET_VALUE1(rset.getString("I_PORTLET_VALUE1"));
 				td.setI_PORTLET_VALUE2(rset.getString("I_PORTLET_VALUE2"));
 				td.setI_PORTLET_VALUE3(rset.getString("I_PORTLET_VALUE3"));
@@ -1244,7 +1237,6 @@ public class DBAutomationFunction {
 				con.close();
 				
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
