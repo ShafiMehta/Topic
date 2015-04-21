@@ -726,13 +726,13 @@ public class DBAutomationFunction {
 					td.setSUB_TRACK(rset.getString("SUB_TRACK"));
 				}
 				
-				if (null ==rset.getString("TEST_CASE_ID")){
+				/*if (null ==rset.getString("TEST_CASE_ID")){
 					td.setTEST_CASE_ID("");
 				}else{
 					td.setTEST_CASE_ID(rset.getString("TEST_CASE_ID"));
 				}
 				
-				
+				*/
 				
 				if (null ==rset.getString("EXECUTION")){
 					td.setEXECUTION("");
@@ -759,9 +759,9 @@ public class DBAutomationFunction {
 				}
 				
 				if (null ==rset.getString("BROWSER_TYPE")){
-					td.setBrowserType("");
+					td.setBROWSER_TYPE("");
 				}else{
-					td.setBrowserType(rset.getString("BROWSER_TYPE"));
+					td.setBROWSER_TYPE(rset.getString("BROWSER_TYPE"));
 				}
 				
 				
@@ -962,11 +962,11 @@ public class DBAutomationFunction {
 					td.setSUB_TRACK(rset.getString("SUB_TRACK"));
 				}
 				
-				if (null ==rset.getString("TEST_CASE_ID")){
+				/*if (null ==rset.getString("TEST_CASE_ID")){
 					td.setTEST_CASE_ID("");
 				}else{
 					td.setTEST_CASE_ID(rset.getString("TEST_CASE_ID"));
-				}
+				}*/
 				
 				if (null ==rset.getString("EXECUTION_LOCAL")){
 					td.setEXECUTION_LOCAL("");
@@ -999,14 +999,14 @@ public class DBAutomationFunction {
 				}
 				
 				if (null ==rset.getString("BROWSER_TYPE")){
-					td.setBrowserType("");
+					td.setBROWSER_TYPE("");
 				}else{
-					td.setBrowserType(rset.getString("BROWSER_TYPE"));
+					td.setBROWSER_TYPE(rset.getString("BROWSER_TYPE"));
 				}
 				if (null ==rset.getString("BROWSER_Version")){
-					td.setBrowserVersion("");
+					td.setBROWSER_Version("");
 				}else{
-					td.setBrowserVersion(rset.getString("BROWSER_Version"));
+					td.setBROWSER_Version(rset.getString("BROWSER_Version"));
 				}
 				if (null ==rset.getString("OS_TYPE")){
 					td.setOsType("");

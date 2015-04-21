@@ -1001,10 +1001,10 @@ public class TopicSearchTestData {
 	public void setTestMethodName(String tEST_METHOD_NAME) {
 		TEST_METHOD_NAME = tEST_METHOD_NAME;
 	}
-	public String getBrowserType() {
+	public String getBROWSER_TYPE() {
 		return BROWSER_TYPE;
 	}
-	public void setBrowserType(String bROWSER_TYPE) {
+	public void setBROWSER_TYPE(String bROWSER_TYPE) {
 		BROWSER_TYPE = bROWSER_TYPE;
 	}
 	public String getRELEASE_NAME() {
@@ -1563,10 +1563,10 @@ public class TopicSearchTestData {
 		I_COMMENTS = i_COMMENTS;
 	}
 
-	public String getBrowserVersion() {
+	public String getBROWSER_Version() {
 		return BROWSER_Version;
 	}
-	public void setBrowserVersion(String bROWSER_Version) {
+	public void setBROWSER_Version(String bROWSER_Version) {
 		BROWSER_Version = bROWSER_Version;
 	}
 	public String getTEST_PHASE() {
@@ -1584,21 +1584,37 @@ public class TopicSearchTestData {
 	public String getTOPICSRCH_DATA_ID() {
 		return TOPICSRCH_DATA_ID;
 	}
+	
 	public void setTOPICSRCH_DATA_ID(String tOPICSRCH_DATA_ID) {
 		TOPICSRCH_DATA_ID = tOPICSRCH_DATA_ID;
 	}
+	
+	/*public String getTOPICSRCH_DATA_ID() {
+		return TOPICSRCH_DATA_ID;
+	}*/
 	public void setTEST_METHOD_NAME(String tEST_METHOD_NAME) {
 		TEST_METHOD_NAME = tEST_METHOD_NAME;
 		
 	}
+	
 	public void setI_LOGINUSER_NAME(String i_LOGINUSER_NAME) {
 		I_LOGINUSER_NAME = i_LOGINUSER_NAME;		
 	}
+	
+
 	public void setI_LOGINUSER_PASSWORD(String i_LOGINUSER_PASSWORD) {
 		I_LOGINUSER_PASSWORD = i_LOGINUSER_PASSWORD;		
 	}
+	
+	public String getTEST_SCRIPT_NAME() {
+		return TEST_SCRIPT_NAME;
+	}
 	public void setTEST_SCRIPT_NAME(String tEST_SCRIPT_NAME) {
 		TEST_SCRIPT_NAME= tEST_SCRIPT_NAME;		
+	}
+	
+	public String getEXECUTION_LOCAL() {
+		return EXECUTION_LOCAL;
 	}
 	public void setEXECUTION_LOCAL(String eXECUTION_LOCAL) {
 		EXECUTION_LOCAL = eXECUTION_LOCAL;		
