@@ -51,6 +51,14 @@
 		<artifactId>xslt-maven-plugin</artifactId>
 		<version>1.0</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>otaclient</groupId>
+			<artifactId>otaclient</artifactId>
+			<version>9.2</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/src/test/java/resources/libFiles/com.mercury.qualitycenter.otaclient-9.2.jar</systemPath>
+		</dependency>
 	
 		 
   	</dependencies>
