@@ -692,7 +692,9 @@ public class UtilLib {
 			System.out.println("Browser details : "+browser);
 			//driver = new RemoteWebDriver(new URL("http://10.65.192.110:5555/wd/hub"),data.getBROWSER_TYPE());
 		//	driver = new RemoteWebDriver(new URL("http://bhive-beta.cisco.com/getsession"), browser);
-			driver = new RemoteWebDriver(new URL("http://bhive-beta.cisco.com/getsession"), browser);
+			driver = new RemoteWebDriver(new URL("http://sdaas-gridlab.cisco.com:8080/wd/hub"), browser);
+			
+			
 
 	//	driver = new RemoteWebDriver(new URL("http://10.65.192.235:5555/wd/hub"), browser);
 			//driver = new RemoteWebDriver(new URL("http://10.65.192.110:5555/wd/hub"), browser);
