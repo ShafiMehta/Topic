@@ -1,9 +1,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>SSC_SORT_INFY_Tacticals</groupId>
-  <artifactId>SSC_SORT_INFY_Tacticals</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>SSC_SORT_INFY_Tacticals</name>
+  <groupId>FS_TopicSearch_3._Maven</groupId>
+	<artifactId>FS_TopicSearch_3._Maven</artifactId>
+	<version>0.0.1SNAPSHOT</version>
+	<packaging>jar</packaging>
   
   
   <properties>
