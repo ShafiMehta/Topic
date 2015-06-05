@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+    <line>
+      <![CDATA[PASS: POM_Lib.driverInitiation : 'Cisco.com Login Page' landing page is displayed. <br>]]>
+    </line>
+    <line>
+      <![CDATA[PASS: POM_Lib.CheckVisibility : 'LoginId' is displayed. <br>]]>
+    </line>
+    <line>
+      <![CDATA[PASS: POM_Lib.EnterDataInTextBox : 'LoginId' is present in the page. Data entered is nisahni. <br>]]>
+    </line>
+    <line>
+      <![CDATA[PASS: POM_Lib.CheckVisibility : 'Password' is displayed. <br>]]>
+    </line>
+    <line>
+      <![CDATA[PASS: POM_Lib.EnterDataInTextBox : 'Password' is present in the page. Data entered is Nish$2015. <br>]]>
+    </line>
+    <line>
+      <![CDATA[PASS: POM_Lib.CheckVisibility : 'Login' is displayed. <br>]]>
+    </line>
+    <line>
+      <![CDATA[PASS: POM_Lib.ClickOnElement : 'Login' is succesfully clicked. <br>]]>
+    </line>
+    <line>
+      <![CDATA[PASS: POM_Lib.uf_R_Login_Topic_Search : 'Title' is Verified. <br>]]>
+    </line>
+    <line>
+      <![CDATA[PASS: POM_Lib.CheckVisibility : 'Advanced Search' is displayed. <br>]]>
+    </line>
+    <line>
+      <![CDATA[PASS: POM_Lib.ClickOnElement : 'Advanced Search' is succesfully clicked. <br>]]>
+    </line>
+    <line>
+      <![CDATA[PASS: POM_Lib.CheckVisibility : 'Search Data' is displayed. <br>]]>
+    </line>
+    <line>
+      <![CDATA[PASS: POM_Lib.EnterDataInTextBox : 'Search Data' is present in the page. Data entered is rou:ter. <br>]]>
+    </line>
+    <line>
+      <![CDATA[PASS: POM_Lib.CheckVisibility : 'Search' is displayed. <br>]]>
+    </line>
+    <line>
+      <![CDATA[PASS: POM_Lib.ClickOnElement : 'Search' is succesfully clicked. <br>]]>
+    </line>
+    <line>
+      <![CDATA[PASS: POM_Lib.TS014_Q4AS_Search_Topic3UI_AttivioMigration_PROG_CSSCS_queries_colon_taken_fielded_Search_query_term_preceding_colon_notOne_metadata_fields : 'rou:ter' is searched and Search Button is clicked. <br>]]>
+    </line>
+    <line>
+      <![CDATA[PASS: POM_Lib.CheckVisibility : 'Error Message' is displayed. <br>]]>
+    </line>
+    <line>
+      <![CDATA[PASS: POM_Lib.ErrorMessageVerification() : 'Error Message' is verified. <br>]]>
+    </line>
+    <line>
+      <![CDATA[PASS: POM_Lib.SearchTopic_3_UI_AttivioMigration_PROG_SRCH_Performing_search_Search_query_using_exclude_hyphenSymbol() : 'Search Topic 3 0 UI_Attivio Migration_PROG_SRCH 3  Performing search_Search query using To exclude _hyphen symbol_31' is verified. <br>]]>
+    </line>
+  </reporter-output>
+  <suite name="Suite" duration-ms="122855" started-at="2015-06-05T12:55:33Z" finished-at="2015-06-05T12:57:36Z">
+    <groups>
+    </groups>
+    <test name="TestScript.TS014_Q4AS_Search_Topic3UI_AttivioMigration_PROG_CSSCS_queries_colon_taken_fielded_Search_query_term_preceding_colon_notOne_metadata_fields" duration-ms="122855" started-at="2015-06-05T12:55:33Z" finished-at="2015-06-05T12:57:36Z">
+      <class name="TestScript.TS014_Q4AS_Search_Topic3UI_AttivioMigration_PROG_CSSCS_queries_colon_taken_fielded_Search_query_term_preceding_colon_notOne_metadata_fields">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:TestScript.TS014_Q4AS_Search_Topic3UI_AttivioMigration_PROG_CSSCS_queries_colon_taken_fielded_Search_query_term_preceding_colon_notOne_metadata_fields@18780a2]" name="setUp" is-config="true" duration-ms="2476" started-at="2015-06-05T18:25:33Z" finished-at="2015-06-05T18:25:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="initiatebrowser()[pri:0, instance:TestScript.TS014_Q4AS_Search_Topic3UI_AttivioMigration_PROG_CSSCS_queries_colon_taken_fielded_Search_query_term_preceding_colon_notOne_metadata_fields@18780a2]" name="initiatebrowser" is-config="true" duration-ms="1" started-at="2015-06-05T18:25:35Z" finished-at="2015-06-05T18:25:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initiatebrowser -->
+        <test-method status="PASS" signature="ts002_Q4AS_Search_Topic3UI_AttivioMigration_PROG_CSSCS_queries_colon_taken_fielded_Search_query_term_preceding_colon_notOne_metadata_fields()[pri:0, instance:TestScript.TS014_Q4AS_Search_Topic3UI_AttivioMigration_PROG_CSSCS_queries_colon_taken_fielded_Search_query_term_preceding_colon_notOne_metadata_fields@18780a2]" name="ts002_Q4AS_Search_Topic3UI_AttivioMigration_PROG_CSSCS_queries_colon_taken_fielded_Search_query_term_preceding_colon_notOne_metadata_fields" duration-ms="115918" started-at="2015-06-05T18:25:35Z" finished-at="2015-06-05T18:27:31Z">
+          <reporter-output>
+            <line>
+              <![CDATA[PASS: POM_Lib.driverInitiation : 'Cisco.com Login Page' landing page is displayed. <br>]]>
+            </line>
+            <line>
+              <![CDATA[PASS: POM_Lib.CheckVisibility : 'LoginId' is displayed. <br>]]>
+            </line>
+            <line>
+              <![CDATA[PASS: POM_Lib.EnterDataInTextBox : 'LoginId' is present in the page. Data entered is nisahni. <br>]]>
+            </line>
+            <line>
+              <![CDATA[PASS: POM_Lib.CheckVisibility : 'Password' is displayed. <br>]]>
+            </line>
+            <line>
+              <![CDATA[PASS: POM_Lib.EnterDataInTextBox : 'Password' is present in the page. Data entered is Nish$2015. <br>]]>
+            </line>
+            <line>
+              <![CDATA[PASS: POM_Lib.CheckVisibility : 'Login' is displayed. <br>]]>
+            </line>
+            <line>
+              <![CDATA[PASS: POM_Lib.ClickOnElement : 'Login' is succesfully clicked. <br>]]>
+            </line>
+            <line>
+              <![CDATA[PASS: POM_Lib.uf_R_Login_Topic_Search : 'Title' is Verified. <br>]]>
+            </line>
+            <line>
+              <![CDATA[PASS: POM_Lib.CheckVisibility : 'Advanced Search' is displayed. <br>]]>
+            </line>
+            <line>
+              <![CDATA[PASS: POM_Lib.ClickOnElement : 'Advanced Search' is succesfully clicked. <br>]]>
+            </line>
+            <line>
+              <![CDATA[PASS: POM_Lib.CheckVisibility : 'Search Data' is displayed. <br>]]>
+            </line>
+            <line>
+              <![CDATA[PASS: POM_Lib.EnterDataInTextBox : 'Search Data' is present in the page. Data entered is rou:ter. <br>]]>
+            </line>
+            <line>
+              <![CDATA[PASS: POM_Lib.CheckVisibility : 'Search' is displayed. <br>]]>
+            </line>
+            <line>
+              <![CDATA[PASS: POM_Lib.ClickOnElement : 'Search' is succesfully clicked. <br>]]>
+            </line>
+            <line>
+              <![CDATA[PASS: POM_Lib.TS014_Q4AS_Search_Topic3UI_AttivioMigration_PROG_CSSCS_queries_colon_taken_fielded_Search_query_term_preceding_colon_notOne_metadata_fields : 'rou:ter' is searched and Search Button is clicked. <br>]]>
+            </line>
+            <line>
+              <![CDATA[PASS: POM_Lib.CheckVisibility : 'Error Message' is displayed. <br>]]>
+            </line>
+            <line>
+              <![CDATA[PASS: POM_Lib.ErrorMessageVerification() : 'Error Message' is verified. <br>]]>
+            </line>
+            <line>
+              <![CDATA[PASS: POM_Lib.SearchTopic_3_UI_AttivioMigration_PROG_SRCH_Performing_search_Search_query_using_exclude_hyphenSymbol() : 'Search Topic 3 0 UI_Attivio Migration_PROG_SRCH 3  Performing search_Search query using To exclude _hyphen symbol_31' is verified. <br>]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- ts002_Q4AS_Search_Topic3UI_AttivioMigration_PROG_CSSCS_queries_colon_taken_fielded_Search_query_term_preceding_colon_notOne_metadata_fields -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:TestScript.TS014_Q4AS_Search_Topic3UI_AttivioMigration_PROG_CSSCS_queries_colon_taken_fielded_Search_query_term_preceding_colon_notOne_metadata_fields@18780a2]" name="tearDown" is-config="true" duration-ms="4457" started-at="2015-06-05T18:27:31Z" finished-at="2015-06-05T18:27:36Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- TestScript.TS014_Q4AS_Search_Topic3UI_AttivioMigration_PROG_CSSCS_queries_colon_taken_fielded_Search_query_term_preceding_colon_notOne_metadata_fields -->
+    </test> <!-- TestScript.TS014_Q4AS_Search_Topic3UI_AttivioMigration_PROG_CSSCS_queries_colon_taken_fielded_Search_query_term_preceding_colon_notOne_metadata_fields -->
+  </suite> <!-- Suite -->
+</testng-results>
