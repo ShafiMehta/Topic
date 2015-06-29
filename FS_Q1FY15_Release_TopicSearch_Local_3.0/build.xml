@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="ReportArchieve" default="zip" basedir=".">
+
+	<property name="project-name" value="${ant.project.name}" />
+	<property name="folder-to-zip" value="target/surefire-reports" />
+	<property name="unzip-destination" value="unzipped" />
+	<property name="zip-it" value="./temp" />
+	
+	 <delete dir="./temp/test-output"/> 
+	<mkdir dir="./temp/test-output"/>
+	
+	<copy file="${folder-to-zip}/bullet_point.png" todir="./temp/test-output"/>
+	<copy file="${folder-to-zip}/collapseall.gif" todir="./temp/test-output"/>
+	<copy file="${folder-to-zip}/failed.png" todir="./temp/test-output"/>
+	<copy file="${folder-to-zip}/index.html" todir="./temp/test-output"/>
+	<copy file="${folder-to-zip}/jquery-1.7.1.min.js" todir="./temp/test-output"/>
+	<copy file="${folder-to-zip}/navigator-bullet.png" todir="./temp/test-output"/>
+	<copy file="${folder-to-zip}/passed.png" todir="./temp/test-output"/>
+	<copy file="${folder-to-zip}/skipped.png" todir="./temp/test-output"/>
+	<copy file="${folder-to-zip}/testng.css" todir="./temp/test-output"/>
+	<copy file="${folder-to-zip}/testng-reports.css" todir="./temp/test-output"/>
+	<copy file="${folder-to-zip}/testng-reports.js" todir="./temp/test-output"/>
+
+  
+	<target name="clean">
+		<delete file="${project-name}.zip" />
+		<delete dir="${unzip-destination}" />
+	</target>
+
+	<target name="zip">
+		<zip destfile="${project-name}.zip" basedir="${zip-it}" excludes="dont*.*"  />
+	</target>
+
+	<target name="unzip">
+		<unzip src="${project-name}.zip" dest="${unzip-destination}" />
+	</target>
+	
+</project>
