@@ -33,7 +33,7 @@ public class Runner {
 		// Create the run time primaryTestng.xml file
 		UtilLib.AppendPrimaryXML();
 
-		// ======Primary Execution
+		/*// ======Primary Execution
 		System.out
 				.println("************************************ Primary Execution Initialized **********************************************");
 		ArrayList<String> testNGSuiteArray = new ArrayList<String>();
@@ -75,7 +75,7 @@ public class Runner {
 			.println("************************************ Secondary Execution Completed Successfully **********************************************");
 		}else{
 			System.out.println("All TestScripts passed.");
-		}
+		}*/
 
 		
 		ExecutionStopTime = UtilLib.FindSysTimeExecution();

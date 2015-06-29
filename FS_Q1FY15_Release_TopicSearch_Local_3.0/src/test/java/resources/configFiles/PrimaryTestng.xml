@@ -1,1 +1,712 @@
-<?xml version="1.0" encoding="UTF-8"?><suite name="Suite" parallel="false"><test name="TestScript.TS014_Q4AS_Search_Topic3UI_AttivioMigration_PROG_CSSCS_queries_colon_taken_fielded_Search_query_term_preceding_colon_notOne_metadata_fields"><classes><class name="TestScript.TS014_Q4AS_Search_Topic3UI_AttivioMigration_PROG_CSSCS_queries_colon_taken_fielded_Search_query_term_preceding_colon_notOne_metadata_fields"/></classes></test></suite>
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite" parallel="false">
+	<test
+		name="TestScript.TS057_SearchTopic_3UI_AttivioMigration_PROG_SRCH_PerformingSearch_SearchqueryUsingOR_AND_betweenStrings">
+		<classes>
+			<class
+				name="TestScript.TS057_SearchTopic_3UI_AttivioMigration_PROG_SRCH_PerformingSearch_SearchqueryUsingOR_AND_betweenStrings" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS056_SearchTopic_3_UI_AttivioMigration_PROG_SRCH_PerformingSearch_Searchquery_non_wildCardSymbols">
+		<classes>
+			<class
+				name="TestScript.TS056_SearchTopic_3_UI_AttivioMigration_PROG_SRCH_PerformingSearch_Searchquery_non_wildCardSymbols" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS058_SearchTopic3_UI_AttivioMigration_PROG_SRCH_Performing_search_Search_queryUsingOR">
+		<classes>
+			<class
+				name="TestScript.TS058_SearchTopic3_UI_AttivioMigration_PROG_SRCH_Performing_search_Search_queryUsingOR" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS060_SearchTopic3UI_AttivioMigration_PROG_SRCHPerformingSearch_Searchquery_using_starSymbol">
+		<classes>
+			<class
+				name="TestScript.TS060_SearchTopic3UI_AttivioMigration_PROG_SRCHPerformingSearch_Searchquery_using_starSymbol" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS061_SearchTopic_3_UI_AttivioMigration_PROG_SRCH_Performing_search_Search_query_using_exclude_hyphenSymbol">
+		<classes>
+			<class
+				name="TestScript.TS061_SearchTopic_3_UI_AttivioMigration_PROG_SRCH_Performing_search_Search_query_using_exclude_hyphenSymbol" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS015_Search_Topic_3_UI_AttivioMigration_PROG_queries_with_colon_may_taken_fielded_search_query_term_preceding_term_matches_one_metadata_field_names">
+		<classes>
+			<class
+				name="TestScript.TS015_Search_Topic_3_UI_AttivioMigration_PROG_queries_with_colon_may_taken_fielded_search_query_term_preceding_term_matches_one_metadata_field_names" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS016_SearchTopic_3_UI_AttivioMigration_PROG_CSSCSO272_SearchTips_06">
+		<classes>
+			<class
+				name="TestScript.TS016_SearchTopic_3_UI_AttivioMigration_PROG_CSSCSO272_SearchTips_06" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS017_SearchTopic3_UI_AttivioMigration_PROG_CSSCSO287_UISource_selection_cannot_changed_without_queryText_09">
+		<classes>
+			<class
+				name="TestScript.TS017_SearchTopic3_UI_AttivioMigration_PROG_CSSCSO287_UISource_selection_cannot_changed_without_queryText_09" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS11_SearchTopic_3_UI_AttivioMigration_PROG_Q4SCOPE_CSSCSO_MetadataDisplay_consistent_C3datasource_109">
+		<classes>
+			<class
+				name="TestScript.TS11_SearchTopic_3_UI_AttivioMigration_PROG_Q4SCOPE_CSSCSO_MetadataDisplay_consistent_C3datasource_109" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS12_SearchTopic_3_UI_AttivioMigration_PROG_Q4_SCOPE_CSSCSO_MetadataDisplay_consistent_CDETSdataSource_110">
+		<classes>
+			<class
+				name="TestScript.TS12_SearchTopic_3_UI_AttivioMigration_PROG_Q4_SCOPE_CSSCSO_MetadataDisplay_consistent_CDETSdataSource_110" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS01_SearchTopic3UI_AttivioMigration_PROG_Q4SCOPE_CachedLinkSolution_C3">
+		<classes>
+			<class
+				name="TestScript.TS01_SearchTopic3UI_AttivioMigration_PROG_Q4SCOPE_CachedLinkSolution_C3" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS02_SearchTopic3UI_AttivioMigration_PROG_Q4SCOPE_CachedLinkSolution_CDETS">
+		<classes>
+			<class
+				name="TestScript.TS02_SearchTopic3UI_AttivioMigration_PROG_Q4SCOPE_CachedLinkSolution_CDETS" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS04_SearchTopic3UI_AttivioMigration_PROG_Q4SCOPE_CachedLinkSolution_CDETS_DS_with_other_DS">
+		<classes>
+			<class
+				name="TestScript.TS04_SearchTopic3UI_AttivioMigration_PROG_Q4SCOPE_CachedLinkSolution_CDETS_DS_with_other_DS" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS05_AttivioMigration_CSSCSO288_Error500_Cantinsertpage_C3datasourceisselectedandsearchwithpercentile_02">
+		<classes>
+			<class
+				name="TestScript.TS05_AttivioMigration_CSSCSO288_Error500_Cantinsertpage_C3datasourceisselectedandsearchwithpercentile_02" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS024_SearchTopic3UI_AttivioMigration_PROG_Q4SCOPE_TopicSupportLink">
+		<classes>
+			<class
+				name="TestScript.TS024_SearchTopic3UI_AttivioMigration_PROG_Q4SCOPE_TopicSupportLink" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS13_SearchTopic_3_UI_AttivioMigration_PROG_Q4SCOPE_CSSCSO_MetadataDisplay_consistent_NewsGroupdataSource_112">
+		<classes>
+			<class
+				name="TestScript.TS13_SearchTopic_3_UI_AttivioMigration_PROG_Q4SCOPE_CSSCSO_MetadataDisplay_consistent_NewsGroupdataSource_112" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS025_SearchTopic3UI_AttivioMigration_PROG_Q4SCOPE_TopicHelpLink">
+		<classes>
+			<class
+				name="TestScript.TS025_SearchTopic3UI_AttivioMigration_PROG_Q4SCOPE_TopicHelpLink" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS014_Q4AS_Search_Topic3UI_AttivioMigration_PROG_CSSCS_queries_colon_taken_fielded_Search_query_term_preceding_colon_notOne_metadata_fields">
+		<classes>
+			<class
+				name="TestScript.TS014_Q4AS_Search_Topic3UI_AttivioMigration_PROG_CSSCS_queries_colon_taken_fielded_Search_query_term_preceding_colon_notOne_metadata_fields" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS034_SearchTopic3_0_UI_AttivioMigration_PROG_RSLT_Resultpagefilteringoptions_defaultsearchfilters_FILEFORMATS_Webpages_36">
+		<classes>
+			<class
+				name="TestScript.TS034_SearchTopic3_0_UI_AttivioMigration_PROG_RSLT_Resultpagefilteringoptions_defaultsearchfilters_FILEFORMATS_Webpages_36" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS036_TSSearchTopic_3_1_4UI_Oct14Rel_PROG_Mypreferences_option_available_TopicUI_header_BrowserHistory">
+		<classes>
+			<class
+				name="TestScript.TS036_TSSearchTopic_3_1_4UI_Oct14Rel_PROG_Mypreferences_option_available_TopicUI_header_BrowserHistory" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS037_SearchTopic_3_1_4UI_Oct14Rel_PROG_Verify_Mypreferences_option_Functionality_BackButton">
+		<classes>
+			<class
+				name="TestScript.TS037_SearchTopic_3_1_4UI_Oct14Rel_PROG_Verify_Mypreferences_option_Functionality_BackButton" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS038_SearchTopic_3_1_4UI_Oct14Rel_PROG_Verify_Mypreferences_option_Functionality_AutoSuggest">
+		<classes>
+			<class
+				name="TestScript.TS038_SearchTopic_3_1_4UI_Oct14Rel_PROG_Verify_Mypreferences_option_Functionality_AutoSuggest" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS039SearchTopic_3_1_4_UI_Oct14Rel_PROG_Alwayssearchwithinthese_checkeddatasources_savechanges">
+		<classes>
+			<class
+				name="TestScript.TS039SearchTopic_3_1_4_UI_Oct14Rel_PROG_Alwayssearchwithinthese_checkeddatasources_savechanges" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS027_Topic3_0_UI_Aug14Rel_PROG_AddFAQlink_Homepage_03">
+		<classes>
+			<class
+				name="TestScript.TS027_Topic3_0_UI_Aug14Rel_PROG_AddFAQlink_Homepage_03" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS047_SearchTopic3_0_UI_AttivioMigration_PROG_SRCH2SearchPagedatasource_view_lessdatasources_lessdatasourcelink_44">
+		<classes>
+			<class
+				name="TestScript.TS047_SearchTopic3_0_UI_AttivioMigration_PROG_SRCH2SearchPagedatasource_view_lessdatasources_lessdatasourcelink_44" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS048_SearchTopic3_0_UI_AttivioMigration_PROG_Q4SCOPE_CSSCSO305_UIPage_title_should_reflect_searchquery_search_fromHomepage_45">
+		<classes>
+			<class
+				name="TestScript.TS048_SearchTopic3_0_UI_AttivioMigration_PROG_Q4SCOPE_CSSCSO305_UIPage_title_should_reflect_searchquery_search_fromHomepage_45" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS031_SearchTopic3_0_UI_AttivioMigration_PROG_RSLT3Resultpagefiltering_options_defaultsearchfilters_FILE_FORMATS_PDFs_34">
+		<classes>
+			<class
+				name="TestScript.TS031_SearchTopic3_0_UI_AttivioMigration_PROG_RSLT3Resultpagefiltering_options_defaultsearchfilters_FILE_FORMATS_PDFs_34" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS06_AttivioMigration_E2E_PerformingthesearchwhileClearAll_Resetlinks_andverifythesortByoptionsintheresultspage_38">
+		<classes>
+			<class
+				name="TestScript.TS06_AttivioMigration_E2E_PerformingthesearchwhileClearAll_Resetlinks_andverifythesortByoptionsintheresultspage_38" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS035_SearchTopic3_0_UI_AttivioMigration_PROG_RSLT3_Resultpage_filteringoptions_defaultSearchfilters_FILEFORMATS_ALL_32">
+		<classes>
+			<class
+				name="TestScript.TS035_SearchTopic3_0_UI_AttivioMigration_PROG_RSLT3_Resultpage_filteringoptions_defaultSearchfilters_FILEFORMATS_ALL_32" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS040_SearchTopic_3_1_4UI_AttivioMigration_PROG_Q4SCOPE_SRCH2_User_selects_onlyAttiviobased_datasourcesforSearch_Previewcapability_availablefor_newsgroup">
+		<classes>
+			<class
+				name="TestScript.TS040_SearchTopic_3_1_4UI_AttivioMigration_PROG_Q4SCOPE_SRCH2_User_selects_onlyAttiviobased_datasourcesforSearch_Previewcapability_availablefor_newsgroup" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS041_SearchTopic_3_1_4UI_AttivioMigration_PROG_Q4SCOPE_SRCH2_User_selects_Attivio_baseddataSource_search_PreviewCapability_available_cdets_29">
+		<classes>
+			<class
+				name="TestScript.TS041_SearchTopic_3_1_4UI_AttivioMigration_PROG_Q4SCOPE_SRCH2_User_selects_Attivio_baseddataSource_search_PreviewCapability_available_cdets_29" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS042_SearchTopic_3_1_4_UI_AttivioMigration_PROG_Q4SCOPE_SRCH2_User_selects_onlyAttiviobased_datasources_search_PreviewCapability_available_c3_28">
+		<classes>
+			<class
+				name="TestScript.TS042_SearchTopic_3_1_4_UI_AttivioMigration_PROG_Q4SCOPE_SRCH2_User_selects_onlyAttiviobased_datasources_search_PreviewCapability_available_c3_28" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS043_SearchTopic_3_1_4UI_AttivioMigration_PROG_Q4SCOPE_SRCH2_Userselectsonly_Attivio_data_sources_search_Preview_capability_available_techzone_31">
+		<classes>
+			<class
+				name="TestScript.TS043_SearchTopic_3_1_4UI_AttivioMigration_PROG_Q4SCOPE_SRCH2_Userselectsonly_Attivio_data_sources_search_Preview_capability_available_techzone_31" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS044_SearchTopic3_0_UI_AttivioMigration_PROG_LG1_HOMESCREEN_loginpage_Blankcredentials_loginfunctionality_37">
+		<classes>
+			<class
+				name="TestScript.TS044_SearchTopic3_0_UI_AttivioMigration_PROG_LG1_HOMESCREEN_loginpage_Blankcredentials_loginfunctionality_37" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS045_SearchTopic_3_0_UI_AttivioMigration_PROG_LG1_HOMESCREEN_Loginpage_lookandfeel_42">
+		<classes>
+			<class
+				name="TestScript.TS045_SearchTopic_3_0_UI_AttivioMigration_PROG_LG1_HOMESCREEN_Loginpage_lookandfeel_42" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS046_SearchTopic3_0UI_AttivioMigration_PROG_SRCH2SearchPagedatasource_to_view_moredatasources_moredatasourcelink_43">
+		<classes>
+			<class
+				name="TestScript.TS046_SearchTopic3_0UI_AttivioMigration_PROG_SRCH2SearchPagedatasource_to_view_moredatasources_moredatasourcelink_43" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS053_SearchTopic3_UI_AttivioMigration_PROG_SRCH_PerformingSearch_Search_queryUsingAND">
+		<classes>
+			<class
+				name="TestScript.TS053_SearchTopic3_UI_AttivioMigration_PROG_SRCH_PerformingSearch_Search_queryUsingAND" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS054_SearchTopic3_UI_AttivioMigration_PROG_SRCHPerformingSearch_SearchQueryUsingMultipleANDs_betweenStrings">
+		<classes>
+			<class
+				name="TestScript.TS054_SearchTopic3_UI_AttivioMigration_PROG_SRCHPerformingSearch_SearchQueryUsingMultipleANDs_betweenStrings" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS07_AttivioMigration_E2E_Performingthesearchwhileandverifythedatasourcefilters_39">
+		<classes>
+			<class
+				name="TestScript.TS07_AttivioMigration_E2E_Performingthesearchwhileandverifythedatasourcefilters_39" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS09_AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenCDETSdatasourceisselected_47">
+		<classes>
+			<class
+				name="TestScript.TS09_AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenCDETSdatasourceisselected_47" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS028_Topic3_0_UI_Aug14Rel_PROG_AddFAQlink_Resultspage04">
+		<classes>
+			<class
+				name="TestScript.TS028_Topic3_0_UI_Aug14Rel_PROG_AddFAQlink_Resultspage04" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS029_Topic3_0_UI_Aug14Rel_PROG_beside_advanceSerach_Homepage_05">
+		<classes>
+			<class
+				name="TestScript.TS029_Topic3_0_UI_Aug14Rel_PROG_beside_advanceSerach_Homepage_05" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS030_Topic3_0_UI_Aug14Rel_PROG_besideAdvanceSerach_Resultspage_06">
+		<classes>
+			<class
+				name="TestScript.TS030_Topic3_0_UI_Aug14Rel_PROG_besideAdvanceSerach_Resultspage_06" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS032_SearchTopic3_0_UI_AttivioMigration_PROG_RSLT_ResultpageFilteringoptions_defaultSearchfilters_FILEFORMATS_application_vnd_mspowerpoint_35">
+		<classes>
+			<class
+				name="TestScript.TS032_SearchTopic3_0_UI_AttivioMigration_PROG_RSLT_ResultpageFilteringoptions_defaultSearchfilters_FILEFORMATS_application_vnd_mspowerpoint_35" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS033_SearchTopic3_UI_AttivioMigration_PROG_RSLT3Resultpagefilteringoptions_defaultsearchfilters_FILEFORMATS_OnlineTraining_33">
+		<classes>
+			<class
+				name="TestScript.TS033_SearchTopic3_UI_AttivioMigration_PROG_RSLT3Resultpagefilteringoptions_defaultsearchfilters_FILEFORMATS_OnlineTraining_33" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS018_SearchTopic_3_UI_AttivioMigration_PROG_CSSCSO285_Error_while_calling_webService_10">
+		<classes>
+			<class
+				name="TestScript.TS018_SearchTopic_3_UI_AttivioMigration_PROG_CSSCSO285_Error_while_calling_webService_10" />
+		</classes>
+	</test>
+	<test name="TestScript.TS081_SearchTopic_3_0_UI_Aug9Rel_REG_ErrorMessage_10">
+		<classes>
+			<class
+				name="TestScript.TS081_SearchTopic_3_0_UI_Aug9Rel_REG_ErrorMessage_10" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS020_SearchTopic_3_UI_AttivioMigration_PROG_CSSCS_fielded_search_handleSpace_colon_value_wildcard_15">
+		<classes>
+			<class
+				name="TestScript.TS020_SearchTopic_3_UI_AttivioMigration_PROG_CSSCS_fielded_search_handleSpace_colon_value_wildcard_15" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS021_SearchTopic_3_UI_AttivioMigration_PROG_CSSCSO_FieldedSearch_16">
+		<classes>
+			<class
+				name="TestScript.TS021_SearchTopic_3_UI_AttivioMigration_PROG_CSSCSO_FieldedSearch_16" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS10_SearchTopic_3_UI_AttivioMigration_PROG_Q4SCOPE_CSSCSO_options_viewC3Results_XMLKWERY_104">
+		<classes>
+			<class
+				name="TestScript.TS10_SearchTopic_3_UI_AttivioMigration_PROG_Q4SCOPE_CSSCSO_options_viewC3Results_XMLKWERY_104" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS023_SearchTopic_3_UI_AttivioMigration_PROG_Q4SCOPE_CSSCSO_options_viewC3results_CS_ONE_105">
+		<classes>
+			<class
+				name="TestScript.TS023_SearchTopic_3_UI_AttivioMigration_PROG_Q4SCOPE_CSSCSO_options_viewC3results_CS_ONE_105" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS03_SearchTopic3UI_AttivioMigration_PROG_Q4SCOPE_CachedLinkSolution_C3_DS_with_other_DS">
+		<classes>
+			<class
+				name="TestScript.TS03_SearchTopic3UI_AttivioMigration_PROG_Q4SCOPE_CachedLinkSolution_C3_DS_with_other_DS" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS070_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3ResultpagefilteringOptions_defaultSearchfilters_DATERANGEFILTERS_SelectPastWeek_19">
+		<classes>
+			<class
+				name="TestScript.TS070_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3ResultpagefilteringOptions_defaultSearchfilters_DATERANGEFILTERS_SelectPastWeek_19" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS071_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3Resultpagefilteringoptions_defaultsearchfilters_DATERANGEFILTERS_Verify_count_displyedagainst_date_ranagefilters_29">
+		<classes>
+			<class
+				name="TestScript.TS071_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3Resultpagefilteringoptions_defaultsearchfilters_DATERANGEFILTERS_Verify_count_displyedagainst_date_ranagefilters_29" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS063_SearchTopic_3_0_UI_AttivioMigration_PROG_SRCH3_PerformingSearch_Searchqueryusing_metafields_12">
+		<classes>
+			<class
+				name="TestScript.TS063_SearchTopic_3_0_UI_AttivioMigration_PROG_SRCH3_PerformingSearch_Searchqueryusing_metafields_12" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS064_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT_3_Resultpage_filteringOptions_default_searchFilters_DATASOURCEFILTER_ALL_13">
+		<classes>
+			<class
+				name="TestScript.TS064_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT_3_Resultpage_filteringOptions_default_searchFilters_DATASOURCEFILTER_ALL_13" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS065_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3ResultpagefilteringOptions_defaultSearchfilters_DATASOURCEFILTER_C3_navigator_values_14">
+		<classes>
+			<class
+				name="TestScript.TS065_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3ResultpagefilteringOptions_defaultSearchfilters_DATASOURCEFILTER_C3_navigator_values_14" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS066_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3Result_pagefiltering_options_default_searchfilters_DATASOURCEFILTER_CDETSnavigatorvalues_15">
+		<classes>
+			<class
+				name="TestScript.TS066_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3Result_pagefiltering_options_default_searchfilters_DATASOURCEFILTER_CDETSnavigatorvalues_15" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS079_Topic_3_0_UI_Aug14Rel_PROG_SortbyChangeFromdropdownTohyperlink_DateOldest_08">
+		<classes>
+			<class
+				name="TestScript.TS079_Topic_3_0_UI_Aug14Rel_PROG_SortbyChangeFromdropdownTohyperlink_DateOldest_08" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS087_SearchTopic_3_1_4_UI_Dec14Rel_PROGResultPreviewEnhancements_PreviewLink_01">
+		<classes>
+			<class
+				name="TestScript.TS087_SearchTopic_3_1_4_UI_Dec14Rel_PROGResultPreviewEnhancements_PreviewLink_01" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS088_SearchTopic_3_1_4_UI_Dec14Rel_PROGResultPreviewEnhancements_PreviewLinkandCarot_02">
+		<classes>
+			<class
+				name="TestScript.TS088_SearchTopic_3_1_4_UI_Dec14Rel_PROGResultPreviewEnhancements_PreviewLinkandCarot_02" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS089_SearchTopic_3_1_4_UI_Dec14Rel_PROG_MypreferencesPage_Messageappears_05">
+		<classes>
+			<class
+				name="TestScript.TS089_SearchTopic_3_1_4_UI_Dec14Rel_PROG_MypreferencesPage_Messageappears_05" />
+		</classes>
+	</test>
+	<test name="TestScript.TS092_SearchTopic_Sourcefire_UI_SearchTips_09">
+		<classes>
+			<class name="TestScript.TS092_SearchTopic_Sourcefire_UI_SearchTips_09" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS090_SearchTopic_3_1_4_UI_Dec14Rel_PROG_OpeningnewTab_clickingonIcon_07">
+		<classes>
+			<class
+				name="TestScript.TS090_SearchTopic_3_1_4_UI_Dec14Rel_PROG_OpeningnewTab_clickingonIcon_07" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS091_SearchTopic3UI_AttivioMigration_PROG_Editing_dataSourcefilter_SelecteddataSource_stored_DB">
+		<classes>
+			<class
+				name="TestScript.TS091_SearchTopic3UI_AttivioMigration_PROG_Editing_dataSourcefilter_SelecteddataSource_stored_DB" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS093_SearchTopic_Sourcefire_UI_Datelatest_dateOldestlink_08">
+		<classes>
+			<class
+				name="TestScript.TS093_SearchTopic_Sourcefire_UI_Datelatest_dateOldestlink_08" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS094_SearchTopic_Sourcefire_UI_submission_relevance_FeedbackshouldAcknowledged_04">
+		<classes>
+			<class
+				name="TestScript.TS094_SearchTopic_Sourcefire_UI_submission_relevance_FeedbackshouldAcknowledged_04" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS095_SearchTopic_Sourcefire_UI_Error_ErrorMessage_03">
+		<classes>
+			<class
+				name="TestScript.TS095_SearchTopic_Sourcefire_UI_Error_ErrorMessage_03" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS096_SearchTopic_Sourcefire_UI_Select_extra_dataSource_from_more_dataSource_link_02">
+		<classes>
+			<class
+				name="TestScript.TS096_SearchTopic_Sourcefire_UI_Select_extra_dataSource_from_more_dataSource_link_02" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS098_SearchTopic_Sourcefire_UI_Sourcefire_DataSource_Addition_MetaFieldsFilters_05">
+		<classes>
+			<class
+				name="TestScript.TS098_SearchTopic_Sourcefire_UI_Sourcefire_DataSource_Addition_MetaFieldsFilters_05" />
+		</classes>
+	</test>
+	<test name="TestScript.TS099_SearchTopic_Sourcefire_UI_SortRelevancy_11">
+		<classes>
+			<class name="TestScript.TS099_SearchTopic_Sourcefire_UI_SortRelevancy_11" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS078_Topic_3_0_UI_Aug14Rel_PROG_SortBy_changefrom_dropdown_toHyperlink_DateLatest_07">
+		<classes>
+			<class
+				name="TestScript.TS078_Topic_3_0_UI_Aug14Rel_PROG_SortBy_changefrom_dropdown_toHyperlink_DateLatest_07" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS083_Topic_3_0_UI_Aug14Rel_PROG_ChangeHelpToUserGuide_Resultspage_02">
+		<classes>
+			<class
+				name="TestScript.TS083_Topic_3_0_UI_Aug14Rel_PROG_ChangeHelpToUserGuide_Resultspage_02" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS084_SearchTopic_3_1_3_UI_Oct14Rel_PROG_verifyCDETSmetadatafields_version_and_integratedReleases_intoOneline_07">
+		<classes>
+			<class
+				name="TestScript.TS084_SearchTopic_3_1_3_UI_Oct14Rel_PROG_verifyCDETSmetadatafields_version_and_integratedReleases_intoOneline_07" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS085_SearchTopic_3_0_UI_AttivioMigration_PROG_Q4SCOPE_CSSCSO260_Filters_SingleDatasourceSelected_03">
+		<classes>
+			<class
+				name="TestScript.TS085_SearchTopic_3_0_UI_AttivioMigration_PROG_Q4SCOPE_CSSCSO260_Filters_SingleDatasourceSelected_03" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS019_SearchTopic_3_UI_AttivioMigration_PROG_CSSCSO262_ErrorMessage_12">
+		<classes>
+			<class
+				name="TestScript.TS019_SearchTopic_3_UI_AttivioMigration_PROG_CSSCSO262_ErrorMessage_12" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS08_AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3datasourceisselected_46">
+		<classes>
+			<class
+				name="TestScript.TS08_AttivioMigration_E2E_VerifyingthefunctionalitysearchwhenC3datasourceisselected_46" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS100_SearchTopic_3_0_UI_AttivioMigration_PROG_Q4SCOPE_CSSCSO316_Metadata_Display_to_consistent_TechZone_dataSource_57">
+		<classes>
+			<class
+				name="TestScript.TS100_SearchTopic_3_0_UI_AttivioMigration_PROG_Q4SCOPE_CSSCSO316_Metadata_Display_to_consistent_TechZone_dataSource_57" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS101_Topic_3_0_UI_Aug14_Rel_PROG_User_clicks_on_SearchButton_without_Giving_any_query_in__searchbox_07">
+		<classes>
+			<class
+				name="TestScript.TS101_Topic_3_0_UI_Aug14_Rel_PROG_User_clicks_on_SearchButton_without_Giving_any_query_in__searchbox_07" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS102_Topic_3_0_UI_Aug14_Rel_PROG_SR_contactName_for_C3results_06">
+		<classes>
+			<class
+				name="TestScript.TS102_Topic_3_0_UI_Aug14_Rel_PROG_SR_contactName_for_C3results_06" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS062_SearchTopic_3_0_UI_AttivioMigration_PROG_CSSCSO292_fielded_search_gracefullyhandle_spacebetween_colon_value_with_wildcard_02">
+		<classes>
+			<class
+				name="TestScript.TS062_SearchTopic_3_0_UI_AttivioMigration_PROG_CSSCSO292_fielded_search_gracefullyhandle_spacebetween_colon_value_with_wildcard_02" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS086_SearchTopic_3_UI_AttivioMigration_PROG_RSLT_SavingSearch_Delete_search">
+		<classes>
+			<class
+				name="TestScript.TS086_SearchTopic_3_UI_AttivioMigration_PROG_RSLT_SavingSearch_Delete_search" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS103_SearchTopic_3_1_4_UI_Dec_14_Rel_PROG_CDETS_MoreLink_Expand_Values_TopicBuddyPreview_24">
+		<classes>
+			<class
+				name="TestScript.TS103_SearchTopic_3_1_4_UI_Dec_14_Rel_PROG_CDETS_MoreLink_Expand_Values_TopicBuddyPreview_24" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS097_SearchTopic_Sourcefire_UI_Rel_PROG_Performing_Search_while_Editing_dataSourcefilters_01">
+		<classes>
+			<class
+				name="TestScript.TS097_SearchTopic_Sourcefire_UI_Rel_PROG_Performing_Search_while_Editing_dataSourcefilters_01" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS049_SearchTopic3_0_UI_AttivioMigration_PROG_Q4_SCOPE_CSSCSO_3_05_UIPagetitle_should_reflect_searchquery_search_fromResultspage_46">
+		<classes>
+			<class
+				name="TestScript.TS049_SearchTopic3_0_UI_AttivioMigration_PROG_Q4_SCOPE_CSSCSO_3_05_UIPagetitle_should_reflect_searchquery_search_fromResultspage_46" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS050_SearchTopic3_0_UI_AttivioMigration_PROG_SRCH_2_SearchPagedatasource_selectAlllink_47">
+		<classes>
+			<class
+				name="TestScript.TS050_SearchTopic3_0_UI_AttivioMigration_PROG_SRCH_2_SearchPagedatasource_selectAlllink_47" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS080_Topic_3_0_UI_Aug14Rel_PROG_Sort_bychange_fromDropdowntohyperlink_Relevance_09">
+		<classes>
+			<class
+				name="TestScript.TS080_Topic_3_0_UI_Aug14Rel_PROG_Sort_bychange_fromDropdowntohyperlink_Relevance_09" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS104_SearchTopic_3_1_4_UI_Dec_14Rel_PROG_Newsgroup_SpecialCharacter_TopicBuddyPreview_29">
+		<classes>
+			<class
+				name="TestScript.TS104_SearchTopic_3_1_4_UI_Dec_14Rel_PROG_Newsgroup_SpecialCharacter_TopicBuddyPreview_29" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS105_SearchTopic_3_1_4_UI_Dec14_Rel_PROG_CDETS_MoreLink_Collapse_Values_TopicBuddyPreview_25">
+		<classes>
+			<class
+				name="TestScript.TS105_SearchTopic_3_1_4_UI_Dec14_Rel_PROG_CDETS_MoreLink_Collapse_Values_TopicBuddyPreview_25" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS106_SearchTopic_3_1_4_UI_Dec14_Rel_PROG_C3_MoreLink_Expand_Values_TopicBuddyPreview_16">
+		<classes>
+			<class
+				name="TestScript.TS106_SearchTopic_3_1_4_UI_Dec14_Rel_PROG_C3_MoreLink_Expand_Values_TopicBuddyPreview_16" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS075_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3_Result_pageFiltering_options_defaultSearchFilters_FILTERS_Edit_Filter_for_dataSourceName_SelectAll_39">
+		<classes>
+			<class
+				name="TestScript.TS075_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3_Result_pageFiltering_options_defaultSearchFilters_FILTERS_Edit_Filter_for_dataSourceName_SelectAll_39" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS076_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3_Result_pagefilteringOptions_default_search_filters_FILTERS_EditFilter_for_dataSourceName_ADDfilter_ClearAll_40">
+		<classes>
+			<class
+				name="TestScript.TS076_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3_Result_pagefilteringOptions_default_search_filters_FILTERS_EditFilter_for_dataSourceName_ADDfilter_ClearAll_40" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS077_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3_ResultPagefilteringOptions_defaultSearch_filters_FILTERS_Edit_filter_for_datasourceName_Reset_to_default_41">
+		<classes>
+			<class
+				name="TestScript.TS077_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3_ResultPagefilteringOptions_defaultSearch_filters_FILTERS_Edit_filter_for_datasourceName_Reset_to_default_41" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS022_SearchTopic_3_UI_AttivioMigration_PROG_Q4SCOPE_CSSCSO_submission_relevance_feedback_acknowledged_91">
+		<classes>
+			<class
+				name="TestScript.TS022_SearchTopic_3_UI_AttivioMigration_PROG_Q4SCOPE_CSSCSO_submission_relevance_feedback_acknowledged_91" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS051_SearchTopic3_1_3UI_Oct14Rel_PROG_verifydate_rangefilter_MoreThanTwoYearsOld_renamed_BeforeLastYear06">
+		<classes>
+			<class
+				name="TestScript.TS051_SearchTopic3_1_3UI_Oct14Rel_PROG_verifydate_rangefilter_MoreThanTwoYearsOld_renamed_BeforeLastYear06" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS052_SearchTopic3UI_AttivioMigration_PROG_SRCH_3PerformingSearch_SearchQuery_ANDandOR_between_strings">
+		<classes>
+			<class
+				name="TestScript.TS052_SearchTopic3UI_AttivioMigration_PROG_SRCH_3PerformingSearch_SearchQuery_ANDandOR_between_strings" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS055_SearchTopic3_UI_AttivioMigration_PROG_SRCH_PerformingSearch_Searchquery_MultipleORs_between_strings">
+		<classes>
+			<class
+				name="TestScript.TS055_SearchTopic3_UI_AttivioMigration_PROG_SRCH_PerformingSearch_Searchquery_MultipleORs_between_strings" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS059_SearchTopic_3_UI_AttivioMigration_PROG_SRCH_PerformingSearch_SearchQuery_questionMark_Symbol">
+		<classes>
+			<class
+				name="TestScript.TS059_SearchTopic_3_UI_AttivioMigration_PROG_SRCH_PerformingSearch_SearchQuery_questionMark_Symbol" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS072_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT_3_Result_pagefilteringOptions_defaultsearchfilters_DATERANGEFILTERS_SelectdateFROMandTOoptions_validate_if_from_and_entered_30">
+		<classes>
+			<class
+				name="TestScript.TS072_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT_3_Result_pagefilteringOptions_defaultsearchfilters_DATERANGEFILTERS_SelectdateFROMandTOoptions_validate_if_from_and_entered_30" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS073_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3Resultpagefilteringoptions_defaultsearchfilters_DATERANGEFILTERS_OnselectingFrom_validate_if_to_entered_ifEnteredthen_submitquery_elseNoAction_31">
+		<classes>
+			<class
+				name="TestScript.TS073_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3Resultpagefilteringoptions_defaultsearchfilters_DATERANGEFILTERS_OnselectingFrom_validate_if_to_entered_ifEnteredthen_submitquery_elseNoAction_31" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS074_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3Resultpagefilteringoptions_defaultSearchfilters_FILTERS_Edit_filterfor_dataSourceName_ADDfilter_38">
+		<classes>
+			<class
+				name="TestScript.TS074_SearchTopic_3_0_UI_AttivioMigration_PROG_RSLT3Resultpagefilteringoptions_defaultSearchfilters_FILTERS_Edit_filterfor_dataSourceName_ADDfilter_38" />
+		</classes>
+	</test>
+	<test
+		name="TestScript.TS082_Topic_3_0_UI_Aug14Rel_PROG_ChangeHelpToUserGuide_Homepage_01">
+		<classes>
+			<class
+				name="TestScript.TS082_Topic_3_0_UI_Aug14Rel_PROG_ChangeHelpToUserGuide_Homepage_01" />
+		</classes>
+	</test>
+</suite>
